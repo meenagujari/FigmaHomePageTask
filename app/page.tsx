@@ -411,7 +411,7 @@ function ServicesSection() {
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{
-                  backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
+                  backgroundImage: `url('/group2-services.png')`,
                   backgroundPosition: 'left center'
                 }}
               />
@@ -433,7 +433,7 @@ function ServicesSection() {
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{
-                  backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
+                  backgroundImage: `url('/group2-services.png')`,
                   backgroundPosition: 'center center'
                 }}
               />
@@ -455,7 +455,7 @@ function ServicesSection() {
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{
-                  backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
+                  backgroundImage: `url('/group2-services.png')`,
                   backgroundPosition: 'right center'
                 }}
               />
