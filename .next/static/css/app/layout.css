@@ -521,9 +521,6 @@ video {
 .mb-1 {
   margin-bottom: 0.25rem;
 }
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -547,12 +544,6 @@ video {
 }
 .mt-1\.5 {
   margin-top: 0.375rem;
-}
-.mt-10 {
-  margin-top: 2.5rem;
-}
-.mt-20 {
-  margin-top: 5rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -578,20 +569,11 @@ video {
 .h-5 {
   height: 1.25rem;
 }
-.h-52 {
-  height: 13rem;
-}
 .h-6 {
   height: 1.5rem;
 }
 .h-96 {
   height: 24rem;
-}
-.h-\[500px\] {
-  height: 500px;
-}
-.min-h-\[7975px\] {
-  min-height: 7975px;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -611,12 +593,6 @@ video {
 .w-6 {
   width: 1.5rem;
 }
-.w-\[2560px\] {
-  width: 2560px;
-}
-.w-auto {
-  width: auto;
-}
 .w-full {
   width: 100%;
 }
@@ -628,9 +604,6 @@ video {
 }
 .max-w-7xl {
   max-width: 80rem;
-}
-.max-w-\[2400px\] {
-  max-width: 2400px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -673,17 +646,6 @@ video {
 }
 .gap-16 {
   gap: 4rem;
-}
-.gap-8 {
-  gap: 2rem;
-}
-.gap-2 {
-  gap: 0.5rem;
-}
-.space-x-12 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(3rem * var(--tw-space-x-reverse));
-  margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
 }
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -837,10 +799,6 @@ video {
 .p-8 {
   padding: 2rem;
 }
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -860,10 +818,6 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 .py-6 {
   padding-top: 1.5rem;
@@ -916,10 +870,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 .font-bold {
   font-weight: 700;
@@ -1046,26 +996,33 @@ video {
   --sky-blue: #87ceeb;
   --sunset-orange: #ff6b35;
   
-  /* Typography Scaling */
-  --font-size-xs: calc(0.75rem + 0.1vw);
-  --font-size-sm: calc(0.875rem + 0.1vw);
-  --font-size-base: calc(1rem + 0.1vw);
-  --font-size-lg: calc(1.125rem + 0.2vw);
-  --font-size-xl: calc(1.25rem + 0.3vw);
-  --font-size-2xl: calc(1.5rem + 0.4vw);
-  --font-size-3xl: calc(1.875rem + 0.5vw);
-  --font-size-4xl: calc(2.25rem + 0.6vw);
-  --font-size-5xl: calc(3rem + 0.7vw);
-  --font-size-6xl: calc(3.75rem + 0.8vw);
+  /* Responsive Typography Scaling */
+  --font-size-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 1rem);
+  --font-size-base: clamp(0.9rem, 0.85rem + 0.3vw, 1.125rem);
+  --font-size-lg: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
+  --font-size-xl: clamp(1.1rem, 1rem + 0.4vw, 1.5rem);
+  --font-size-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 2rem);
+  --font-size-3xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.5rem);
+  --font-size-4xl: clamp(1.75rem, 1.5rem + 1.5vw, 3rem);
+  --font-size-5xl: clamp(2rem, 1.75rem + 2vw, 4rem);
+  --font-size-6xl: clamp(2.5rem, 2rem + 2.5vw, 5rem);
   
-  /* Spacing System */
-  --spacing-xs: calc(0.25rem + 0.1vw);
-  --spacing-sm: calc(0.5rem + 0.2vw);
-  --spacing-md: calc(1rem + 0.3vw);
-  --spacing-lg: calc(1.5rem + 0.4vw);
-  --spacing-xl: calc(2rem + 0.5vw);
-  --spacing-2xl: calc(3rem + 0.6vw);
-  --spacing-3xl: calc(4rem + 0.7vw);
+  /* Responsive Spacing System */
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+  --spacing-md: clamp(1rem, 0.8rem + 1vw, 2rem);
+  --spacing-lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
+  --spacing-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --spacing-2xl: clamp(3rem, 2rem + 5vw, 6rem);
+  --spacing-3xl: clamp(4rem, 3rem + 5vw, 8rem);
+  
+  /* Container Widths */
+  --container-sm: min(90vw, 640px);
+  --container-md: min(90vw, 768px);
+  --container-lg: min(90vw, 1024px);
+  --container-xl: min(90vw, 1280px);
+  --container-2xl: min(90vw, 1536px);
 }
 
 html {
@@ -1168,12 +1125,54 @@ textarea:focus {
   animation: slideIn 0.5s ease-out;
 }
 
-/* Responsive utilities */
-@media (max-width: 640px) {
+/* Responsive utility classes */
+.responsive-text-xs { font-size: var(--font-size-xs); }
+.responsive-text-sm { font-size: var(--font-size-sm); }
+.responsive-text-base { font-size: var(--font-size-base); }
+.responsive-text-lg { font-size: var(--font-size-lg); }
+.responsive-text-xl { font-size: var(--font-size-xl); }
+.responsive-text-2xl { font-size: var(--font-size-2xl); }
+.responsive-text-3xl { font-size: var(--font-size-3xl); }
+.responsive-text-4xl { font-size: var(--font-size-4xl); }
+.responsive-text-5xl { font-size: var(--font-size-5xl); }
+.responsive-text-6xl { font-size: var(--font-size-6xl); }
+
+.responsive-spacing-xs { padding: var(--spacing-xs); }
+.responsive-spacing-sm { padding: var(--spacing-sm); }
+.responsive-spacing-md { padding: var(--spacing-md); }
+.responsive-spacing-lg { padding: var(--spacing-lg); }
+.responsive-spacing-xl { padding: var(--spacing-xl); }
+.responsive-spacing-2xl { padding: var(--spacing-2xl); }
+.responsive-spacing-3xl { padding: var(--spacing-3xl); }
+
+.responsive-container { 
+  width: var(--container-xl);
+  margin: 0 auto;
+}
+
+/* Responsive breakpoint-specific adjustments */
+@media (max-width: 480px) {
   :root {
-    --font-size-6xl: calc(2.5rem + 0.5vw);
-    --font-size-5xl: calc(2rem + 0.4vw);
-    --font-size-4xl: calc(1.75rem + 0.3vw);
+    --spacing-2xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+    --spacing-3xl: clamp(2.5rem, 2rem + 2.5vw, 5rem);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --container-xl: min(95vw, 1280px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --container-xl: min(92vw, 1280px);
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --container-xl: min(90vw, 1280px);
   }
 }
 
@@ -1257,18 +1256,6 @@ textarea:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(250 204 21 / var(--tw-ring-opacity, 1));
 }
-@media (min-width: 640px) {
-
-  .sm\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-}
 @media (min-width: 768px) {
 
   .md\:mb-0 {
@@ -1317,12 +1304,6 @@ textarea:focus {
     gap: 5rem;
   }
 
-  .lg\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(3rem * var(--tw-space-x-reverse));
-    margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
   .lg\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -1333,20 +1314,8 @@ textarea:focus {
     padding-bottom: 7rem;
   }
 
-  .lg\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
   .lg\:text-5xl {
     font-size: 3rem;
-    line-height: 1;
-  }
-}
-@media (min-width: 1280px) {
-
-  .xl\:text-6xl {
-    font-size: 3.75rem;
     line-height: 1;
   }
 }

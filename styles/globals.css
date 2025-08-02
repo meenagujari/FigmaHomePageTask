@@ -15,26 +15,33 @@
   --sky-blue: #87ceeb;
   --sunset-orange: #ff6b35;
   
-  /* Typography Scaling */
-  --font-size-xs: calc(0.75rem + 0.1vw);
-  --font-size-sm: calc(0.875rem + 0.1vw);
-  --font-size-base: calc(1rem + 0.1vw);
-  --font-size-lg: calc(1.125rem + 0.2vw);
-  --font-size-xl: calc(1.25rem + 0.3vw);
-  --font-size-2xl: calc(1.5rem + 0.4vw);
-  --font-size-3xl: calc(1.875rem + 0.5vw);
-  --font-size-4xl: calc(2.25rem + 0.6vw);
-  --font-size-5xl: calc(3rem + 0.7vw);
-  --font-size-6xl: calc(3.75rem + 0.8vw);
+  /* Responsive Typography Scaling */
+  --font-size-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 1rem);
+  --font-size-base: clamp(0.9rem, 0.85rem + 0.3vw, 1.125rem);
+  --font-size-lg: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
+  --font-size-xl: clamp(1.1rem, 1rem + 0.4vw, 1.5rem);
+  --font-size-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 2rem);
+  --font-size-3xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.5rem);
+  --font-size-4xl: clamp(1.75rem, 1.5rem + 1.5vw, 3rem);
+  --font-size-5xl: clamp(2rem, 1.75rem + 2vw, 4rem);
+  --font-size-6xl: clamp(2.5rem, 2rem + 2.5vw, 5rem);
   
-  /* Spacing System */
-  --spacing-xs: calc(0.25rem + 0.1vw);
-  --spacing-sm: calc(0.5rem + 0.2vw);
-  --spacing-md: calc(1rem + 0.3vw);
-  --spacing-lg: calc(1.5rem + 0.4vw);
-  --spacing-xl: calc(2rem + 0.5vw);
-  --spacing-2xl: calc(3rem + 0.6vw);
-  --spacing-3xl: calc(4rem + 0.7vw);
+  /* Responsive Spacing System */
+  --spacing-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 0.4rem + 0.5vw, 1rem);
+  --spacing-md: clamp(1rem, 0.8rem + 1vw, 2rem);
+  --spacing-lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
+  --spacing-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --spacing-2xl: clamp(3rem, 2rem + 5vw, 6rem);
+  --spacing-3xl: clamp(4rem, 3rem + 5vw, 8rem);
+  
+  /* Container Widths */
+  --container-sm: min(90vw, 640px);
+  --container-md: min(90vw, 768px);
+  --container-lg: min(90vw, 1024px);
+  --container-xl: min(90vw, 1280px);
+  --container-2xl: min(90vw, 1536px);
 }
 
 html {
@@ -137,12 +144,54 @@ textarea:focus {
   animation: slideIn 0.5s ease-out;
 }
 
-/* Responsive utilities */
-@media (max-width: 640px) {
+/* Responsive utility classes */
+.responsive-text-xs { font-size: var(--font-size-xs); }
+.responsive-text-sm { font-size: var(--font-size-sm); }
+.responsive-text-base { font-size: var(--font-size-base); }
+.responsive-text-lg { font-size: var(--font-size-lg); }
+.responsive-text-xl { font-size: var(--font-size-xl); }
+.responsive-text-2xl { font-size: var(--font-size-2xl); }
+.responsive-text-3xl { font-size: var(--font-size-3xl); }
+.responsive-text-4xl { font-size: var(--font-size-4xl); }
+.responsive-text-5xl { font-size: var(--font-size-5xl); }
+.responsive-text-6xl { font-size: var(--font-size-6xl); }
+
+.responsive-spacing-xs { padding: var(--spacing-xs); }
+.responsive-spacing-sm { padding: var(--spacing-sm); }
+.responsive-spacing-md { padding: var(--spacing-md); }
+.responsive-spacing-lg { padding: var(--spacing-lg); }
+.responsive-spacing-xl { padding: var(--spacing-xl); }
+.responsive-spacing-2xl { padding: var(--spacing-2xl); }
+.responsive-spacing-3xl { padding: var(--spacing-3xl); }
+
+.responsive-container { 
+  width: var(--container-xl);
+  margin: 0 auto;
+}
+
+/* Responsive breakpoint-specific adjustments */
+@media (max-width: 480px) {
   :root {
-    --font-size-6xl: calc(2.5rem + 0.5vw);
-    --font-size-5xl: calc(2rem + 0.4vw);
-    --font-size-4xl: calc(1.75rem + 0.3vw);
+    --spacing-2xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+    --spacing-3xl: clamp(2.5rem, 2rem + 2.5vw, 5rem);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --container-xl: min(95vw, 1280px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --container-xl: min(92vw, 1280px);
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --container-xl: min(90vw, 1280px);
   }
 }
 

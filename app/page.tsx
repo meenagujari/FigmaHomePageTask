@@ -181,8 +181,8 @@ function Header() {
   }
 
   return (
-    <header className="bg-white py-6 px-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="bg-white responsive-container" style={{ paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
+      <div className="responsive-container flex items-center justify-between" style={{ paddingLeft: 'var(--spacing-sm)', paddingRight: 'var(--spacing-sm)' }}>
         {/* Logo */}
         <div className="flex items-center">
           <Image 
@@ -190,39 +190,39 @@ function Header() {
             alt="Ekaant Logo" 
             width={80}
             height={24}
-            className="h-6 w-auto"
+            style={{ height: 'calc(1.5rem + 0.5vw)', width: 'auto' }}
           />
         </div>
 
         {/* Navigation Menu */}
-        <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
-          <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+        <nav className="hidden md:flex items-center" style={{ gap: 'calc(1rem + 1vw)' }}>
+          <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
             HOME
           </button>
-          <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+          <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
             AMENITIES
           </button>
-          <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+          <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
             PHOTO GALLERY
           </button>
-          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
             CONTACT US
           </button>
         </nav>
 
         {/* Mobile Navigation */}
-        <nav className="md:hidden flex flex-col space-y-2">
-          <div className="flex flex-wrap gap-2 text-xs">
-            <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+        <nav className="md:hidden flex flex-col" style={{ gap: 'var(--spacing-xs)' }}>
+          <div className="flex flex-wrap" style={{ gap: 'var(--spacing-xs)' }}>
+            <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
               HOME
             </button>
-            <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+            <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
               AMENITIES
             </button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
               GALLERY
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
               CONTACT
             </button>
           </div>
@@ -242,20 +242,26 @@ function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-start overflow-hidden">
+    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ minHeight: 'calc(100vh - var(--spacing-xl))' }}>
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
       }} />
       
-      <div className="relative z-10 text-left text-white px-6 lg:px-12 max-w-7xl mx-auto w-full">
-        <div className="max-w-3xl mt-20">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 leading-tight tracking-wide">
+      <div className="relative z-10 text-left text-white responsive-container w-full" style={{ padding: 'var(--spacing-lg)' }}>
+        <div style={{ maxWidth: 'calc(60% + 10vw)', marginTop: 'var(--spacing-xl)' }}>
+          <h1 className="font-bold leading-tight tracking-wide responsive-text-6xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
             {contentData.hero.title}
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-10 font-light leading-relaxed opacity-95">
+          <p className="font-light leading-relaxed opacity-95 responsive-text-xl" style={{ marginBottom: 'var(--spacing-xl)' }}>
             {contentData.hero.subtitle}
           </p>
-          <button onClick={scrollToAbout} className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-md text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <button 
+            onClick={scrollToAbout} 
+            className="bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl responsive-text-lg"
+            style={{ 
+              padding: 'var(--spacing-sm) var(--spacing-lg)'
+            }}
+          >
             {contentData.hero.buttonText}
           </button>
         </div>
@@ -267,33 +273,37 @@ function HeroSection() {
 // About Section Component
 function AboutSection() {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+    <section id="about" className="bg-white" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
+      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
+        <div className="grid lg:grid-cols-2 items-start" style={{ gap: 'var(--spacing-2xl)' }}>
           <div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-8 leading-tight">
+            <h2 className="font-bold text-green-700 leading-tight responsive-text-5xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
               {contentData.about.title}
             </h2>
-            <div className="text-gray-700 text-lg leading-relaxed space-y-6">
+            <div className="text-gray-700 leading-relaxed responsive-text-lg" style={{ marginBottom: 'var(--spacing-xl)' }}>
               {contentData.about.description.map((paragraph, index) => (
-                <p key={index} className="text-justify">
+                <p key={index} className="text-justify" style={{ marginBottom: 'var(--spacing-md)' }}>
                   {paragraph}
                 </p>
               ))}
             </div>
-            <button className="mt-10 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <button 
+              className="bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg responsive-text-base"
+              style={{ padding: 'var(--spacing-sm) var(--spacing-lg)' }}
+            >
               {contentData.about.buttonText}
             </button>
           </div>
           
-          <div className="relative lg:mt-8">
+          <div className="relative" style={{ marginTop: 'var(--spacing-lg)' }}>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <Image 
                 src="/nature-retreat.jpg"
                 alt="Ekaant forest retreat setting" 
                 width={800}
                 height={500}
-                className="w-full h-[500px] object-cover"
+                className="w-full object-cover"
+                style={{ height: 'calc(300px + 10vw)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
@@ -307,29 +317,29 @@ function AboutSection() {
 // Services Section Component
 function ServicesSection() {
   return (
-    <section id="amenities" className="py-20 lg:py-28 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-6">
+    <section id="amenities" className="bg-gray-50" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
+      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
+        <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
+          <h2 className="font-bold text-green-700 responsive-text-5xl" style={{ marginBottom: 'var(--spacing-md)' }}>
             {contentData.services.title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-600 leading-relaxed responsive-text-xl" style={{ maxWidth: 'calc(60% + 10vw)', margin: '0 auto' }}>
             {contentData.services.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-lg)', marginBottom: 'var(--spacing-2xl)' }}>
           {contentData.services.items.map((service, index) => (
             <div key={index} className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                 <div className="relative overflow-hidden">
-                  <div className="w-full h-52 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                    <div className="text-green-700 text-4xl">🌿</div>
+                  <div className="w-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center" style={{ height: 'calc(180px + 5vw)' }}>
+                    <div className="text-green-700 responsive-text-4xl">🌿</div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <div style={{ padding: 'var(--spacing-md)' }}>
+                  <h3 className="font-bold text-gray-900 responsive-text-xl" style={{ marginBottom: 'var(--spacing-sm)' }}>{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed responsive-text-base">{service.description}</p>
                 </div>
               </div>
             </div>
@@ -337,7 +347,10 @@ function ServicesSection() {
         </div>
 
         <div className="text-center">
-          <button className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-md text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button 
+            className="bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg responsive-text-lg"
+            style={{ padding: 'var(--spacing-sm) var(--spacing-xl)' }}
+          >
             {contentData.services.buttonText}
           </button>
         </div>
