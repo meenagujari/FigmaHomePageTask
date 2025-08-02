@@ -195,11 +195,8 @@ If you see warnings about cross-origin requests, ensure your `next.config.js` in
 
 © 2024 Ekaant Agro Tourism Retreat. All rights reserved.
 
-## 🤝 Support
 
-For technical support or customization requests, please contact the development team.
 
----
 
-**Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
-**Optimized for Replit deployment**
+
+
