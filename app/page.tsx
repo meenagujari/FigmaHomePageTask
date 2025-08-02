@@ -226,7 +226,7 @@ function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-start overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse.jpg')`
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/landscape.jpg')`
       }} />
       
       <div className="relative z-10 text-left text-white px-6 lg:px-12 max-w-7xl mx-auto w-full">
