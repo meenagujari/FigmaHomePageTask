@@ -607,8 +607,8 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
           lineHeight: '1.4'
         }}>
           We'd love to help<br />
-          you plan your<br />
-          peaceful escape.
+          you plan your peaceful<br />
+          escape.
         </h2>
       </div>
     </footer>
