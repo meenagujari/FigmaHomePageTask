@@ -190,12 +190,12 @@ function Header() {
             alt="Ekaant Logo" 
             width={120}
             height={36}
-            style={{ height: 'calc(2.5rem + 1vw)', width: 'auto' }}
+            style={{ height: 'clamp(2rem, 2rem + 1.5vw, 3.5rem)', width: 'auto' }}
           />
         </div>
 
         {/* Navigation Menu - Desktop */}
-        <nav className="hidden md:flex items-center" style={{ gap: 'calc(1.2rem + 0.8vw)' }}>
+        <nav className="hidden md:flex items-center" style={{ gap: 'clamp(1rem, 1rem + 1vw, 2rem)' }}>
           <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             HOME
           </button>
@@ -212,7 +212,7 @@ function Header() {
 
         {/* Mobile Navigation */}
         <nav className="md:hidden">
-          <div className="flex flex-wrap justify-end" style={{ gap: 'calc(0.6rem + 0.4vw)' }}>
+          <div className="flex flex-wrap justify-end" style={{ gap: 'clamp(0.5rem, 0.5rem + 0.5vw, 1rem)' }}>
             <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               HOME
             </button>
@@ -242,18 +242,22 @@ function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ minHeight: '100vh', maxHeight: '1750px', height: 'calc(100vh + 20vw)', paddingTop: 'calc(var(--spacing-3xl) + var(--spacing-md))' }}>
+    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ height: 'var(--hero-height)', paddingTop: 'calc(var(--spacing-3xl) + var(--spacing-md))' }}>
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
       }} />
       
-      <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center min-h-screen" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'calc(var(--spacing-xl) * 2)' }}>
+      <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center h-full" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-4xl)' }}>
         <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
-          <h1 className="font-bold leading-tight tracking-wide responsive-text-4xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
+          <h1 className="font-bold leading-tight tracking-wide" style={{ 
+            fontSize: 'var(--font-size-5xl)', 
+            marginBottom: 'var(--spacing-lg)',
+            lineHeight: 'calc(1rem + 0.3vw)'
+          }}>
             Welcome to Ekaant—Agro Tourism Retreat Near<br />
             Bor Tiger Reserve, Maharashtra
           </h1>
-          <p className="font-light leading-relaxed opacity-95 responsive-text-xl">
+          <p className="font-light leading-relaxed opacity-95" style={{ fontSize: 'var(--font-size-xl)' }}>
             {contentData.hero.subtitle}
           </p>
         </div>
@@ -283,12 +287,12 @@ function AboutSection() {
               className="text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
               style={{ 
                 backgroundColor: '#003E17',
-                padding: 'var(--spacing-md) var(--spacing-2xl)',
-                borderRadius: '3rem',
+                padding: 'var(--button-padding-y) var(--button-padding-x)',
+                borderRadius: 'var(--border-radius-full)',
                 letterSpacing: '0.025em'
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#002a10'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = '#003E17'}
+              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#002a10'}
+              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#003E17'}
             >
               Explore More
             </button>
@@ -302,7 +306,7 @@ function AboutSection() {
                 width={800}
                 height={500}
                 className="w-full object-cover"
-                style={{ height: 'calc(300px + 10vw)' }}
+                style={{ height: 'calc(20rem + 15vw)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
@@ -380,7 +384,7 @@ function ServicesSection() {
         <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
           {featuredActivities.map((activity, index) => (
             <div key={index} className="group">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+              <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   style={{
@@ -388,7 +392,7 @@ function ServicesSection() {
                     backgroundPosition: activity.backgroundPosition
                   }}
                 />
-                <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
               </div>
               <div className="text-center">
                 <h3 className="font-bold text-gray-900 responsive-text-lg">
@@ -403,7 +407,7 @@ function ServicesSection() {
         <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
           {/* Stargazing Nights */}
           <div className="group">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+            <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{
@@ -411,7 +415,7 @@ function ServicesSection() {
                   backgroundPosition: 'left center'
                 }}
               />
-              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
             </div>
             <div className="text-center">
               <h3 className="font-bold text-gray-900 responsive-text-lg">
@@ -422,7 +426,7 @@ function ServicesSection() {
 
           {/* Bonfire Evenings */}
           <div className="group">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+            <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{
@@ -430,7 +434,7 @@ function ServicesSection() {
                   backgroundPosition: 'center center'
                 }}
               />
-              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
             </div>
             <div className="text-center">
               <h3 className="font-bold text-gray-900 responsive-text-lg">
@@ -441,7 +445,7 @@ function ServicesSection() {
 
           {/* Digital Detox & Wellness */}
           <div className="group">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+            <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 style={{
@@ -449,7 +453,7 @@ function ServicesSection() {
                   backgroundPosition: 'right center'
                 }}
               />
-              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
             </div>
             <div className="text-center">
               <h3 className="font-bold text-gray-900 responsive-text-lg">
@@ -464,12 +468,12 @@ function ServicesSection() {
             className="text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
             style={{ 
               backgroundColor: '#003E17',
-              padding: 'var(--spacing-md) var(--spacing-2xl)',
-              borderRadius: '3rem',
+              padding: 'var(--button-padding-y) var(--button-padding-x)',
+              borderRadius: 'var(--border-radius-full)',
               letterSpacing: '0.025em'
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#002a10'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#003E17'}
+            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#002a10'}
+            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#003E17'}
           >
             Explore More
           </button>

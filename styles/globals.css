@@ -35,6 +35,19 @@
   --spacing-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
   --spacing-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
   --spacing-3xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --spacing-4xl: clamp(3rem, 2.5rem + 3vw, 5rem);
+  --spacing-5xl: clamp(4rem, 3rem + 4vw, 6rem);
+  
+  /* Component-specific fluid dimensions */
+  --hero-height: clamp(60vh, 70vh, 100vh);
+  --card-height: clamp(200px, 15vw + 150px, 300px);
+  --button-padding-x: clamp(1rem, 2vw + 0.5rem, 2.5rem);
+  --button-padding-y: clamp(0.5rem, 1vw + 0.25rem, 1rem);
+  --border-radius-sm: clamp(0.25rem, 0.5vw, 0.5rem);
+  --border-radius-md: clamp(0.5rem, 1vw, 1rem);
+  --border-radius-lg: clamp(0.75rem, 1.5vw, 1.5rem);
+  --border-radius-xl: clamp(1rem, 2vw, 2rem);
+  --border-radius-full: clamp(1.5rem, 3vw, 3rem);
   
   /* Container Widths */
   --container-sm: min(90vw, 640px);
