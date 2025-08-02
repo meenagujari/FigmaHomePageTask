@@ -590,67 +590,57 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
   )
 }
 
-// Footer Component
+// Footer Component - Matching Original Figma Design
 function FooterSection({ contentData }: { contentData: ContentData }) {
-  const [email, setEmail] = useState('')
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle newsletter subscription
-    console.log('Newsletter subscription:', email)
-    setEmail('')
-  }
-
   return (
-    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-4xl) 0 var(--spacing-lg) 0' }}>
-      <div className="responsive-container w-full" style={{ padding: '0 var(--spacing-lg)' }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-4xl)' }}>
+    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17' }}>
+      <div className="responsive-container w-full" style={{ 
+        padding: 'clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem)',
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ 
+          gap: 'clamp(2rem, 4vw, 3rem)',
+          marginBottom: 'clamp(2rem, 3vw, 3rem)'
+        }}>
           
-          {/* Contact Information */}
-          <div className="lg:col-span-2">
-            <h3 className="font-bold mb-4" style={{ fontSize: 'var(--font-size-xl)' }}>
-              Contact Information
-            </h3>
+          {/* Contact Section */}
+          <div>
             <div className="space-y-4">
-              <div className="flex items-start">
-                <Phone className="w-5 h-5 mt-1 mr-3 text-green-300" />
-                <div>
-                  <p className="font-medium" style={{ fontSize: 'var(--font-size-sm)' }}>
-                    {contentData.footer.contact.phone.label}
-                  </p>
-                  <p style={{ fontSize: 'var(--font-size-md)' }}>
-                    {contentData.footer.contact.phone.number}
-                  </p>
-                </div>
+              <div>
+                <p className="text-white/80 responsive-text-sm" style={{ marginBottom: '0.5rem' }}>
+                  {contentData.footer.contact.phone.label}
+                </p>
+                <p className="text-white font-medium responsive-text-base">
+                  {contentData.footer.contact.phone.number}
+                </p>
               </div>
-              <div className="flex items-start">
-                <Mail className="w-5 h-5 mt-1 mr-3 text-green-300" />
-                <div>
-                  <p className="font-medium" style={{ fontSize: 'var(--font-size-sm)' }}>
-                    {contentData.footer.contact.email.label}
-                  </p>
-                  <p style={{ fontSize: 'var(--font-size-md)' }}>
-                    {contentData.footer.contact.email.address}
-                  </p>
-                </div>
+              
+              <div>
+                <p className="text-white/80 responsive-text-sm" style={{ marginBottom: '0.5rem' }}>
+                  {contentData.footer.contact.email.label}
+                </p>
+                <p className="text-white font-medium responsive-text-base">
+                  {contentData.footer.contact.email.address}
+                </p>
               </div>
-              <div className="flex items-start">
-                <MapPin className="w-5 h-5 mt-1 mr-3 text-green-300" />
-                <div>
-                  <p className="font-medium" style={{ fontSize: 'var(--font-size-sm)' }}>
-                    {contentData.footer.contact.address.label}
-                  </p>
-                  <p style={{ fontSize: 'var(--font-size-md)' }}>
-                    {contentData.footer.contact.address.details}
-                  </p>
-                </div>
+              
+              <div>
+                <p className="text-white/80 responsive-text-sm" style={{ marginBottom: '0.5rem' }}>
+                  {contentData.footer.contact.address.label}
+                </p>
+                <p className="text-white font-medium responsive-text-base" style={{ lineHeight: '1.5' }}>
+                  {contentData.footer.contact.address.details}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation Links */}
           <div>
-            <h3 className="font-bold mb-4" style={{ fontSize: 'var(--font-size-xl)' }}>
+            <h3 className="text-white font-bold responsive-text-lg" style={{ marginBottom: 'clamp(1rem, 2vw, 1.5rem)' }}>
               {contentData.footer.navigation.title}
             </h3>
             <ul className="space-y-2">
@@ -658,8 +648,7 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
                 <li key={index}>
                   <a 
                     href={`#${link.link}`} 
-                    className="hover:text-green-300 transition-colors"
-                    style={{ fontSize: 'var(--font-size-md)' }}
+                    className="text-white/80 hover:text-white transition-colors responsive-text-base"
                   >
                     {link.label}
                   </a>
@@ -670,12 +659,12 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
 
           {/* Activities */}
           <div>
-            <h3 className="font-bold mb-4" style={{ fontSize: 'var(--font-size-xl)' }}>
+            <h3 className="text-white font-bold responsive-text-lg" style={{ marginBottom: 'clamp(1rem, 2vw, 1.5rem)' }}>
               {contentData.footer.activities.title}
             </h3>
             <ul className="space-y-2">
               {contentData.footer.activities.items.map((activity, index) => (
-                <li key={index} style={{ fontSize: 'var(--font-size-md)' }}>
+                <li key={index} className="text-white/80 responsive-text-base">
                   {activity}
                 </li>
               ))}
@@ -683,56 +672,11 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
           </div>
         </div>
 
-        {/* Social Media & Newsletter */}
-        <div className="flex flex-col md:flex-row items-center justify-between border-t border-green-700 pt-6" style={{ gap: 'var(--spacing-lg)' }}>
-          <div className="flex items-center" style={{ gap: 'var(--spacing-md)' }}>
-            <span style={{ fontSize: 'var(--font-size-md)' }}>{contentData.footer.social.title}:</span>
-            <div className="flex" style={{ gap: 'var(--spacing-sm)' }}>
-              <a href="#" className="text-green-300 hover:text-white transition-colors">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-green-300 hover:text-white transition-colors">
-                <Instagram className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-
-          <form onSubmit={handleNewsletterSubmit} className="flex" style={{ gap: 'var(--spacing-sm)' }}>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email for updates"
-              className="px-4 py-2 rounded-lg bg-white/10 border border-green-700 text-white placeholder-green-300 focus:outline-none focus:ring-2 focus:ring-green-500"
-              style={{ fontSize: 'var(--font-size-md)' }}
-              required
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
-            >
-              <Send className="w-5 h-5" />
-            </button>
-          </form>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center mt-6 pt-6 border-t border-green-700">
-          <p className="text-green-300" style={{ fontSize: 'var(--font-size-sm)' }}>
+        {/* Copyright Section */}
+        <div className="border-t border-white/20 pt-6 text-center">
+          <p className="text-white/70 responsive-text-sm">
             {contentData.footer.copyright}
           </p>
-          <div className="flex justify-center mt-2" style={{ gap: 'var(--spacing-md)' }}>
-            {contentData.footer.legal.map((item, index) => (
-              <a 
-                key={index} 
-                href="#" 
-                className="text-green-300 hover:text-white transition-colors"
-                style={{ fontSize: 'var(--font-size-xs)' }}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
