@@ -606,8 +606,9 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
           letterSpacing: '0.05em',
           lineHeight: '1.4'
         }}>
-          We'd love to help you plan<br />
-          your peaceful escape.
+          We'd love to help<br />
+          you plan your<br />
+          peaceful escape.
         </h2>
       </div>
     </footer>
