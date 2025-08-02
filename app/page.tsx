@@ -252,18 +252,9 @@ function HeroSection() {
           <h1 className="font-bold leading-tight tracking-wide responsive-text-4xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
             {contentData.hero.title}
           </h1>
-          <p className="font-light leading-relaxed opacity-95 responsive-text-xl" style={{ marginBottom: 'var(--spacing-xl)' }}>
+          <p className="font-light leading-relaxed opacity-95 responsive-text-xl">
             {contentData.hero.subtitle}
           </p>
-          <button 
-            onClick={scrollToAbout} 
-            className="bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl responsive-text-lg"
-            style={{ 
-              padding: 'var(--spacing-sm) var(--spacing-lg)'
-            }}
-          >
-            {contentData.hero.buttonText}
-          </button>
         </div>
       </div>
     </section>
