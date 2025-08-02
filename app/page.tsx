@@ -539,16 +539,7 @@ function LocationSection() {
           </div>
 
           {/* Right Side - Map/Visual */}
-          <div className="relative overflow-hidden rounded-2xl shadow-xl" style={{ minHeight: '500px' }}>
-            {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/treehouse.jpg')`,
-                filter: 'blur(1px)'
-              }}
-            />
-            
+          <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-green-50 to-green-100" style={{ minHeight: '500px' }}>
             {/* Map Overlay */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
               {/* Location Info Box */}
