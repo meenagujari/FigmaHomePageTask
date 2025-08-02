@@ -361,65 +361,113 @@ function ServicesSection() {
 
 // Location Section Component
 function LocationSection() {
-  const getIcon = (method: string) => {
-    switch (method) {
-      case 'road': return <Car className="text-white text-lg" />
-      case 'train': return <Train className="text-white text-lg" />
-      case 'air': return <Plane className="text-white text-lg" />
-      default: return <MapPin className="text-white text-lg" />
-    }
-  }
-
-  const getIconBg = (index: number) => {
-    const colors = ['bg-green-700', 'bg-green-600', 'bg-yellow-500']
-    return colors[index % colors.length]
-  }
-
   return (
-    <section className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
-          <div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-12 leading-tight">
-              {contentData.location.title}
-            </h2>
-            
-            <div className="space-y-10">
-              {contentData.location.methods.map((method, index) => (
-                <div key={index} className="flex items-start space-x-6">
-                  <div className={`flex-shrink-0 w-14 h-14 ${getIconBg(index)} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    {getIcon(method.type)}
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{method.title}</h3>
-                    <div className="space-y-2">
-                      {method.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-600 text-lg leading-relaxed">{detail}</p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <section 
+      className="relative py-20 overflow-hidden"
+      style={{ 
+        backgroundColor: '#000000',
+        minHeight: '600px'
+      }}
+    >
+      <div className="relative z-10 text-center">
+        {/* Title */}
+        <h2 
+          className="font-bold mb-16"
+          style={{ 
+            fontSize: 'var(--font-size-4xl)',
+            color: '#22c55e',
+            letterSpacing: '0.1em'
+          }}
+        >
+          HOW TO REACH<br />EKAANT
+        </h2>
+        
+        {/* Location Pin with Winding Path */}
+        <div className="relative flex justify-center items-center" style={{ minHeight: '400px' }}>
+          {/* Winding Path SVG */}
+          <svg 
+            className="absolute" 
+            width="300" 
+            height="350" 
+            viewBox="0 0 300 350"
+            style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
+          >
+            {/* Winding path */}
+            <path 
+              d="M150 300 Q100 250 120 200 Q140 150 100 100 Q80 50 150 20"
+              stroke="#22c55e"
+              strokeWidth="20"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </svg>
+          
+          {/* Location Pin */}
+          <div 
+            className="relative z-20"
+            style={{ 
+              marginTop: '-150px',
+              filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.3))'
+            }}
+          >
+            <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
+              <path 
+                d="M60 0C26.8629 0 0 26.8629 0 60C0 93.1371 60 160 60 160S120 93.1371 120 60C120 26.8629 93.1371 0 60 0Z" 
+                fill="#22c55e"
+              />
+              <circle cx="60" cy="60" r="25" fill="#000000" />
+            </svg>
           </div>
-
-          <div className="relative lg:mt-8">
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl p-8 h-96 flex items-center justify-center relative overflow-hidden shadow-xl">
-              <div className="relative z-10 text-center">
-                <div className="w-20 h-20 bg-green-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <MapPin className="text-white text-3xl" />
-                </div>
-                <h4 className="text-2xl font-bold text-gray-900 mb-3">{contentData.location.coordinates.title}</h4>
-                <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{contentData.location.coordinates.address}</p>
-              </div>
-            </div>
-            
-            <div className="mt-8 p-6 bg-white rounded-2xl shadow-lg border border-gray-100">
-              <p className="text-sm font-semibold text-gray-500 mb-2 uppercase tracking-wide">{contentData.location.gps.title}</p>
-              <p className="text-gray-900 font-mono text-lg">{contentData.location.gps.coordinates}</p>
-            </div>
+          
+          {/* Decorative Trees */}
+          <div 
+            className="absolute"
+            style={{ 
+              left: '15%', 
+              bottom: '20%',
+              color: '#22c55e',
+              fontSize: '2rem'
+            }}
+          >
+            🌲🌳🌲
+          </div>
+          
+          <div 
+            className="absolute"
+            style={{ 
+              right: '20%', 
+              bottom: '15%',
+              color: '#22c55e',
+              fontSize: '1.5rem'
+            }}
+          >
+            🌿🌱
           </div>
         </div>
+      </div>
+      
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div 
+          className="absolute rounded-full opacity-10"
+          style={{
+            width: '200px',
+            height: '200px',
+            backgroundColor: '#22c55e',
+            left: '10%',
+            top: '10%'
+          }}
+        />
+        <div 
+          className="absolute rounded-full opacity-5"
+          style={{
+            width: '300px',
+            height: '300px',
+            backgroundColor: '#22c55e',
+            right: '5%',
+            bottom: '5%'
+          }}
+        />
       </div>
     </section>
   )
