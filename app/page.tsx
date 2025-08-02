@@ -172,7 +172,7 @@ function Header({ contentData }: { contentData: ContentData }) {
   }
 
   return (
-    <header className="bg-white w-full fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ paddingTop: 'var(--spacing-xs)', paddingBottom: 'var(--spacing-xs)' }}>
+    <header className="bg-white w-full fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ paddingTop: 'clamp(0.25rem, 0.5vw, 0.75rem)', paddingBottom: 'clamp(0.25rem, 0.5vw, 0.75rem)' }}>
       <div className="responsive-container flex items-center justify-between" style={{ paddingLeft: 'var(--spacing-sm)', paddingRight: 'var(--spacing-sm)' }}>
         {/* Logo */}
         <div className="flex items-center">
