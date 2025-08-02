@@ -67,11 +67,7 @@ interface ContentData {
     }>
   }
   footer: {
-    contact: {
-      phone: { label: string; number: string }
-      email: { label: string; address: string }
-      address: { label: string; details: string }
-    }
+    heading: string
     navigation: {
       title: string
       items: Array<{ label: string; link: string }>
@@ -605,36 +601,12 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
         textAlign: 'left'
       }}>
         
-        {/* Main Heading */}
+        {/* Main Heading Only */}
         <h2 className="text-white font-bold responsive-text-2xl" style={{ 
-          marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
           letterSpacing: '0.05em'
         }}>
-          We'd love to help you plan your peaceful escape.
+          {contentData.footer.heading}
         </h2>
-        
-        {/* Contact Information */}
-        <div className="space-y-4">
-          <div>
-            <p className="text-white responsive-text-lg font-medium">
-              EMAIL: {contentData.footer.contact.email.address}
-            </p>
-          </div>
-          
-          <div>
-            <p className="text-white responsive-text-lg font-medium">
-              PHONE: {contentData.footer.contact.phone.number}
-            </p>  
-          </div>
-          
-          <div>
-            <p className="text-white responsive-text-lg font-medium" style={{ lineHeight: '1.6' }}>
-              EKAANT AGRO TOURISM RETREAT<br />
-              NEAR BOR TIGER RESERVE<br />
-              WARDHA, MAHARASHTRA
-            </p>
-          </div>
-        </div>
       </div>
     </footer>
   )

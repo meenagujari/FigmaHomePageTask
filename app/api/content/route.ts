@@ -141,20 +141,7 @@ const contentData = {
     ]
   },
   "footer": {
-    "contact": {
-      "phone": {
-        "label": "CALL US AT",
-        "number": "+91 98765 43210"
-      },
-      "email": {
-        "label": "EMAIL US AT", 
-        "address": "hello@ekaant.com"
-      },
-      "address": {
-        "label": "VISIT US AT",
-        "details": "NEAR BOR TIGER RESERVE\nWARDHA, MAHARASHTRA"
-      }
-    },
+    "heading": "We'd love to help you plan your peaceful escape.",
     "navigation": {
       "title": "Quick Links",
       "items": [
