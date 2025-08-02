@@ -157,6 +157,7 @@ export default function HomePage() {
       <ServicesSection contentData={contentData} />
       <LocationSection contentData={contentData} />
       <FAQSection contentData={contentData} />
+      <FooterSection contentData={contentData} />
     </div>
   )
 }
@@ -589,93 +590,46 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
   )
 }
 
-// Footer Component - Matching Original Figma Design
+// Footer Component - Exact Figma Design
 function FooterSection({ contentData }: { contentData: ContentData }) {
   return (
-    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17' }}>
+    <footer className="text-white" style={{ backgroundColor: '#003E17' }}>
       <div className="responsive-container w-full" style={{ 
-        padding: 'clamp(2rem, 4vw, 4rem) clamp(1rem, 2vw, 2rem)',
+        padding: 'clamp(3rem, 5vw, 6rem) clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem)',
         maxWidth: '1200px',
-        margin: '0 auto'
+        margin: '0 auto',
+        textAlign: 'center'
       }}>
         
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ 
-          gap: 'clamp(2rem, 4vw, 3rem)',
-          marginBottom: 'clamp(2rem, 3vw, 3rem)'
+        {/* Main Heading */}
+        <h2 className="text-white font-bold responsive-text-2xl" style={{ 
+          marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
+          letterSpacing: '0.05em'
         }}>
+          WE'D LOVE TO HELP YOU PLAN YOUR PERFECT STAY
+        </h2>
+        
+        {/* Contact Information */}
+        <div className="space-y-4">
+          <div>
+            <p className="text-white responsive-text-lg font-medium">
+              EMAIL: {contentData.footer.contact.email.address}
+            </p>
+          </div>
           
-          {/* Contact Section */}
           <div>
-            <div className="space-y-4">
-              <div>
-                <p className="text-white/80 responsive-text-sm" style={{ marginBottom: '0.5rem' }}>
-                  {contentData.footer.contact.phone.label}
-                </p>
-                <p className="text-white font-medium responsive-text-base">
-                  {contentData.footer.contact.phone.number}
-                </p>
-              </div>
-              
-              <div>
-                <p className="text-white/80 responsive-text-sm" style={{ marginBottom: '0.5rem' }}>
-                  {contentData.footer.contact.email.label}
-                </p>
-                <p className="text-white font-medium responsive-text-base">
-                  {contentData.footer.contact.email.address}
-                </p>
-              </div>
-              
-              <div>
-                <p className="text-white/80 responsive-text-sm" style={{ marginBottom: '0.5rem' }}>
-                  {contentData.footer.contact.address.label}
-                </p>
-                <p className="text-white font-medium responsive-text-base" style={{ lineHeight: '1.5' }}>
-                  {contentData.footer.contact.address.details}
-                </p>
-              </div>
-            </div>
+            <p className="text-white responsive-text-lg font-medium">
+              PHONE: {contentData.footer.contact.phone.number}
+            </p>  
           </div>
-
-          {/* Navigation Links */}
+          
           <div>
-            <h3 className="text-white font-bold responsive-text-lg" style={{ marginBottom: 'clamp(1rem, 2vw, 1.5rem)' }}>
-              {contentData.footer.navigation.title}
-            </h3>
-            <ul className="space-y-2">
-              {contentData.footer.navigation.items.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={`#${link.link}`} 
-                    className="text-white/80 hover:text-white transition-colors responsive-text-base"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="text-white responsive-text-lg font-medium" style={{ lineHeight: '1.6' }}>
+              EKAANT AGRO TOURISM RETREAT<br />
+              NEAR BOR TIGER RESERVE<br />
+              WARDHA, MAHARASHTRA
+            </p>
           </div>
-
-          {/* Activities */}
-          <div>
-            <h3 className="text-white font-bold responsive-text-lg" style={{ marginBottom: 'clamp(1rem, 2vw, 1.5rem)' }}>
-              {contentData.footer.activities.title}
-            </h3>
-            <ul className="space-y-2">
-              {contentData.footer.activities.items.map((activity, index) => (
-                <li key={index} className="text-white/80 responsive-text-base">
-                  {activity}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Copyright Section */}
-        <div className="border-t border-white/20 pt-6 text-center">
-          <p className="text-white/70 responsive-text-sm">
-            {contentData.footer.copyright}
-          </p>
         </div>
       </div>
     </footer>
