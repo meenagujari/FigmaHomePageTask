@@ -250,8 +250,8 @@ function HeroSection() {
       <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center min-h-screen" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'calc(var(--spacing-xl) * 2)' }}>
         <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
           <h1 className="font-bold leading-tight tracking-wide responsive-text-4xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
-            Welcome to Ekaant—Agro Tourism Retreat<br />
-            Near Bor Tiger Reserve, Maharashtra
+            Welcome to Ekaant—Agro Tourism Retreat Near<br />
+            Bor Tiger Reserve, Maharashtra
           </h1>
           <p className="font-light leading-relaxed opacity-95 responsive-text-xl">
             {contentData.hero.subtitle}
