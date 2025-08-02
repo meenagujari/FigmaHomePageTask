@@ -371,34 +371,25 @@ function ServicesSection() {
         {/* Featured Activities with Background Images */}
         <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
           {featuredActivities.map((activity, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '400px' }}>
-              {/* Background Image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{
-                  backgroundImage: `url('/activities-group.png')`,
-                  backgroundPosition: activity.backgroundPosition
-                }}
-              />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-500" />
-              
-              {/* Content */}
-              <div className="relative z-10 h-full flex flex-col justify-end" style={{ padding: 'var(--spacing-lg)' }}>
-                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  {activity.icon}
-                </div>
-                <h3 className="font-bold text-white responsive-text-xl leading-tight" style={{ marginBottom: 'var(--spacing-sm)' }}>
+            <div key={index} className="group">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url('/activities-group.png')`,
+                    backgroundPosition: activity.backgroundPosition
+                  }}
+                />
+                <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="text-center">
+                <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
                   {activity.title}
                 </h3>
-                <p className="text-gray-200 leading-relaxed responsive-text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-gray-600 leading-relaxed responsive-text-sm">
                   {activity.description}
                 </p>
               </div>
-              
-              {/* Hover Effect Border */}
-              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </div>
