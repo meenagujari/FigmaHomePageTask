@@ -5,8 +5,6 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
   },
-  // Configure static file serving
-  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
 }
 
 module.exports = nextConfig
