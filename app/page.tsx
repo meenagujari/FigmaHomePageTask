@@ -242,7 +242,7 @@ function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ height: 'clamp(100vh, 1750px, 1750px)', paddingTop: 'calc(var(--spacing-3xl) + var(--spacing-md))' }}>
+    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ minHeight: '100vh', maxHeight: '1750px', height: 'calc(100vh + 20vw)', paddingTop: 'calc(var(--spacing-3xl) + var(--spacing-md))' }}>
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
       }} />
