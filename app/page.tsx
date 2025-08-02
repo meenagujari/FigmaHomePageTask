@@ -249,7 +249,7 @@ function HeroSection() {
       
       <div className="relative z-10 text-left text-white responsive-container w-full" style={{ padding: 'var(--spacing-lg)' }}>
         <div style={{ maxWidth: 'calc(60% + 10vw)', marginTop: 'var(--spacing-xl)' }}>
-          <h1 className="font-bold leading-tight tracking-wide responsive-text-6xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
+          <h1 className="font-bold tracking-wide responsive-text-6xl" style={{ marginBottom: 'var(--spacing-lg)', lineHeight: '1.1' }}>
             {contentData.hero.title}
           </h1>
           <p className="font-light leading-relaxed opacity-95 responsive-text-xl" style={{ marginBottom: 'var(--spacing-xl)' }}>
