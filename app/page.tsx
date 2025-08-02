@@ -173,48 +173,43 @@ const contentData = {
 
 // Header Component
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-    setMobileMenuOpen(false)
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo - exactly as shown in Figma */}
-          <div className="flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="Ekaant Logo" 
-              width={120}
-              height={32}
-              className="h-8 w-auto"
-            />
-          </div>
-
-          {/* Navigation Menu */}
-          <div className="flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
-              HOME
-            </button>
-            <button onClick={() => scrollToSection('amenities')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
-              AMENITIES
-            </button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
-              PHOTO GALLERY
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
-              CONTACT US
-            </button>
-          </div>
+    <header className="bg-white py-3 px-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Image 
+            src="/logo.png" 
+            alt="Ekaant Logo" 
+            width={80}
+            height={24}
+            className="h-6 w-auto"
+          />
         </div>
-      </nav>
+
+        {/* Navigation Menu */}
+        <nav className="flex items-center space-x-12">
+          <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+            HOME
+          </button>
+          <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+            AMENITIES
+          </button>
+          <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+            PHOTO GALLERY
+          </button>
+          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
+            CONTACT US
+          </button>
+        </nav>
+      </div>
     </header>
   )
 }
