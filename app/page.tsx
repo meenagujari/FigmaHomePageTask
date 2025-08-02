@@ -316,6 +316,46 @@ function AboutSection() {
 
 // Services Section Component
 function ServicesSection() {
+  // Define specific activities with corresponding background positions from the group image
+  const featuredActivities = [
+    {
+      title: "Rural Farm Experience",
+      description: "Traditional farming with authentic bullock cart rides and organic farming activities",
+      backgroundPosition: "left center", // Left image - farm scene
+      icon: "🚜"
+    },
+    {
+      title: "Nature Activities",
+      description: "Explore organic farming, connect with local wildlife and sustainable practices",
+      backgroundPosition: "center center", // Middle image - people in nature
+      icon: "🌱"
+    },
+    {
+      title: "Wildlife Photography",
+      description: "Capture forest wildlife and birds near Bor Tiger Reserve with expert guidance",
+      backgroundPosition: "right center", // Right image - photography scene
+      icon: "📸"
+    }
+  ]
+
+  const additionalActivities = [
+    {
+      title: "Stargazing Nights",
+      description: "Experience the magic of clear rural skies away from city lights",
+      icon: "⭐"
+    },
+    {
+      title: "Bonfire Evenings", 
+      description: "Gather around the fire for stories and traditional music",
+      icon: "🔥"
+    },
+    {
+      title: "Digital Detox & Wellness",
+      description: "Reconnect with yourself through yoga and meditation",
+      icon: "🧘"
+    }
+  ]
+
   return (
     <section id="amenities" className="bg-gray-50" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
       <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
@@ -328,28 +368,69 @@ function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-lg)', marginBottom: 'var(--spacing-2xl)' }}>
-          {contentData.services.items.map((service, index) => (
-            <div key={index} className="group cursor-pointer transform hover:scale-105 transition-all duration-300">
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                <div className="relative overflow-hidden">
-                  <div className="w-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center" style={{ height: 'calc(180px + 5vw)' }}>
-                    <div className="text-green-700 responsive-text-4xl">🌿</div>
-                  </div>
+        {/* Featured Activities with Background Images */}
+        <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
+          {featuredActivities.map((activity, index) => (
+            <div key={index} className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '400px' }}>
+              {/* Background Image */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{
+                  backgroundImage: `url('/activities-group.png')`,
+                  backgroundPosition: activity.backgroundPosition
+                }}
+              />
+              
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-500" />
+              
+              {/* Content */}
+              <div className="relative z-10 h-full flex flex-col justify-end" style={{ padding: 'var(--spacing-lg)' }}>
+                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  {activity.icon}
                 </div>
-                <div style={{ padding: 'var(--spacing-md)' }}>
-                  <h3 className="font-bold text-gray-900 responsive-text-xl" style={{ marginBottom: 'var(--spacing-sm)' }}>{service.title}</h3>
-                  <p className="text-gray-600 leading-relaxed responsive-text-base">{service.description}</p>
+                <h3 className="font-bold text-white responsive-text-xl leading-tight" style={{ marginBottom: 'var(--spacing-sm)' }}>
+                  {activity.title}
+                </h3>
+                <p className="text-gray-200 leading-relaxed responsive-text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  {activity.description}
+                </p>
+              </div>
+              
+              {/* Hover Effect Border */}
+              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          ))}
+        </div>
+
+        {/* Additional Activities */}
+        <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
+          {additionalActivities.map((activity, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden group">
+              <div style={{ padding: 'var(--spacing-lg)' }}>
+                <div className="text-center" style={{ marginBottom: 'var(--spacing-md)' }}>
+                  <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                    {activity.icon}
+                  </div>
+                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
+                    {activity.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed responsive-text-base">
+                    {activity.description}
+                  </p>
                 </div>
               </div>
+              
+              {/* Bottom accent */}
+              <div className="h-1 bg-gradient-to-r from-green-400 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </div>
           ))}
         </div>
 
         <div className="text-center">
           <button 
-            className="bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg responsive-text-lg"
-            style={{ padding: 'var(--spacing-sm) var(--spacing-xl)' }}
+            className="bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl responsive-text-lg"
+            style={{ padding: 'var(--spacing-md) var(--spacing-xl)' }}
           >
             {contentData.services.buttonText}
           </button>
