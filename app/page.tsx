@@ -182,7 +182,7 @@ function Header() {
 
   return (
     <header className="bg-white py-6 px-4">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
+      <div className="max-w-[2400px] mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
           <Image 
@@ -569,7 +569,7 @@ function Footer() {
 // Main Home Component
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="w-[2560px] min-h-[7975px] mx-auto bg-white">
       <Header />
       <HeroSection />
       <AboutSection />
