@@ -365,7 +365,7 @@ function LocationSection() {
     <section 
       className="relative py-20 overflow-hidden"
       style={{ 
-        backgroundColor: '#000000',
+        backgroundColor: '#D0D9D9',
         minHeight: '600px'
       }}
     >
