@@ -179,9 +179,9 @@ function Header({ contentData }: { contentData: ContentData }) {
           <Image 
             src="/logo.png" 
             alt="Ekaant Logo" 
-            width={120}
-            height={36}
-            style={{ height: 'clamp(2rem, 2rem + 1.5vw, 3.5rem)', width: 'auto' }}
+            width={160}
+            height={48}
+            style={{ height: 'clamp(3rem, 3rem + 2vw, 5rem)', width: 'auto' }}
           />
         </div>
 
