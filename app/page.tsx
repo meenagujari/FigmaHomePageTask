@@ -181,7 +181,7 @@ function Header() {
   }
 
   return (
-    <header className="bg-white responsive-container" style={{ paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
+    <header className="bg-white w-full" style={{ paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
       <div className="responsive-container flex items-center justify-between" style={{ paddingLeft: 'var(--spacing-sm)', paddingRight: 'var(--spacing-sm)' }}>
         {/* Logo */}
         <div className="flex items-center">
@@ -194,8 +194,8 @@ function Header() {
           />
         </div>
 
-        {/* Navigation Menu */}
-        <nav className="hidden md:flex items-center" style={{ gap: 'calc(1rem + 1vw)' }}>
+        {/* Navigation Menu - Desktop */}
+        <nav className="hidden md:flex items-center" style={{ gap: 'calc(0.8rem + 0.5vw)' }}>
           <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
             HOME
           </button>
@@ -211,8 +211,8 @@ function Header() {
         </nav>
 
         {/* Mobile Navigation */}
-        <nav className="md:hidden flex flex-col" style={{ gap: 'var(--spacing-xs)' }}>
-          <div className="flex flex-wrap" style={{ gap: 'var(--spacing-xs)' }}>
+        <nav className="md:hidden">
+          <div className="flex flex-wrap justify-end" style={{ gap: 'calc(0.3rem + 0.2vw)' }}>
             <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
               HOME
             </button>
