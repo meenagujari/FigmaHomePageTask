@@ -11,7 +11,7 @@ const contentData = {
     "tagline": "NESTLED IN NATURE"
   },
   "hero": {
-    "title": "Welcome to Ekaant—Agro Tourism Retreat Near Bor Tiger",
+    "title": "Welcome to Ekaant—Agro Tourism Retreat Near Bor Tiger Reserve, Maharashtra",
     "subtitle": "Experience authentic rural life amidst pristine nature and wildlife",
     "buttonText": "Discover More"
   },
@@ -247,7 +247,7 @@ function HeroSection() {
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
       }} />
       
-      <div className="relative z-10 text-center text-white responsive-container w-full flex items-center justify-center min-h-screen" style={{ padding: 'var(--spacing-lg)' }}>
+      <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center min-h-screen" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'calc(var(--spacing-xl) * 2)' }}>
         <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
           <h1 className="font-bold leading-tight tracking-wide responsive-text-4xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
             {contentData.hero.title}
