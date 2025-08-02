@@ -290,7 +290,7 @@ function AboutSection() {
               onMouseEnter={(e) => e.target.style.backgroundColor = '#002a10'}
               onMouseLeave={(e) => e.target.style.backgroundColor = '#003E17'}
             >
-              Book Now
+              Explore More
             </button>
           </div>
           
@@ -471,7 +471,7 @@ function ServicesSection() {
             onMouseEnter={(e) => e.target.style.backgroundColor = '#002a10'}
             onMouseLeave={(e) => e.target.style.backgroundColor = '#003E17'}
           >
-            Book Now
+            Explore More
           </button>
         </div>
       </div>
