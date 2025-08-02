@@ -549,10 +549,10 @@ function LocationSection() {
               }}
             />
             
-            {/* Map Overlay - Left Aligned */}
-            <div className="relative z-10 flex flex-col items-start justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
+            {/* Map Overlay */}
+            <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
               {/* Location Info Box */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-left" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-xl)' }}>
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-center" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-xl)' }}>
                 <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
                   EKAANT LOCATION
                 </h3>
@@ -564,40 +564,36 @@ function LocationSection() {
                 </p>
               </div>
 
-              {/* Distance Indicators - Left Aligned */}
-              <div className="flex flex-col gap-3 w-full max-w-xs">
-                <div className="bg-green-600/90 text-white rounded-lg flex items-center justify-between" style={{ padding: 'var(--spacing-sm) var(--spacing-md)' }}>
-                  <div>
-                    <div className="font-bold responsive-text-sm">90 KM</div>
-                    <div className="text-xs opacity-90">From Nagpur</div>
-                  </div>
-                </div>
-                <div className="bg-green-600/90 text-white rounded-lg flex items-center justify-between" style={{ padding: 'var(--spacing-sm) var(--spacing-md)' }}>
-                  <div>
-                    <div className="font-bold responsive-text-sm">45 KM</div>
-                    <div className="text-xs opacity-90">From Wardha</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Animated Location Pin - Positioned to Right */}
-              <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-                <svg width="60" height="75" viewBox="0 0 60 75" className="animate-bounce">
+              {/* Animated Location Pin */}
+              <div className="relative">
+                <svg width="80" height="100" viewBox="0 0 80 100" className="animate-bounce">
                   <path 
-                    d="M30 8 C20 8 12 16 12 26 C12 36 30 62 30 62 C30 62 48 36 48 26 C48 16 40 8 30 8 Z"
+                    d="M40 10 C25 10 15 20 15 35 C15 50 40 85 40 85 C40 85 65 50 65 35 C65 20 55 10 40 10 Z"
                     fill="#22c55e"
                     stroke="#ffffff"
-                    strokeWidth="2"
+                    strokeWidth="3"
                     className="drop-shadow-2xl"
                   />
-                  <circle cx="30" cy="26" r="8" fill="#ffffff" />
-                  <path d="M30 21 L30 31 M25 26 L35 26" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" />
+                  <circle cx="40" cy="35" r="12" fill="#ffffff" />
+                  <path d="M40 28 L40 42 M33 35 L47 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 
                 {/* Pulsing rings around pin */}
-                <div className="absolute top-6 left-1/2 transform -translate-x-1/2">
-                  <div className="w-12 h-12 border-3 border-green-400 rounded-full animate-ping opacity-30"></div>
-                  <div className="absolute top-1.5 left-1.5 w-9 h-9 border-3 border-green-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '0.5s' }}></div>
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
+                  <div className="w-16 h-16 border-4 border-green-400 rounded-full animate-ping opacity-30"></div>
+                  <div className="absolute top-2 left-2 w-12 h-12 border-4 border-green-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '0.5s' }}></div>
+                </div>
+              </div>
+
+              {/* Distance Indicators */}
+              <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-sm">
+                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
+                  <div className="font-bold responsive-text-sm">90 KM</div>
+                  <div className="text-xs opacity-90">From Nagpur</div>
+                </div>
+                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
+                  <div className="font-bold responsive-text-sm">45 KM</div>
+                  <div className="text-xs opacity-90">From Wardha</div>
                 </div>
               </div>
             </div>
