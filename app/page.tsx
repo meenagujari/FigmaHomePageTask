@@ -249,10 +249,10 @@ function HeroSection() {
       
       <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center h-full" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-4xl)' }}>
         <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
-          <h1 className="font-bold leading-tight tracking-wide" style={{ 
+          <h1 className="font-bold tracking-wide" style={{ 
             fontSize: 'var(--font-size-5xl)', 
             marginBottom: 'var(--spacing-lg)',
-            lineHeight: 'calc(1rem + 0.3vw)'
+            lineHeight: 'clamp(1.1, 1.1 + 0.1vw, 1.3)'
           }}>
             Welcome to Ekaant—Agro Tourism Retreat Near<br />
             Bor Tiger Reserve, Maharashtra
