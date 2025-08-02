@@ -181,7 +181,7 @@ function Header() {
   }
 
   return (
-    <header className="bg-white py-3 px-4">
+    <header className="bg-white py-6 px-4">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
