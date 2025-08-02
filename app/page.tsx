@@ -550,7 +550,7 @@ function LocationSection() {
             />
             
             {/* Map Overlay */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
+            <div className="relative z-10 flex flex-col items-start justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
               {/* Location Info Box */}
               <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-center" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-xl)' }}>
                 <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
