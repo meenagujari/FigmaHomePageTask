@@ -406,66 +406,69 @@ function ServicesSection() {
         {/* Additional Activities with Background Images */}
         <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
           {/* Stargazing Nights */}
-          <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '300px' }}>
-            <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-              style={{
-                backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
-                backgroundPosition: 'left center'
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-500" />
-            <div className="relative z-10 h-full flex flex-col justify-end" style={{ padding: 'var(--spacing-lg)' }}>
-              <h3 className="font-bold text-white responsive-text-xl leading-tight" style={{ marginBottom: 'var(--spacing-sm)' }}>
+          <div className="group">
+            <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{
+                  backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
+                  backgroundPosition: 'left center'
+                }}
+              />
+              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
                 Stargazing Nights
               </h3>
-              <p className="text-gray-200 leading-relaxed responsive-text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="text-gray-600 leading-relaxed responsive-text-sm">
                 Experience the magic of clear rural skies away from city lights
               </p>
             </div>
-            <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
 
           {/* Bonfire Evenings */}
-          <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '300px' }}>
-            <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-              style={{
-                backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
-                backgroundPosition: 'center center'
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-500" />
-            <div className="relative z-10 h-full flex flex-col justify-end" style={{ padding: 'var(--spacing-lg)' }}>
-              <h3 className="font-bold text-white responsive-text-xl leading-tight" style={{ marginBottom: 'var(--spacing-sm)' }}>
+          <div className="group">
+            <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{
+                  backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
+                  backgroundPosition: 'center center'
+                }}
+              />
+              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
                 Bonfire Evenings
               </h3>
-              <p className="text-gray-200 leading-relaxed responsive-text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="text-gray-600 leading-relaxed responsive-text-sm">
                 Gather around the fire for stories and traditional music
               </p>
             </div>
-            <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
 
           {/* Digital Detox & Wellness */}
-          <div className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '300px' }}>
-            <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-              style={{
-                backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
-                backgroundPosition: 'right center'
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-500" />
-            <div className="relative z-10 h-full flex flex-col justify-end" style={{ padding: 'var(--spacing-lg)' }}>
-              <h3 className="font-bold text-white responsive-text-xl leading-tight" style={{ marginBottom: 'var(--spacing-sm)' }}>
+          <div className="group">
+            <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: '250px', marginBottom: 'var(--spacing-md)' }}>
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{
+                  backgroundImage: `url('/attached_assets/Group 2_1754134185597.png')`,
+                  backgroundPosition: 'right center'
+                }}
+              />
+              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <div className="text-center">
+              <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
                 Digital Detox & Wellness
               </h3>
-              <p className="text-gray-200 leading-relaxed responsive-text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="text-gray-600 leading-relaxed responsive-text-sm">
                 Reconnect with yourself through yoga and meditation
               </p>
             </div>
-            <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
         </div>
 
