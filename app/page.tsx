@@ -457,6 +457,7 @@ function FAQSection() {
   ]
 
   const toggleFAQ = (index: number) => {
+    console.log('Clicked FAQ index:', index, 'Currently open:', openFAQ)
     setOpenFAQ(openFAQ === index ? -1 : index)
   }
 
@@ -465,9 +466,13 @@ function FAQSection() {
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
           {faqData.map((faq, index) => (
-            <div key={index} className="bg-white rounded-3xl hover:shadow-lg transition-all duration-300 cursor-pointer border overflow-hidden" style={{ borderColor: '#003E17' }}>
+            <div key={`faq-${index}`} className="bg-white rounded-3xl hover:shadow-lg transition-all duration-300 cursor-pointer border overflow-hidden" style={{ borderColor: '#003E17' }}>
               <div 
-                onClick={() => toggleFAQ(index)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  toggleFAQ(index)
+                }}
                 className="w-full text-left transition-all duration-300"
                 style={{ padding: 'var(--spacing-lg)' }}
               >
