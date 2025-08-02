@@ -454,12 +454,15 @@ function ServicesSection() {
 
         <div className="text-center">
           <button 
-            className="bg-green-700 hover:bg-green-800 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
+            className="text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
             style={{ 
+              backgroundColor: '#003E17',
               padding: 'var(--spacing-md) var(--spacing-2xl)',
               borderRadius: '3rem',
               letterSpacing: '0.025em'
             }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#002a10'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#003E17'}
           >
             Book Now
           </button>
