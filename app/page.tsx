@@ -352,9 +352,18 @@ function ServicesSection() {
     <section id="amenities" className="bg-gray-50" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
       <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
         <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          <h2 className="font-bold text-green-700 responsive-text-5xl" style={{ marginBottom: 'var(--spacing-md)' }}>
-            {contentData.services.title}
-          </h2>
+          <div className="inline-block" style={{ marginBottom: 'var(--spacing-md)' }}>
+            <h2 
+              className="font-semibold text-gray-900 px-8 py-4 rounded-full border"
+              style={{ 
+                fontSize: 'var(--font-size-3xl)',
+                borderColor: '#003E17',
+                backgroundColor: 'transparent'
+              }}
+            >
+              {contentData.services.title}
+            </h2>
+          </div>
           <p className="text-gray-600 leading-relaxed responsive-text-xl" style={{ maxWidth: 'calc(60% + 10vw)', margin: '0 auto' }}>
             {contentData.services.subtitle}
           </p>
