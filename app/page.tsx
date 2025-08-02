@@ -598,7 +598,7 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
         padding: 'clamp(3rem, 5vw, 6rem) clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem)',
         maxWidth: '1200px',
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'left'
       }}>
         
         {/* Main Heading */}
