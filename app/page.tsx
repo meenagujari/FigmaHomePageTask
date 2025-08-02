@@ -455,12 +455,18 @@ function FAQSection() {
     <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#f9fafb' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="text-center mb-12">
-          <h2 
-            className="font-semibold text-gray-900 mb-4"
-            style={{ fontSize: 'var(--font-size-3xl)' }}
-          >
-            FREQUENTLY ASKED QUESTIONS (FAQS)
-          </h2>
+          <div className="inline-block">
+            <h2 
+              className="font-semibold text-gray-900 px-8 py-4 rounded-full border-4"
+              style={{ 
+                fontSize: 'var(--font-size-3xl)',
+                borderColor: '#003E17',
+                backgroundColor: 'transparent'
+              }}
+            >
+              FREQUENTLY ASKED QUESTIONS (FAQS)
+            </h2>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
