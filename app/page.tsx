@@ -184,64 +184,57 @@ function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-green-800 via-green-700 to-emerald-700 shadow-xl backdrop-blur-sm">
-      <nav className="container mx-auto px-6 lg:px-12 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo Section with Enhanced Styling */}
-          <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo - exactly as shown in Figma */}
+          <div className="flex items-center">
             <Image 
               src="/logo.png" 
               alt="Ekaant Logo" 
-              width={140}
-              height={40}
-              className="h-10 w-auto"
+              width={120}
+              height={32}
+              className="h-8 w-auto"
             />
-            <div className="ml-3 text-green-800">
-              <div className="text-xs font-bold tracking-wider">AGRO TOURISM</div>
-              <div className="text-xs text-green-600">RETREAT</div>
-            </div>
           </div>
 
-          {/* Desktop Navigation with Enhanced Design */}
-          <div className="hidden lg:flex items-center space-x-10">
-            <button onClick={() => scrollToSection('home')} className="relative text-white hover:text-yellow-300 transition-all duration-300 font-semibold text-sm uppercase tracking-wider group">
-              <span>HOME</span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></div>
+          {/* Desktop Navigation - matching Figma exactly */}
+          <div className="hidden lg:flex items-center space-x-8">
+            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
+              HOME
             </button>
-            <button onClick={() => scrollToSection('amenities')} className="relative text-white hover:text-yellow-300 transition-all duration-300 font-semibold text-sm uppercase tracking-wider group">
-              <span>AMENITIES</span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></div>
+            <button onClick={() => scrollToSection('amenities')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
+              AMENITIES
             </button>
-            <button onClick={() => scrollToSection('gallery')} className="relative text-white hover:text-yellow-300 transition-all duration-300 font-semibold text-sm uppercase tracking-wider group">
-              <span>GALLERY</span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></div>
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
+              PHOTO GALLERY
             </button>
-            <button onClick={() => scrollToSection('contact')} className="bg-yellow-500 hover:bg-yellow-400 text-green-900 px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
               CONTACT US
             </button>
           </div>
 
-          {/* Mobile Menu Button with Enhanced Design */}
-          <button className="lg:hidden bg-white text-green-800 p-2 rounded-full shadow-lg hover:bg-yellow-100 transition-colors" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {/* Mobile menu button */}
+          <button className="lg:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu with Enhanced Design */}
+        {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-6 pb-6 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl mx-2">
-            <div className="flex flex-col space-y-4 p-6">
-              <button onClick={() => scrollToSection('home')} className="text-left text-green-800 hover:text-green-600 transition-colors font-semibold text-lg border-b border-green-100 pb-3">
-                🏠 Home
+          <div className="lg:hidden border-t border-gray-200">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
+                HOME
               </button>
-              <button onClick={() => scrollToSection('amenities')} className="text-left text-green-800 hover:text-green-600 transition-colors font-semibold text-lg border-b border-green-100 pb-3">
-                🏞️ Amenities
+              <button onClick={() => scrollToSection('amenities')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
+                AMENITIES
               </button>
-              <button onClick={() => scrollToSection('gallery')} className="text-left text-green-800 hover:text-green-600 transition-colors font-semibold text-lg border-b border-green-100 pb-3">
-                📸 Gallery
+              <button onClick={() => scrollToSection('gallery')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
+                PHOTO GALLERY
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-left bg-green-700 text-white px-4 py-3 rounded-xl font-semibold text-lg hover:bg-green-600 transition-colors">
-                📞 Contact Us
+              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
+                CONTACT US
               </button>
             </div>
           </div>
