@@ -602,7 +602,7 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
       }}>
         
         {/* Main Heading Only */}
-        <h2 className="text-white font-bold responsive-text-2xl" style={{ 
+        <h2 className="text-white font-bold responsive-text-xl" style={{ 
           letterSpacing: '0.05em',
           lineHeight: '1.4'
         }}>
