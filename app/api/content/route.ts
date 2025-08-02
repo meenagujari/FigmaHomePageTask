@@ -142,6 +142,11 @@ const contentData = {
   },
   "footer": {
     "heading": "We'd love to help you plan your peaceful escape.",
+    "contact": {
+      "phone": "Call/WhatsApp: +91 9988776655",
+      "email": "Email: EKANT@NEAVE.TECH",
+      "instagram": "Instagram: EKANT"
+    },
     "navigation": {
       "title": "Quick Links",
       "items": [
