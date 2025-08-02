@@ -512,7 +512,8 @@ function Footer() {
             <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.8' }}>
               Call/WhatsApp: +91 9988776655<br />
               Email: EKANT@NEAVE.TECH<br />
-              Instagram: EKANT
+              Instagram: EKANT<br />
+              Location: Near Bor Tiger Reserve, Wardha, Maharashtra
             </p>
           </div>
         </div>
