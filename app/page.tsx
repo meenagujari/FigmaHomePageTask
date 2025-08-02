@@ -18,9 +18,9 @@ const contentData = {
   "about": {
     "title": "Ekaant (एकांत)",
     "description": [
-      "Experience the serenity of nature where deer from a nearby forest come to graze in the evenings. A Special Place Popular Cricket Escape The Crowd Of Everyday Life And Experience The Fragrance That Remains In The Lap Of Nature.",
-      "Whether you're A Solo Traveller Looking For Quiet, A Couple Seeking A Rustic Escape, Or A Group Looking For Rural Activities — Ekaant Welcomes You With Open Arms And A Generous Portion.",
-      "For Organic Farming. As An Organic You'll Find Like Local Music, Air, Surroundings, Sky Gazing Mountains, Scenery, Rivers, Streams — Free Amenities, Stunning Rural Hospitality — Ekaant Welcomes You With Open Arms And A Generous Portion Of Rural Experience."
+      "Ekaant meaning solitude in Sanskrit — was born from a simple yet powerful vision: to create a space where people could escape the chaos of everyday life and experience true peace in the lap of nature.",
+      "Our retreat is designed around the principles of sustainable living, mindful travel, and authentic rural experiences. At Ekaant, you'll find no loud music, no distractions — only nature's rhythm, traditional hospitality, and the gentle hum of wildlife.",
+      "Whether you're a solo traveller looking for quiet, a couple seeking a soulful escape, or a family wanting to introduce your children to the joys of rural India — Ekaant welcomes you with open arms and a calm heart."
     ],
     "buttonText": "Book Now"
   },
