@@ -280,10 +280,17 @@ function AboutSection() {
               ))}
             </div>
             <button 
-              className="bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg responsive-text-base"
-              style={{ padding: 'var(--spacing-sm) var(--spacing-lg)' }}
+              className="text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
+              style={{ 
+                backgroundColor: '#003E17',
+                padding: 'var(--spacing-md) var(--spacing-2xl)',
+                borderRadius: '3rem',
+                letterSpacing: '0.025em'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#002a10'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#003E17'}
             >
-              {contentData.about.buttonText}
+              Book Now
             </button>
           </div>
           
