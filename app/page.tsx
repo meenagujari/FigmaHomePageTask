@@ -428,7 +428,14 @@ function LocationSection() {
 // FAQ Section Component
 function FAQSection() {
   return (
-    <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#000000' }}>
+    <section 
+      className="bg-black"
+      style={{ 
+        padding: 'var(--spacing-2xl) 0', 
+        backgroundColor: '#000000 !important',
+        background: '#000000 !important'
+      }}
+    >
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="flex justify-center items-center" style={{ minHeight: '200px' }}>
           <div 
