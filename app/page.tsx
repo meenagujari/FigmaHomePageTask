@@ -454,10 +454,14 @@ function ServicesSection() {
 
         <div className="text-center">
           <button 
-            className="bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl responsive-text-lg"
-            style={{ padding: 'var(--spacing-md) var(--spacing-xl)' }}
+            className="bg-green-700 hover:bg-green-800 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
+            style={{ 
+              padding: 'var(--spacing-md) var(--spacing-2xl)',
+              borderRadius: '3rem',
+              letterSpacing: '0.025em'
+            }}
           >
-            {contentData.services.buttonText}
+            Explore More
           </button>
         </div>
       </div>
