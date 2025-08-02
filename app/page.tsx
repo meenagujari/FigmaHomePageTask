@@ -461,7 +461,7 @@ function ServicesSection() {
               letterSpacing: '0.025em'
             }}
           >
-            Explore More
+            Book Now
           </button>
         </div>
       </div>
