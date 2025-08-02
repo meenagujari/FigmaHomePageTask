@@ -250,7 +250,7 @@ function HeroSection() {
       <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center h-full" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-4xl)' }}>
         <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
           <h1 className="font-bold tracking-wide" style={{ 
-            fontSize: 'var(--font-size-5xl)', 
+            fontSize: 'var(--font-size-4xl)', 
             marginBottom: 'var(--spacing-lg)',
             lineHeight: 'clamp(1.3, 1.3 + 0.1vw, 1.5)'
           }}>
