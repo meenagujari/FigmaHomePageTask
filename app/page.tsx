@@ -561,52 +561,43 @@ function LocationSection() {
           </div>
 
           {/* Right Side - Map/Visual */}
-          <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100" style={{ minHeight: '500px' }}>
+          <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100" style={{ minHeight: '300px' }}>
             {/* Map Overlay */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
+            <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-md)' }}>
               {/* Location Info Box */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-center" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-xl)' }}>
-                <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
-                  EKAANT LOCATION
+              <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-lg text-center" style={{ padding: 'var(--spacing-md)', marginBottom: 'var(--spacing-md)' }}>
+                <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                  EKAANT
                 </h3>
-                <p className="text-gray-700 responsive-text-sm" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                <p className="text-gray-700 responsive-text-xs">
                   Near Bor Tiger Reserve
-                </p>
-                <p className="text-green-600 font-semibold responsive-text-sm">
-                  Maharashtra, India
                 </p>
               </div>
 
               {/* Animated Location Pin */}
               <div className="relative">
-                <svg width="80" height="100" viewBox="0 0 80 100" className="animate-bounce">
+                <svg width="50" height="60" viewBox="0 0 80 100" className="animate-bounce">
                   <path 
                     d="M40 10 C25 10 15 20 15 35 C15 50 40 85 40 85 C40 85 65 50 65 35 C65 20 55 10 40 10 Z"
                     fill="#22c55e"
                     stroke="#ffffff"
                     strokeWidth="3"
-                    className="drop-shadow-2xl"
+                    className="drop-shadow-xl"
                   />
-                  <circle cx="40" cy="35" r="12" fill="#ffffff" />
-                  <path d="M40 28 L40 42 M33 35 L47 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="40" cy="35" r="8" fill="#ffffff" />
+                  <path d="M40 30 L40 40 M35 35 L45 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
                 </svg>
-                
-                {/* Pulsing rings around pin */}
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
-                  <div className="w-16 h-16 border-4 border-green-400 rounded-full animate-ping opacity-30"></div>
-                  <div className="absolute top-2 left-2 w-12 h-12 border-4 border-green-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '0.5s' }}></div>
-                </div>
               </div>
 
               {/* Distance Indicators */}
-              <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-sm">
-                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
-                  <div className="font-bold responsive-text-sm">90 KM</div>
-                  <div className="text-xs opacity-90">From Nagpur</div>
+              <div className="grid grid-cols-2 gap-2 mt-4 w-full max-w-xs">
+                <div className="bg-green-600/90 text-white text-center rounded" style={{ padding: 'var(--spacing-xs)' }}>
+                  <div className="font-bold responsive-text-xs">90 KM</div>
+                  <div className="text-xs opacity-90">Nagpur</div>
                 </div>
-                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
-                  <div className="font-bold responsive-text-sm">45 KM</div>
-                  <div className="text-xs opacity-90">From Wardha</div>
+                <div className="bg-green-600/90 text-white text-center rounded" style={{ padding: 'var(--spacing-xs)' }}>
+                  <div className="font-bold responsive-text-xs">45 KM</div>
+                  <div className="text-xs opacity-90">Wardha</div>
                 </div>
               </div>
             </div>
