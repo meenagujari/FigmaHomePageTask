@@ -252,7 +252,7 @@ function HeroSection() {
           <h1 className="font-bold tracking-wide" style={{ 
             fontSize: 'var(--font-size-5xl)', 
             marginBottom: 'var(--spacing-lg)',
-            lineHeight: 'clamp(1.1, 1.1 + 0.1vw, 1.3)'
+            lineHeight: 'clamp(1.3, 1.3 + 0.1vw, 1.5)'
           }}>
             Welcome to Ekaant—Agro Tourism Retreat Near<br />
             Bor Tiger Reserve, Maharashtra
