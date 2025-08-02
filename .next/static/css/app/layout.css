@@ -755,6 +755,9 @@ video {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
 .text-left {
   text-align: left;
 }
@@ -1105,6 +1108,10 @@ textarea:focus {
 .hover\:bg-green-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-gray-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 .hover\:text-green-600:hover {
   --tw-text-opacity: 1;

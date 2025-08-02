@@ -427,78 +427,64 @@ function LocationSection() {
 
 // FAQ Section Component
 function FAQSection() {
-  const [openFAQ, setOpenFAQ] = useState<number>(-1)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
-  const faqData = [
-    {
-      question: "Q. Is The Ekaant Child-Friendly?",
-      answer: "Yes, Ekaant is completely child-friendly. We provide safe accommodations and nature-based activities suitable for children of all ages."
-    },
-    {
-      question: "Q. Is There Mobile Network Or Internet?", 
-      answer: "Limited mobile network is available. We provide WiFi in common areas to help you stay connected while enjoying your digital detox."
-    },
-    {
-      question: "Q. Can We Spot Tigers Or Wildlife Here?",
-      answer: "Being near Bor Tiger Reserve, wildlife spotting opportunities are excellent. We organize guided safari tours for the best wildlife experience."
-    },
-    {
-      question: "Q. Is Food Included In The Stay?",
-      answer: "Yes, all meals are included featuring fresh, organic local cuisine prepared with ingredients from our own farm and local sources."
-    },
-    {
-      question: "Q. Do You Allow Pets?",
-      answer: "We welcome well-behaved pets with prior arrangement. Please inform us during booking to ensure proper accommodation."
-    },
-    {
-      question: "Q. What Is The Best Time To Visit?",
-      answer: "October to March offers the best weather. This period provides comfortable temperatures perfect for outdoor activities and wildlife spotting."
-    }
+  const questions = [
+    "Q. Is The Ekaant Child-Friendly?",
+    "Q. Is There Mobile Network Or Internet?", 
+    "Q. Can We Spot Tigers Or Wildlife Here?",
+    "Q. Is Food Included In The Stay?",
+    "Q. Do You Allow Pets?",
+    "Q. What Is The Best Time To Visit?"
   ]
 
-  const toggleFAQ = (index: number) => {
-    setOpenFAQ(openFAQ === index ? -1 : index)
+  const answers = [
+    "Yes, Ekaant is completely child-friendly. We provide safe accommodations and nature-based activities suitable for children of all ages.",
+    "Limited mobile network is available. We provide WiFi in common areas to help you stay connected while enjoying your digital detox.",
+    "Being near Bor Tiger Reserve, wildlife spotting opportunities are excellent. We organize guided safari tours for the best wildlife experience.",
+    "Yes, all meals are included featuring fresh, organic local cuisine prepared with ingredients from our own farm and local sources.",
+    "We welcome well-behaved pets with prior arrangement. Please inform us during booking to ensure proper accommodation.",
+    "October to March offers the best weather. This period provides comfortable temperatures perfect for outdoor activities and wildlife spotting."
+  ]
+
+  const handleClick = (clickedIndex: number) => {
+    setActiveIndex(activeIndex === clickedIndex ? null : clickedIndex)
   }
 
   return (
     <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#f9fafb' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
-          {faqData.map((faq, index) => (
-            <div key={`faq-${index}`} className="bg-white rounded-3xl hover:shadow-lg transition-all duration-300 cursor-pointer border overflow-hidden" style={{ borderColor: '#003E17' }}>
-              <div 
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  toggleFAQ(index)
-                }}
-                className="w-full text-left transition-all duration-300"
-                style={{ padding: 'var(--spacing-lg)' }}
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="responsive-text-lg font-medium text-gray-800" style={{ lineHeight: '1.4' }}>
-                    {faq.question}
+          {questions.map((question, i) => {
+            const isOpen = activeIndex === i
+            return (
+              <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
+                <button 
+                  onClick={() => handleClick(i)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50"
+                  type="button"
+                >
+                  <h3 className="responsive-text-lg font-medium text-gray-800">
+                    {question}
                   </h3>
-                  <div className="ml-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      {openFAQ === index ? (
-                        <ChevronUp className="w-5 h-5" style={{ color: '#003E17' }} />
-                      ) : (
-                        <ChevronDown className="w-5 h-5" style={{ color: '#003E17' }} />
-                      )}
-                    </div>
+                  <div className="ml-4">
+                    {isOpen ? (
+                      <ChevronUp className="w-5 h-5" style={{ color: '#003E17' }} />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" style={{ color: '#003E17' }} />
+                    )}
                   </div>
-                </div>
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6 border-t border-gray-100">
+                    <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6', paddingTop: '1rem' }}>
+                      {answers[i]}
+                    </p>
+                  </div>
+                )}
               </div>
-              {openFAQ === index && (
-                <div className="border-t border-gray-100 animate-fadeIn" style={{ padding: 'var(--spacing-md) var(--spacing-lg)' }}>
-                  <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6' }}>
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
