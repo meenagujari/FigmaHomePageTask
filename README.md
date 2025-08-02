@@ -1,3 +1,4 @@
+
 # EKAANT - Agro Tourism Retreat
 
 A modern, responsive Next.js website for Ekaant Agro Tourism, showcasing an eco-friendly retreat near Bor Tiger Reserve, Maharashtra. Built with pixel-perfect design matching Figma specifications and fully dynamic content rendering.
@@ -47,10 +48,19 @@ A modern, responsive Next.js website for Ekaant Agro Tourism, showcasing an eco-
 │   ├── layout.tsx              # Root layout with metadata
 │   ├── page.tsx               # Homepage with all sections
 │   └── providers.tsx          # Client-side providers
+├── components/
+│   ├── AboutSection.tsx        # About section component
+│   ├── FAQSection.tsx         # FAQ accordion component
+│   ├── FooterSection.tsx      # Footer with contact info
+│   ├── Header.tsx             # Navigation header
+│   ├── HeroSection.tsx        # Hero banner component
+│   ├── LocationSection.tsx    # Location and contact details
+│   └── ServicesSection.tsx    # Services/activities showcase
 ├── public/
 │   ├── logo.png               # Ekaant logo
 │   ├── treehouse-landscape.jpg # Hero background
-│   └── group2-services.png    # Services section image
+│   ├── group2-services.png    # Services section image
+│   └── [other images]         # Additional assets
 ├── store/
 │   └── store.ts               # Redux store configuration
 ├── styles/
@@ -105,34 +115,60 @@ All content is served from `/api/content/route.ts` including:
 - FAQ questions and answers
 - Footer contact information
 
-## 🔧 Customization
+## 🔧 Configuration
 
-### Updating Content
-Edit `/app/api/content/route.ts` to modify:
-- Site information
-- Section headings and descriptions
-- Contact details
-- FAQ items
-- Service offerings
+### Next.js Configuration
+The project includes specific configuration for Replit deployment:
 
-### Styling Changes
-- **Global styles**: `styles/globals.css`
-- **Component styles**: Inline styles with CSS variables
-- **Responsive values**: CSS clamp() functions for fluid scaling
+```javascript
+// next.config.js
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  experimental: {
+    allowedDevOrigins: [
+      'https://*.replit.dev',
+      'http://*.replit.dev'
+    ]
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+}
+```
 
-### Adding New Sections
-1. Create component in `app/page.tsx`
-2. Add data structure to API route
-3. Update TypeScript interfaces
-4. Style with Tailwind classes
+### Development Server
+The development server is configured to run on `0.0.0.0:3000` for Replit compatibility.
 
-## 📱 Responsive Design
+## 🛠️ Development
 
-The website uses advanced CSS techniques for responsive design:
-- **Fluid Typography**: `clamp()` functions for scalable text
-- **Flexible Spacing**: CSS custom properties for consistent margins/padding
-- **Adaptive Layouts**: CSS Grid and Flexbox for dynamic arrangements
-- **Image Optimization**: Next.js Image component with responsive sizing
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint checks
+
+### Development Guidelines
+- Follow TypeScript strict mode
+- Use Tailwind utility classes
+- Maintain responsive design patterns
+- Keep content dynamic via API
+- Test across multiple devices
+
+## 🚀 Deployment
+
+### Replit Deployment (Recommended)
+This project is optimized for Replit deployment:
+1. Use the built-in Deploy button
+2. Automatic build and hosting
+3. Custom domain support available
+
+The project includes `.replit` configuration for seamless deployment on Replit.
 
 ## 🎯 FAQ Section Details
 
@@ -150,33 +186,10 @@ The website uses advanced CSS techniques for responsive design:
 - Location: Near Bor Tiger Reserve
 - Address: Wardha, Maharashtra
 
-## 🚀 Deployment
+## 🐛 Known Issues & Solutions
 
-### Replit Deployment (Recommended)
-This project is optimized for Replit deployment:
-1. Use the built-in Deploy button
-2. Automatic build and hosting
-3. Custom domain support available
-
-### Alternative Deployments
-- **Vercel**: `npm run build && vercel deploy`
-- **Netlify**: Connect repository for automatic deployments
-- **Docker**: Dockerfile included for containerized deployment
-
-## 🛠️ Development
-
-### Available Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint checks
-
-### Development Guidelines
-- Follow TypeScript strict mode
-- Use Tailwind utility classes
-- Maintain responsive design patterns
-- Keep content dynamic via API
-- Test across multiple devices
+### Cross-Origin Requests
+If you see warnings about cross-origin requests, ensure your `next.config.js` includes the `allowedDevOrigins` configuration as shown above.
 
 ## 📄 License
 
@@ -189,3 +202,4 @@ For technical support or customization requests, please contact the development 
 ---
 
 **Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
+**Optimized for Replit deployment**
