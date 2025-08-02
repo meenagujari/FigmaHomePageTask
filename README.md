@@ -115,10 +115,6 @@ All content is served from `/api/content/route.ts` including:
 - FAQ questions and answers
 - Footer contact information
 
-## 🔧 Configuration
-
-### Next.js Configuration
-The project includes specific configuration for Replit deployment:
 
 ```javascript
 // next.config.js
