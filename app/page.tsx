@@ -543,48 +543,51 @@ function LocationSection() {
             {/* Map Overlay */}
             <div className="relative z-10 flex flex-col items-end justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
               {/* Location Info Box */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-center" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-xl)' }}>
-                <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-left max-w-md" style={{ padding: 'var(--spacing-lg)' }}>
+                <h3 className="font-bold text-gray-900 responsive-text-lg text-center" style={{ marginBottom: 'var(--spacing-md)' }}>
                   EKAANT LOCATION
                 </h3>
-                <p className="text-gray-700 responsive-text-sm" style={{ marginBottom: 'var(--spacing-xs)' }}>
-                  Near Bor Tiger Reserve
+                <p className="text-gray-700 responsive-text-sm text-center" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                  Near Bor Tiger Reserve, Maharashtra, India
                 </p>
-                <p className="text-green-600 font-semibold responsive-text-sm">
-                  Maharashtra, India
-                </p>
-              </div>
-
-              {/* Animated Location Pin */}
-              <div className="relative">
-                <svg width="80" height="100" viewBox="0 0 80 100" className="animate-bounce">
-                  <path 
-                    d="M40 10 C25 10 15 20 15 35 C15 50 40 85 40 85 C40 85 65 50 65 35 C65 20 55 10 40 10 Z"
-                    fill="#22c55e"
-                    stroke="#ffffff"
-                    strokeWidth="3"
-                    className="drop-shadow-2xl"
-                  />
-                  <circle cx="40" cy="35" r="12" fill="#ffffff" />
-                  <path d="M40 28 L40 42 M33 35 L47 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
-                </svg>
                 
-                {/* Pulsing rings around pin */}
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
-                  <div className="w-16 h-16 border-4 border-green-400 rounded-full animate-ping opacity-30"></div>
-                  <div className="absolute top-2 left-2 w-12 h-12 border-4 border-green-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '0.5s' }}></div>
-                </div>
-              </div>
-
-              {/* Distance Indicators */}
-              <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-sm">
-                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
-                  <div className="font-bold responsive-text-sm">90 KM</div>
-                  <div className="text-xs opacity-90">From Nagpur</div>
-                </div>
-                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
-                  <div className="font-bold responsive-text-sm">45 KM</div>
-                  <div className="text-xs opacity-90">From Wardha</div>
+                {/* Transportation Details */}
+                <div className="space-y-4" style={{ marginTop: 'var(--spacing-lg)' }}>
+                  {/* By Road */}
+                  <div>
+                    <h4 className="font-semibold text-green-600 responsive-text-sm" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                      By Road
+                    </h4>
+                    <ul className="text-gray-700 text-xs space-y-1">
+                      <li>• 90 KM From Nagpur</li>
+                      <li>• 45 KM From Wardha</li>
+                      <li>• Well Connected Via NH-361 And Local Village Roads</li>
+                      <li>• Ample Parking Available At The Property</li>
+                    </ul>
+                  </div>
+                  
+                  {/* By Train */}
+                  <div>
+                    <h4 className="font-semibold text-green-600 responsive-text-sm" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                      By Train
+                    </h4>
+                    <ul className="text-gray-700 text-xs space-y-1">
+                      <li>• Nearest Railway Junction: Sevni (30 Km); Wardha (45 Km)</li>
+                      <li>• Nagpur Junction (90 Km)</li>
+                      <li>• Taxi And Local Autos Available From Stations</li>
+                    </ul>
+                  </div>
+                  
+                  {/* By Air */}
+                  <div>
+                    <h4 className="font-semibold text-green-600 responsive-text-sm" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                      By Air
+                    </h4>
+                    <ul className="text-gray-700 text-xs space-y-1">
+                      <li>• Nearest Airport: Nagpur Dr. Babasaheb Ambedkar International Airport (Approx. 90 Km)</li>
+                      <li>• Cab Services To Ekaant From Nagpur</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
