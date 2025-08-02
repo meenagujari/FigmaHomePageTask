@@ -363,111 +363,147 @@ function ServicesSection() {
 function LocationSection() {
   return (
     <section 
-      className="relative py-20 overflow-hidden"
+      className="relative overflow-hidden"
       style={{ 
         backgroundColor: '#D0D9D9',
-        minHeight: '600px'
+        paddingTop: 'var(--spacing-3xl)',
+        paddingBottom: 'var(--spacing-3xl)'
       }}
     >
-      <div className="relative z-10 text-center">
+      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
         {/* Title */}
-        <h2 
-          className="font-bold mb-16"
-          style={{ 
-            fontSize: 'var(--font-size-4xl)',
-            color: '#22c55e',
-            letterSpacing: '0.1em'
-          }}
-        >
-          HOW TO REACH<br />EKAANT
-        </h2>
+        <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
+          <h2 
+            className="font-bold text-green-600 responsive-text-4xl"
+            style={{ 
+              letterSpacing: '0.05em',
+              lineHeight: '1.2'
+            }}
+          >
+            HOW TO REACH<br />EKAANT
+          </h2>
+        </div>
         
-        {/* Location Pin with Winding Path */}
-        <div className="relative flex justify-center items-center" style={{ minHeight: '400px' }}>
-          {/* Winding Path SVG */}
-          <svg 
-            className="absolute" 
-            width="300" 
-            height="350" 
-            viewBox="0 0 300 350"
-            style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
-          >
-            {/* Winding path */}
-            <path 
-              d="M150 300 Q100 250 120 200 Q140 150 100 100 Q80 50 150 20"
-              stroke="#22c55e"
-              strokeWidth="20"
-              fill="none"
-              strokeLinecap="round"
-            />
-          </svg>
-          
-          {/* Location Pin */}
-          <div 
-            className="relative z-20"
-            style={{ 
-              marginTop: '-150px',
-              filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.3))'
-            }}
-          >
-            <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
-              <path 
-                d="M60 0C26.8629 0 0 26.8629 0 60C0 93.1371 60 160 60 160S120 93.1371 120 60C120 26.8629 93.1371 0 60 0Z" 
-                fill="#22c55e"
-              />
-              <circle cx="60" cy="60" r="25" fill="#000000" />
-            </svg>
+        {/* Content Grid */}
+        <div className="grid lg:grid-cols-2 items-start" style={{ gap: 'var(--spacing-2xl)' }}>
+          {/* Left Side - Transportation Methods */}
+          <div className="space-y-8">
+            {/* By Road */}
+            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-lg)' }}>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-md)' }}>
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                      <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                      <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                      <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>By Road</h3>
+                  <ul className="text-gray-700 responsive-text-sm space-y-1">
+                    <li>• 90 KM From Nagpur</li>
+                    <li>• 45 KM From Wardha</li>
+                    <li>• Well Connected Via NH-361 And Local Village Roads</li>
+                    <li>• Ample Parking Available At The Property</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* By Train */}
+            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-lg)' }}>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-md)' }}>
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                      <path d="M5 15h14l-2-6H7l-2 6z" />
+                      <path d="M3 15h18" />
+                      <circle cx="6" cy="18" r="2" />
+                      <circle cx="18" cy="18" r="2" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>By Train</h3>
+                  <ul className="text-gray-700 responsive-text-sm space-y-1">
+                    <li>• Nearest Railway Junction: Sevni (30 Km); Wardha (45 Km)</li>
+                    <li>• Nagpur Junction (90 Km)</li>
+                    <li>• Taxi And Local Autos Available From Stations</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* By Air */}
+            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-lg)' }}>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-md)' }}>
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                      <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19 4s-2 2-3.5 3.5L11 16l-8.2 1.8c-.5.1-.8.6-.8 1.1s.5 1 1.1.8L11 16l8.2-1.8z" />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>By Air</h3>
+                  <ul className="text-gray-700 responsive-text-sm space-y-1">
+                    <li>• Nearest Airport: Nagpur Dr. Babasaheb Ambedkar International Airport (Approx. 90 Km)</li>
+                    <li>• Cab Services To Ekaant From Nagpur</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          {/* Decorative Trees */}
-          <div 
-            className="absolute"
-            style={{ 
-              left: '15%', 
-              bottom: '20%',
-              color: '#22c55e',
-              fontSize: '2rem'
-            }}
-          >
-            🌲🌳🌲
-          </div>
-          
-          <div 
-            className="absolute"
-            style={{ 
-              right: '20%', 
-              bottom: '15%',
-              color: '#22c55e',
-              fontSize: '1.5rem'
-            }}
-          >
-            🌿🌱
+
+          {/* Right Side - Map/Visual */}
+          <div className="relative flex justify-center items-center" style={{ minHeight: '500px' }}>
+            {/* Location Pin with Winding Path */}
+            <div className="relative">
+              {/* Winding Path SVG */}
+              <svg 
+                className="absolute" 
+                width="280" 
+                height="400" 
+                viewBox="0 0 280 400"
+                style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
+              >
+                {/* Winding path */}
+                <path 
+                  d="M140 350 Q90 300 110 250 Q130 200 90 150 Q70 100 140 50"
+                  stroke="#22c55e"
+                  strokeWidth="15"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeDasharray="8,8"
+                  className="animate-pulse"
+                />
+                
+                {/* Location markers */}
+                <circle cx="140" cy="350" r="8" fill="#22c55e" />
+                <circle cx="110" cy="250" r="6" fill="#22c55e" />
+                <circle cx="90" cy="150" r="6" fill="#22c55e" />
+                <circle cx="140" cy="50" r="8" fill="#22c55e" />
+              </svg>
+              
+              {/* Main Location Pin */}
+              <div className="relative z-20 flex justify-center">
+                <svg width="100" height="120" viewBox="0 0 100 120">
+                  <path 
+                    d="M50 15 C30 15 15 30 15 50 C15 70 50 105 50 105 C50 105 85 70 85 50 C85 30 70 15 50 15 Z"
+                    fill="#22c55e"
+                    stroke="#ffffff"
+                    strokeWidth="4"
+                    className="drop-shadow-lg"
+                  />
+                  <circle cx="50" cy="50" r="15" fill="#ffffff" />
+                  <path d="M50 40 L50 60 M40 50 L60 50" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute rounded-full opacity-10"
-          style={{
-            width: '200px',
-            height: '200px',
-            backgroundColor: '#22c55e',
-            left: '10%',
-            top: '10%'
-          }}
-        />
-        <div 
-          className="absolute rounded-full opacity-5"
-          style={{
-            width: '300px',
-            height: '300px',
-            backgroundColor: '#22c55e',
-            right: '5%',
-            bottom: '5%'
-          }}
-        />
       </div>
     </section>
   )
