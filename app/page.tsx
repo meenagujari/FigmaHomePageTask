@@ -458,49 +458,76 @@ function LocationSection() {
           </div>
 
           {/* Right Side - Map/Visual */}
-          <div className="relative flex justify-center items-center" style={{ minHeight: '500px' }}>
-            {/* Location Pin with Winding Path */}
-            <div className="relative">
-              {/* Winding Path SVG */}
-              <svg 
-                className="absolute" 
-                width="280" 
-                height="400" 
-                viewBox="0 0 280 400"
-                style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
-              >
-                {/* Winding path */}
-                <path 
-                  d="M140 350 Q90 300 110 250 Q130 200 90 150 Q70 100 140 50"
-                  stroke="#22c55e"
-                  strokeWidth="15"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeDasharray="8,8"
-                  className="animate-pulse"
-                />
-                
-                {/* Location markers */}
-                <circle cx="140" cy="350" r="8" fill="#22c55e" />
-                <circle cx="110" cy="250" r="6" fill="#22c55e" />
-                <circle cx="90" cy="150" r="6" fill="#22c55e" />
-                <circle cx="140" cy="50" r="8" fill="#22c55e" />
-              </svg>
-              
-              {/* Main Location Pin */}
-              <div className="relative z-20 flex justify-center">
-                <svg width="100" height="120" viewBox="0 0 100 120">
+          <div className="relative overflow-hidden rounded-2xl shadow-xl" style={{ minHeight: '500px' }}>
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/treehouse.jpg')`,
+                filter: 'blur(1px)'
+              }}
+            />
+            
+            {/* Map Overlay */}
+            <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
+              {/* Location Info Box */}
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl text-center" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-xl)' }}>
+                <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
+                  EKAANT LOCATION
+                </h3>
+                <p className="text-gray-700 responsive-text-sm" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                  Near Bor Tiger Reserve
+                </p>
+                <p className="text-green-600 font-semibold responsive-text-sm">
+                  Maharashtra, India
+                </p>
+              </div>
+
+              {/* Animated Location Pin */}
+              <div className="relative">
+                <svg width="80" height="100" viewBox="0 0 80 100" className="animate-bounce">
                   <path 
-                    d="M50 15 C30 15 15 30 15 50 C15 70 50 105 50 105 C50 105 85 70 85 50 C85 30 70 15 50 15 Z"
+                    d="M40 10 C25 10 15 20 15 35 C15 50 40 85 40 85 C40 85 65 50 65 35 C65 20 55 10 40 10 Z"
                     fill="#22c55e"
                     stroke="#ffffff"
-                    strokeWidth="4"
-                    className="drop-shadow-lg"
+                    strokeWidth="3"
+                    className="drop-shadow-2xl"
                   />
-                  <circle cx="50" cy="50" r="15" fill="#ffffff" />
-                  <path d="M50 40 L50 60 M40 50 L60 50" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="40" cy="35" r="12" fill="#ffffff" />
+                  <path d="M40 28 L40 42 M33 35 L47 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
                 </svg>
+                
+                {/* Pulsing rings around pin */}
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
+                  <div className="w-16 h-16 border-4 border-green-400 rounded-full animate-ping opacity-30"></div>
+                  <div className="absolute top-2 left-2 w-12 h-12 border-4 border-green-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '0.5s' }}></div>
+                </div>
               </div>
+
+              {/* Distance Indicators */}
+              <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-sm">
+                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
+                  <div className="font-bold responsive-text-sm">90 KM</div>
+                  <div className="text-xs opacity-90">From Nagpur</div>
+                </div>
+                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
+                  <div className="font-bold responsive-text-sm">45 KM</div>
+                  <div className="text-xs opacity-90">From Wardha</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute top-4 right-4 text-green-400 opacity-60">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+            
+            <div className="absolute bottom-4 left-4 text-green-400 opacity-40">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
             </div>
           </div>
         </div>
