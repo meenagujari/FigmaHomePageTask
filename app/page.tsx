@@ -427,29 +427,73 @@ function LocationSection() {
 
 // FAQ Section Component
 function FAQSection() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+
+  const questions = [
+    "Q. Is The Ekaant Child-Friendly?",
+    "Q. Is There Mobile Network Or Internet?", 
+    "Q. Can We Spot Tigers Or Wildlife Here?",
+    "Q. Is Food Included In The Stay?",
+    "Q. Do You Allow Pets?",
+    "Q. What Is The Best Time To Visit?"
+  ]
+
+  const answers = [
+    "Yes, Ekaant is completely child-friendly. We provide safe accommodations and nature-based activities suitable for children of all ages.",
+    "Limited mobile network is available. We provide WiFi in common areas to help you stay connected while enjoying your digital detox.",
+    "Being near Bor Tiger Reserve, wildlife spotting opportunities are excellent. We organize guided safari tours for the best wildlife experience.",
+    "Yes, all meals are included featuring fresh, organic local cuisine prepared with ingredients from our own farm and local sources.",
+    "We welcome well-behaved pets with prior arrangement. Please inform us during booking to ensure proper accommodation.",
+    "October to March offers the best weather. This period provides comfortable temperatures perfect for outdoor activities and wildlife spotting."
+  ]
+
+  const handleClick = (clickedIndex: number) => {
+    setActiveIndex(activeIndex === clickedIndex ? null : clickedIndex)
+  }
+
   return (
-    <section 
-      className="bg-black"
-      style={{ 
-        padding: 'var(--spacing-2xl) 0', 
-        backgroundColor: '#000000 !important',
-        background: '#000000 !important'
-      }}
-    >
+    <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#f9fafb' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
-        <div className="flex justify-center items-center" style={{ minHeight: '200px' }}>
-          <div 
-            className="rounded-full border-4"
-            style={{ 
-              borderColor: '#003E17',
-              backgroundColor: 'transparent',
-              width: 'calc(80% + 10vw)',
-              height: 'calc(80px + 2vw)',
-              maxWidth: '800px',
-              minHeight: '60px'
-            }}
+        <div className="text-center mb-12">
+          <h2 
+            className="font-bold text-gray-900 mb-4"
+            style={{ fontSize: 'var(--font-size-3xl)' }}
           >
-          </div>
+            FREQUENTLY ASKED QUESTIONS (FAQS)
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
+          {questions.map((question, i) => {
+            const isOpen = activeIndex === i
+            return (
+              <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
+                <button 
+                  onClick={() => handleClick(i)}
+                  className="w-full p-6 text-left flex items-center justify-between"
+                  type="button"
+                >
+                  <h3 className="responsive-text-lg font-medium text-gray-800">
+                    {question}
+                  </h3>
+                  <div className="ml-4">
+                    {isOpen ? (
+                      <ChevronUp className="w-5 h-5" style={{ color: '#003E17' }} />
+                    ) : (
+                      <ChevronDown className="w-5 h-5" style={{ color: '#003E17' }} />
+                    )}
+                  </div>
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6 border-t border-gray-100">
+                    <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6', paddingTop: '1rem' }}>
+                      {answers[i]}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
