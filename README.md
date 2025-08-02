@@ -160,15 +160,7 @@ The development server is configured to run on `0.0.0.0:3000` for Replit compati
 - Keep content dynamic via API
 - Test across multiple devices
 
-## 🚀 Deployment
 
-### Replit Deployment (Recommended)
-This project is optimized for Replit deployment:
-1. Use the built-in Deploy button
-2. Automatic build and hosting
-3. Custom domain support available
-
-The project includes `.replit` configuration for seamless deployment on Replit.
 
 ## 🎯 FAQ Section Details
 
@@ -186,7 +178,6 @@ The project includes `.replit` configuration for seamless deployment on Replit.
 - Location: Near Bor Tiger Reserve
 - Address: Wardha, Maharashtra
 
-## 🐛 Known Issues & Solutions
 
 ### Cross-Origin Requests
 If you see warnings about cross-origin requests, ensure your `next.config.js` includes the `allowedDevOrigins` configuration as shown above.
