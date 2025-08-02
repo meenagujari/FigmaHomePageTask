@@ -437,7 +437,7 @@ function FAQSection() {
   ]
 
   return (
-    <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#000000' }}>
+    <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#f9fafb' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
           {faqQuestions.map((question, index) => (
