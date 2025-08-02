@@ -497,12 +497,24 @@ function Footer() {
     <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-xl) 0' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         {/* Main Footer Content */}
-        <div className="text-left" style={{ marginBottom: 'var(--spacing-xl)' }}>
-          <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
-            WE'D LOVE TO HELP YOU<br />
-            PLAN YOUR PEACEFUL<br />
-            ESCAPE.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ marginBottom: 'var(--spacing-xl)', gap: 'var(--spacing-xl)' }}>
+          {/* Left side - Welcome message */}
+          <div className="text-left">
+            <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
+              WE'D LOVE TO HELP YOU<br />
+              PLAN YOUR PEACEFUL<br />
+              ESCAPE.
+            </p>
+          </div>
+          
+          {/* Right side - Contact information */}
+          <div className="text-left lg:text-right">
+            <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.8' }}>
+              Call/WhatsApp: +91 9988776655<br />
+              Email: EKANT@NEAVE.TECH<br />
+              Instagram: EKANT
+            </p>
+          </div>
         </div>
 
 

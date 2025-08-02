@@ -1204,6 +1204,10 @@ textarea:focus {
     padding-bottom: 7rem;
   }
 
+  .lg\:text-right {
+    text-align: right;
+  }
+
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
