@@ -603,9 +603,11 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
         
         {/* Main Heading Only */}
         <h2 className="text-white font-bold responsive-text-2xl" style={{ 
-          letterSpacing: '0.05em'
+          letterSpacing: '0.05em',
+          lineHeight: '1.4'
         }}>
-          {contentData.footer.heading}
+          We'd love to help you plan<br />
+          your peaceful escape.
         </h2>
       </div>
     </footer>
