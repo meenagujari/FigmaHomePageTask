@@ -478,9 +478,9 @@ function FAQSection() {
                   <div className="ml-4 flex-shrink-0">
                     <div className="w-6 h-6 flex items-center justify-center">
                       {openFAQ === index ? (
-                        <ChevronUp className="text-green-700 w-5 h-5" />
+                        <ChevronUp className="w-5 h-5" style={{ color: '#003E17' }} />
                       ) : (
-                        <ChevronDown className="text-green-700 w-5 h-5" />
+                        <ChevronDown className="w-5 h-5" style={{ color: '#003E17' }} />
                       )}
                     </div>
                   </div>
