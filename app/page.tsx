@@ -494,10 +494,10 @@ function Footer() {
   }
 
   return (
-    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-xl) 0' }}>
+    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-lg) 0' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ marginBottom: 'var(--spacing-xl)', gap: 'var(--spacing-xl)' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ marginBottom: 'var(--spacing-lg)', gap: 'var(--spacing-xl)' }}>
           {/* Left side - Welcome message */}
           <div className="text-left">
             <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
