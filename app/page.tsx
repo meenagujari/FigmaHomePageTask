@@ -441,7 +441,7 @@ function FAQSection() {
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
           {faqQuestions.map((question, index) => (
-            <div key={index} className="bg-white rounded-3xl hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105 border-0" style={{ padding: 'var(--spacing-lg)' }}>
+            <div key={index} className="bg-white rounded-3xl hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105 border border-gray-200" style={{ padding: 'var(--spacing-lg)' }}>
               <h3 className="responsive-text-lg font-medium text-gray-800" style={{ lineHeight: '1.4' }}>
                 {question}
               </h3>
