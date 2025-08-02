@@ -181,7 +181,7 @@ function Header() {
   }
 
   return (
-    <header className="bg-white w-full" style={{ paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
+    <header className="bg-white w-full fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ paddingTop: 'var(--spacing-md)', paddingBottom: 'var(--spacing-md)' }}>
       <div className="responsive-container flex items-center justify-between" style={{ paddingLeft: 'var(--spacing-sm)', paddingRight: 'var(--spacing-sm)' }}>
         {/* Logo */}
         <div className="flex items-center">
@@ -242,7 +242,7 @@ function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ minHeight: 'calc(100vh - var(--spacing-xl))' }}>
+    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ minHeight: '100vh', paddingTop: 'calc(var(--spacing-3xl) + var(--spacing-md))' }}>
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
       }} />
