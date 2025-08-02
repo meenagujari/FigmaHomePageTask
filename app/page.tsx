@@ -476,7 +476,7 @@ function FAQSection() {
                   </div>
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 border-t border-gray-100">
                     <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6', paddingTop: '1rem' }}>
                       {answers[i]}
                     </p>
