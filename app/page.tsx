@@ -457,7 +457,7 @@ function FAQSection() {
         <div className="text-center mb-12">
           <div className="inline-block">
             <h2 
-              className="font-semibold text-gray-900 px-8 py-4 rounded-full border-2"
+              className="font-semibold text-gray-900 px-8 py-4 rounded-full border"
               style={{ 
                 fontSize: 'var(--font-size-3xl)',
                 borderColor: '#003E17',
