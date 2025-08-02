@@ -254,8 +254,8 @@ function HeroSection() {
             marginBottom: 'var(--spacing-lg)',
             lineHeight: 'clamp(1.3, 1.3 + 0.1vw, 1.5)'
           }}>
-            Welcome to Ekaant—Agro Tourism Retreat Near<br />
-            Bor Tiger Reserve, Maharashtra
+            Welcome to Ekaant—Agro Tourism Retreat<br />
+            Near Bor Tiger Reserve, Maharashtra
           </h1>
           <p className="font-light leading-relaxed opacity-95" style={{ fontSize: 'var(--font-size-xl)' }}>
             {contentData.hero.subtitle}
