@@ -320,7 +320,7 @@ function ServicesSection() {
   const featuredActivities = [
     {
       title: "Rural Farm Experience",
-      description: "Traditional farming with authentic bullock cart rides and organic farming activities",
+      description: "Experience authentic rural life and connect with nature",
       backgroundPosition: "left center", // Left image - farm scene
       icon: "🚜"
     },
