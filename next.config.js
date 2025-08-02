@@ -3,10 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    allowedDevOrigins: [
-      'https://*.replit.dev',
-      'http://*.replit.dev'
-    ]
+   
   },
   images: {
     remotePatterns: [
