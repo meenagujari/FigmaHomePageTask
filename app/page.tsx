@@ -621,96 +621,6 @@ function LocationSection() {
   )
 }
 
-// Photo Gallery Section Component
-function PhotoGallerySection() {
-  const galleryImages = [
-    {
-      src: '/treehouse-landscape.jpg',
-      alt: 'Ekaant Treehouse View',
-      title: 'Treehouse Accommodation'
-    },
-    {
-      src: '/activities-group.png',
-      alt: 'Rural Farm Activities',
-      title: 'Farm Experience'
-    },
-    {
-      src: '/group2-services.png',
-      alt: 'Nature Activities',
-      title: 'Nature & Wildlife'
-    },
-    {
-      src: '/logo.png',
-      alt: 'Ekaant Property View',
-      title: 'Property Overview'
-    },
-    {
-      src: '/treehouse-landscape.jpg',
-      alt: 'Sunset at Ekaant',
-      title: 'Evening Views'
-    },
-    {
-      src: '/activities-group.png',
-      alt: 'Guest Activities',
-      title: 'Guest Experiences'
-    }
-  ]
-
-  return (
-    <section id="gallery" className="bg-white" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
-        <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          <div className="inline-block" style={{ marginBottom: 'var(--spacing-md)' }}>
-            <h2 
-              className="font-semibold text-gray-900 px-8 py-4 rounded-full border"
-              style={{ 
-                fontSize: 'var(--font-size-3xl)',
-                borderColor: '#003E17',
-                backgroundColor: 'transparent'
-              }}
-            >
-              PHOTO GALLERY
-            </h2>
-          </div>
-          <p className="text-gray-600 leading-relaxed responsive-text-xl" style={{ maxWidth: 'calc(60% + 10vw)', margin: '0 auto' }}>
-            Discover the beauty of Ekaant through our collection of moments
-          </p>
-        </div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-semibold responsive-text-lg">{image.title}</h3>
-                </div>
-              </div>
-              <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          ))}
-        </div>
-
-        {/* View More Button */}
-        <div className="text-center" style={{ marginTop: 'var(--spacing-2xl)' }}>
-          <button 
-            className="bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl responsive-text-lg"
-            style={{ padding: 'var(--spacing-md) var(--spacing-xl)' }}
-          >
-            View More Photos
-          </button>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // FAQ Section Component
 function FAQSection() {
@@ -851,7 +761,6 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <LocationSection />
-      <PhotoGallerySection />
       <FAQSection />
       <Footer />
     </div>
