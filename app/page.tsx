@@ -498,7 +498,7 @@ function Footer() {
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         {/* Main Footer Content */}
         <div className="text-left" style={{ marginBottom: 'var(--spacing-xl)' }}>
-          <p className="responsive-text-lg" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
+          <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
             WE'D LOVE TO HELP YOU<br />
             PLAN YOUR PEACEFUL<br />
             ESCAPE.
