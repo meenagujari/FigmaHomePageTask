@@ -133,6 +133,10 @@ const contentData = {
       {
         "question": "What Is The Best Time To Visit?",
         "answer": "October to March offers the most pleasant weather. Monsoon season (June-September) provides lush greenery, while April-May offers unique summer wildlife experiences."
+      },
+      {
+        "question": "Are There Any Age Restrictions For Activities?",
+        "answer": "Most activities are suitable for all ages. Some nature walks and wildlife photography sessions may have age recommendations for safety. We customize activities based on group preferences and capabilities."
       }
     ]
   },
