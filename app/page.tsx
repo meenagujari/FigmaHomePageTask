@@ -457,7 +457,6 @@ function FAQSection() {
   ]
 
   const toggleFAQ = (index: number) => {
-    console.log('Clicked FAQ index:', index, 'Currently open:', openFAQ)
     setOpenFAQ(openFAQ === index ? -1 : index)
   }
 
