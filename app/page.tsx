@@ -157,6 +157,7 @@ export default function HomePage() {
       <ServicesSection contentData={contentData} />
       <LocationSection contentData={contentData} />
       <FAQSection contentData={contentData} />
+      <FooterSection contentData={contentData} />
     </div>
   )
 }
