@@ -17,41 +17,41 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-sm shadow-sm">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-sm border-b border-gray-100">
+      <nav className="container mx-auto px-4 lg:px-8 py-2">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center">
             <img 
               src={logoImage} 
               alt="Ekaant Logo" 
-              className="h-10 w-auto"
+              className="h-8 w-auto"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("home")}
-              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
+              className="text-gray-600 hover:text-ekaant-primary transition-colors font-medium text-sm uppercase tracking-wider"
             >
               HOME
             </button>
             <button
               onClick={() => scrollToSection("amenities")}
-              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
+              className="text-gray-600 hover:text-ekaant-primary transition-colors font-medium text-sm uppercase tracking-wider"
             >
               AMENITIES
             </button>
             <button
               onClick={() => scrollToSection("gallery")}
-              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
+              className="text-gray-600 hover:text-ekaant-primary transition-colors font-medium text-sm uppercase tracking-wider"
             >
               PHOTO GALLERY
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
+              className="text-gray-600 hover:text-ekaant-primary transition-colors font-medium text-sm uppercase tracking-wider"
             >
               CONTACT US
             </button>
