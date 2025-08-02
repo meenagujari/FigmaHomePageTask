@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import logoImage from "@assets/145c9771d4f5ff1a6ba32a543360b0d4fd6d0411_1754124384735.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,44 +17,41 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <nav className="container mx-auto px-4 lg:px-8 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-sm shadow-sm">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-3">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-ekaant-primary rounded-full flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L22 7V17L12 22L2 17V7L12 2Z" fill="white"/>
-                <path d="M6 8L12 11L18 8M12 11V20" stroke="currentColor" strokeWidth="2"/>
-              </svg>
-            </div>
-            <div className="text-2xl font-bold text-ekaant-primary">{content.name}</div>
-            <div className="text-sm text-gray-600 hidden md:block">{content.tagline}</div>
+          <div className="flex items-center">
+            <img 
+              src={logoImage} 
+              alt="Ekaant Logo" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-12">
             <button
               onClick={() => scrollToSection("home")}
-              className="text-gray-700 hover:text-ekaant-primary transition-colors font-medium"
+              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
             >
               HOME
             </button>
             <button
               onClick={() => scrollToSection("amenities")}
-              className="text-gray-700 hover:text-ekaant-primary transition-colors font-medium"
+              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
             >
               AMENITIES
             </button>
             <button
               onClick={() => scrollToSection("gallery")}
-              className="text-gray-700 hover:text-ekaant-primary transition-colors font-medium"
+              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
             >
               PHOTO GALLERY
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-gray-700 hover:text-ekaant-primary transition-colors font-medium"
+              className="text-gray-800 hover:text-ekaant-primary transition-colors font-medium text-sm tracking-wide"
             >
               CONTACT US
             </button>

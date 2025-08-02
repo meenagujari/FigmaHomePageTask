@@ -12,35 +12,37 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-ekaant-primary mb-4">
+    <section className="py-20 lg:py-28 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-ekaant-primary mb-6">
             {faq.title}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             {faq.subtitle}
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          {faq.items.map((item, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg mb-4 overflow-hidden">
+        <div className="max-w-5xl mx-auto">
+          {faq.items.map((item: any, index: number) => (
+            <div key={index} className="bg-white border border-gray-200 rounded-2xl mb-6 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               <button 
-                className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
+                className="w-full px-8 py-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
                 onClick={() => toggleFAQ(index)}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900">{item.question}</h3>
-                  {openFAQ === index ? (
-                    <Minus className="text-ekaant-primary transform transition-transform duration-200" />
-                  ) : (
-                    <Plus className="text-ekaant-primary transform transition-transform duration-200" />
-                  )}
+                  <h3 className="text-xl font-bold text-gray-900 pr-4">{item.question}</h3>
+                  <div className="flex-shrink-0">
+                    {openFAQ === index ? (
+                      <Minus className="text-ekaant-primary w-6 h-6 transform transition-transform duration-200" />
+                    ) : (
+                      <Plus className="text-ekaant-primary w-6 h-6 transform transition-transform duration-200" />
+                    )}
+                  </div>
                 </div>
               </button>
               {openFAQ === index && (
-                <div className="px-6 pb-4 text-gray-600">
+                <div className="px-8 pb-6 text-gray-700 text-lg leading-relaxed border-t border-gray-100 pt-4">
                   <p>{item.answer}</p>
                 </div>
               )}
