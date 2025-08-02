@@ -142,8 +142,7 @@ const nextConfig = {
 }
 ```
 
-### Development Server
-The development server is configured to run on `0.0.0.0:3000` for Replit compatibility.
+
 
 ## 🛠️ Development
 
