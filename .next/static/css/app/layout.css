@@ -554,9 +554,6 @@ video {
 .mb-4 {
   margin-bottom: 1rem;
 }
-.ml-4 {
-  margin-left: 1rem;
-}
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -596,12 +593,12 @@ video {
 .h-8 {
   height: 2rem;
 }
-.h-full {
-  height: 100%;
-}
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
+}
+.h-full {
+  height: 100%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -830,11 +827,11 @@ video {
 .pb-6 {
   padding-bottom: 1.5rem;
 }
-.pt-6 {
-  padding-top: 1.5rem;
-}
 .pr-4 {
   padding-right: 1rem;
+}
+.pt-6 {
+  padding-top: 1.5rem;
 }
 .text-left {
   text-align: left;
