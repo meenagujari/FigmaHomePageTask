@@ -115,16 +115,20 @@ const contentData = {
     "subtitle": "Find answers to common questions about your stay at Ekaant",
     "items": [
       {
-        "question": "Is The Resort Child Friendly?",
+        "question": "Is The Ekaant Child-Friendly?",
         "answer": "Yes, Ekaant is completely child-friendly with safe outdoor spaces, nature activities, and family accommodations designed for all ages."
       },
       {
-        "question": "Is There Mobile Networks Or Internet?",
+        "question": "Is There Mobile Network Or Internet?",
         "answer": "We offer limited WiFi in common areas for essential needs, encouraging a digital detox experience. Mobile network coverage varies by provider."
       },
       {
-        "question": "Can We Bring Pets Or Animals Here?",
-        "answer": "Pets are welcome with prior notification. We request keeping them leashed in common areas and ensuring they don't disturb the natural wildlife habitat."
+        "question": "Can We Spot Tigers Or Wildlife Here?",
+        "answer": "While we're near Bor Tiger Reserve, wildlife sightings depend on nature's schedule. We offer guided nature walks and photography sessions to maximize your chances of spotting local fauna."
+      },
+      {
+        "question": "Is Food Included In The Stay?",
+        "answer": "Yes, we provide authentic homestyle meals prepared with organic ingredients from our farm. Traditional Maharashtrian cuisine is served with vegetarian and non-vegetarian options available."
       },
       {
         "question": "Do You Allow Pets?",
@@ -133,10 +137,6 @@ const contentData = {
       {
         "question": "What Is The Best Time To Visit?",
         "answer": "October to March offers the most pleasant weather. Monsoon season (June-September) provides lush greenery, while April-May offers unique summer wildlife experiences."
-      },
-      {
-        "question": "Are There Any Age Restrictions For Activities?",
-        "answer": "Most activities are suitable for all ages. Some nature walks and wildlife photography sessions may have age recommendations for safety. We customize activities based on group preferences and capabilities."
       }
     ]
   },
