@@ -195,7 +195,7 @@ function Header() {
         </div>
 
         {/* Navigation Menu - Desktop */}
-        <nav className="hidden md:flex items-center" style={{ gap: 'calc(0.8rem + 0.5vw)' }}>
+        <nav className="hidden md:flex items-center" style={{ gap: 'calc(1.2rem + 0.8vw)' }}>
           <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             HOME
           </button>
@@ -212,7 +212,7 @@ function Header() {
 
         {/* Mobile Navigation */}
         <nav className="md:hidden">
-          <div className="flex flex-wrap justify-end" style={{ gap: 'calc(0.3rem + 0.2vw)' }}>
+          <div className="flex flex-wrap justify-end" style={{ gap: 'calc(0.6rem + 0.4vw)' }}>
             <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               HOME
             </button>
