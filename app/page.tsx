@@ -203,7 +203,7 @@ function Header({ contentData }: { contentData: ContentData }) {
           <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             PHOTO GALLERY
           </button>
-          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
+          <button onClick={() => scrollToSection('footer')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             CONTACT US
           </button>
         </nav>
@@ -220,7 +220,7 @@ function Header({ contentData }: { contentData: ContentData }) {
             <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               GALLERY
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
+            <button onClick={() => scrollToSection('footer')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               CONTACT
             </button>
           </div>
@@ -408,7 +408,6 @@ function ServicesSection({ contentData }: { contentData: ContentData }) {
 function LocationSection({ contentData }: { contentData: ContentData }) {
   return (
     <section 
-      id="contact"
       className="relative overflow-hidden"
       style={{ 
         backgroundColor: '#D0D9D9',
@@ -601,7 +600,7 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
 // Footer Component - Exact Figma Design
 function FooterSection({ contentData }: { contentData: ContentData }) {
   return (
-    <footer className="text-white" style={{ backgroundColor: '#003E17', width: '100%' }}>
+    <footer id="footer" className="text-white" style={{ backgroundColor: '#003E17', width: '100%' }}>
       <div className="responsive-container w-full" style={{ 
         padding: 'clamp(3rem, 5vw, 6rem) clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem)',
         maxWidth: '1200px',
