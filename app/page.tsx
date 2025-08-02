@@ -277,7 +277,7 @@ function AboutSection() {
       <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
         <div className="grid lg:grid-cols-2 items-start" style={{ gap: 'var(--spacing-2xl)' }}>
           <div>
-            <h2 className="font-bold text-green-700 leading-tight responsive-text-5xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
+            <h2 className="font-bold leading-tight responsive-text-5xl" style={{ marginBottom: 'var(--spacing-lg)', color: '#131212' }}>
               {contentData.about.title}
             </h2>
             <div className="text-gray-700 leading-relaxed responsive-text-lg" style={{ marginBottom: 'var(--spacing-xl)' }}>
