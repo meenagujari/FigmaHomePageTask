@@ -383,12 +383,9 @@ function ServicesSection() {
                 <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="text-center">
-                <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
+                <h3 className="font-bold text-gray-900 responsive-text-lg">
                   {activity.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed responsive-text-sm">
-                  {activity.description}
-                </p>
               </div>
             </div>
           ))}
@@ -409,12 +406,9 @@ function ServicesSection() {
               <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="text-center">
-              <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
+              <h3 className="font-bold text-gray-900 responsive-text-lg">
                 Stargazing Nights
               </h3>
-              <p className="text-gray-600 leading-relaxed responsive-text-sm">
-                Experience the magic of clear rural skies away from city lights
-              </p>
             </div>
           </div>
 
@@ -431,12 +425,9 @@ function ServicesSection() {
               <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="text-center">
-              <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
+              <h3 className="font-bold text-gray-900 responsive-text-lg">
                 Bonfire Evenings
               </h3>
-              <p className="text-gray-600 leading-relaxed responsive-text-sm">
-                Gather around the fire for stories and traditional music
-              </p>
             </div>
           </div>
 
@@ -453,12 +444,9 @@ function ServicesSection() {
               <div className="absolute inset-0 border-4 border-green-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="text-center">
-              <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>
+              <h3 className="font-bold text-gray-900 responsive-text-lg">
                 Digital Detox & Wellness
               </h3>
-              <p className="text-gray-600 leading-relaxed responsive-text-sm">
-                Reconnect with yourself through yoga and meditation
-              </p>
             </div>
           </div>
         </div>
