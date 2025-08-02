@@ -493,13 +493,13 @@ function LocationSection() {
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 items-start" style={{ gap: 'var(--spacing-2xl)' }}>
           {/* Left Side - Transportation Methods */}
-          <div className="space-y-8">
+          <div className="space-y-4">
             {/* By Road */}
-            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-lg)' }}>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-md)' }}>
+            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-md)' }}>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-sm)' }}>
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
                       <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                       <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                       <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
@@ -507,23 +507,21 @@ function LocationSection() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>By Road</h3>
-                  <ul className="text-gray-700 responsive-text-sm space-y-1">
+                  <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>By Road</h3>
+                  <ul className="text-gray-700 responsive-text-xs space-y-1">
                     <li>• 90 KM From Nagpur</li>
                     <li>• 45 KM From Wardha</li>
-                    <li>• Well Connected Via NH-361 And Local Village Roads</li>
-                    <li>• Ample Parking Available At The Property</li>
                   </ul>
                 </div>
               </div>
             </div>
 
             {/* By Train */}
-            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-lg)' }}>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-md)' }}>
+            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-md)' }}>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-sm)' }}>
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
                       <path d="M5 15h14l-2-6H7l-2 6z" />
                       <path d="M3 15h18" />
                       <circle cx="6" cy="18" r="2" />
@@ -532,31 +530,30 @@ function LocationSection() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>By Train</h3>
-                  <ul className="text-gray-700 responsive-text-sm space-y-1">
-                    <li>• Nearest Railway Junction: Sevni (30 Km); Wardha (45 Km)</li>
+                  <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>By Train</h3>
+                  <ul className="text-gray-700 responsive-text-xs space-y-1">
+                    <li>• Sevni (30 Km), Wardha (45 Km)</li>
                     <li>• Nagpur Junction (90 Km)</li>
-                    <li>• Taxi And Local Autos Available From Stations</li>
                   </ul>
                 </div>
               </div>
             </div>
 
             {/* By Air */}
-            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-lg)' }}>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-md)' }}>
+            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-md)' }}>
+              <div className="flex items-start" style={{ gap: 'var(--spacing-sm)' }}>
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
                       <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19 4s-2 2-3.5 3.5L11 16l-8.2 1.8c-.5.1-.8.6-.8 1.1s.5 1 1.1.8L11 16l8.2-1.8z" />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-xs)' }}>By Air</h3>
-                  <ul className="text-gray-700 responsive-text-sm space-y-1">
-                    <li>• Nearest Airport: Nagpur Dr. Babasaheb Ambedkar International Airport (Approx. 90 Km)</li>
-                    <li>• Cab Services To Ekaant From Nagpur</li>
+                  <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>By Air</h3>
+                  <ul className="text-gray-700 responsive-text-xs space-y-1">
+                    <li>• Nagpur Airport (90 Km)</li>
+                    <li>• Cab Services Available</li>
                   </ul>
                 </div>
               </div>
