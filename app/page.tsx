@@ -606,7 +606,7 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
           marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
           letterSpacing: '0.05em'
         }}>
-          WE'D LOVE TO HELP YOU PLAN YOUR PERFECT STAY
+          We'd love to help you plan your peaceful escape.
         </h2>
         
         {/* Contact Information */}
