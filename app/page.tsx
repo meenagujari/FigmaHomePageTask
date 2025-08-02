@@ -456,7 +456,7 @@ function FAQSection() {
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         <div className="text-center mb-12">
           <h2 
-            className="font-bold text-gray-900 mb-4"
+            className="font-semibold text-gray-900 mb-4"
             style={{ fontSize: 'var(--font-size-3xl)' }}
           >
             FREQUENTLY ASKED QUESTIONS (FAQS)
