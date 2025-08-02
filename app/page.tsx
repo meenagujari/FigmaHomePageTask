@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { Menu, X, Mail, Phone, MapPin, Send, Facebook, Instagram, Car, Train, Plane, Plus, Minus } from 'lucide-react'
+import { Menu, X, Mail, Phone, MapPin, Send, Facebook, Instagram, Car, Train, Plane, Plus, Minus, ChevronUp, ChevronDown } from 'lucide-react'
 
 // Content data (same as before)
 const contentData = {
@@ -478,9 +478,9 @@ function FAQSection() {
                   <div className="ml-4 flex-shrink-0">
                     <div className="w-6 h-6 flex items-center justify-center">
                       {openFAQ === index ? (
-                        <span className="text-green-700 font-bold text-xl">−</span>
+                        <ChevronUp className="text-green-700 w-5 h-5" />
                       ) : (
-                        <span className="text-green-700 font-bold text-xl">+</span>
+                        <ChevronDown className="text-green-700 w-5 h-5" />
                       )}
                     </div>
                   </div>
