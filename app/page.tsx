@@ -494,7 +494,7 @@ function Footer() {
   }
 
   return (
-    <footer id="contact" className="bg-green-900 text-white" style={{ padding: 'var(--spacing-xl) 0' }}>
+    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-xl) 0' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         {/* Main Footer Content */}
         <div className="text-center" style={{ marginBottom: 'var(--spacing-xl)' }}>
