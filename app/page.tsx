@@ -461,7 +461,7 @@ function FAQSection() {
               <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
                 <button 
                   onClick={() => handleClick(i)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50"
+                  className="w-full p-6 text-left flex items-center justify-between"
                   type="button"
                 >
                   <h3 className="responsive-text-lg font-medium text-gray-800">
