@@ -494,103 +494,77 @@ function Footer() {
   }
 
   return (
-    <footer id="contact" className="bg-green-800 text-white py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-8 leading-tight">{contentData.footer.contact.title}</h3>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <Mail className="text-yellow-400 mt-1.5 w-5 h-5" />
-                <div>
-                  <p className="font-semibold text-lg mb-1">{contentData.footer.contact.email.label}</p>
-                  <a href={`mailto:${contentData.footer.contact.email.address}`} className="text-yellow-400 hover:text-yellow-300 transition-colors text-lg">
-                    {contentData.footer.contact.email.address}
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <Phone className="text-yellow-400 mt-1.5 w-5 h-5" />
-                <div>
-                  <p className="font-semibold text-lg mb-1">{contentData.footer.contact.phone.label}</p>
-                  <a href={`tel:${contentData.footer.contact.phone.number}`} className="text-yellow-400 hover:text-yellow-300 transition-colors text-lg">
-                    {contentData.footer.contact.phone.number}
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <MapPin className="text-yellow-400 mt-1.5 w-5 h-5" />
-                <div>
-                  <p className="font-semibold text-lg mb-1">{contentData.footer.contact.address.label}</p>
-                  <p className="text-gray-300 text-lg whitespace-pre-line">{contentData.footer.contact.address.details}</p>
-                </div>
-              </div>
-            </div>
+    <footer id="contact" className="bg-green-900 text-white" style={{ padding: 'var(--spacing-xl) 0' }}>
+      <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
+        {/* Main Footer Content */}
+        <div className="text-center" style={{ marginBottom: 'var(--spacing-xl)' }}>
+          <h2 className="responsive-text-3xl font-bold" style={{ marginBottom: 'var(--spacing-lg)', color: '#FFFFFF' }}>
+            WE'D LOVE TO HELP YOU
+          </h2>
+          <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-md)', color: '#FFFFFF' }}>
+            PLAN YOUR PEACEFUL
+          </h3>
+          <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-xl)', color: '#FFFFFF' }}>
+            ESCAPE
+          </h3>
+        </div>
+
+        {/* Contact Information Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-xl)' }}>
+          {/* Email */}
+          <div className="text-center">
+            <h4 className="responsive-text-lg font-semibold" style={{ marginBottom: 'var(--spacing-sm)', color: '#FFFFFF' }}>
+              EMAIL US AT ANYTIME
+            </h4>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              EMAIL TEAM FROM EKAANT
+            </p>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              INFO@EKAANT.IN
+            </p>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              (PROFESSIONAL EMAIL REPLIES ARE GUARANTEED)
+            </p>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold mb-6">{contentData.footer.quickLinks.title}</h4>
-            <ul className="space-y-3">
-              {contentData.footer.quickLinks.items.map((item, index) => (
-                <li key={index}>
-                  <button onClick={() => scrollToSection(item.link)} className="text-gray-300 hover:text-yellow-400 transition-colors text-lg">
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          {/* Phone */}
+          <div className="text-center">
+            <h4 className="responsive-text-lg font-semibold" style={{ marginBottom: 'var(--spacing-sm)', color: '#FFFFFF' }}>
+              PHONE BOOKINGS AND EMERGENCIES
+            </h4>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              PERSONAL ASSISTANT: NAGBADA FOR RESERVATIONS AMBASSADOR
+            </p>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              INTERNATIONAL AIRPORT LOCATION: NEW YORK
+            </p>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              CALL ANYTIME INDIA: +919123456789
+            </p>
           </div>
 
-          <div>
-            <h4 className="text-xl font-bold mb-6">{contentData.footer.activities.title}</h4>
-            <ul className="space-y-3">
-              {contentData.footer.activities.items.map((activity, index) => (
-                <li key={index} className="text-gray-300 text-lg">{activity}</li>
-              ))}
-            </ul>
-            
-            <div className="mt-8">
-              <h5 className="text-lg font-semibold mb-4">{contentData.footer.social.title}</h5>
-              <div className="flex space-x-4 mb-6">
-                <a href="#" className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors shadow-lg">
-                  <Facebook className="text-white" size={18} />
-                </a>
-                <a href="#" className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors shadow-lg">
-                  <Instagram className="text-white" size={18} />
-                </a>
-              </div>
-              <div>
-                <p className="text-gray-300 mb-3 font-medium">{contentData.footer.newsletter.title}</p>
-                <div className="flex">
-                  <input 
-                    type="email" 
-                    placeholder="Your email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 rounded-l-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                  />
-                  <button onClick={handleSubscribe} className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-6 py-3 rounded-r-lg font-semibold transition-colors shadow-lg">
-                    <Send size={18} />
-                  </button>
-                </div>
-              </div>
-            </div>
+          {/* Address */}
+          <div className="text-center">
+            <h4 className="responsive-text-lg font-semibold" style={{ marginBottom: 'var(--spacing-sm)', color: '#FFFFFF' }}>
+              ADDRESS
+            </h4>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              EKAANT AGRO TOURISM RETREAT
+            </p>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              NEAR BOR TIGER RESERVE
+            </p>
+            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
+              WARDHA, MAHARASHTRA
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-green-600 pt-12">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-300 text-lg mb-6 md:mb-0">
-              {contentData.footer.copyright}
-            </p>
-            <div className="flex space-x-8 text-lg">
-              {contentData.footer.legal.map((item, index) => (
-                <a key={index} href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">
-                  {item}
-                </a>
-              ))}
-            </div>
-          </div>
+        {/* Copyright */}
+        <div className="text-center" style={{ paddingTop: 'var(--spacing-lg)', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
+          <p className="responsive-text-sm" style={{ color: '#B5B5B5' }}>
+            © 2024 Ekaant Agro Tourism Retreat. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
