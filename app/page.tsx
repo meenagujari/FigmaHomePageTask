@@ -458,7 +458,7 @@ function FAQSection() {
           {questions.map((question, i) => {
             const isOpen = activeIndex === i
             return (
-              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-sm">
+              <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
                 <button 
                   onClick={() => handleClick(i)}
                   className="w-full p-6 text-left flex items-center justify-between"
