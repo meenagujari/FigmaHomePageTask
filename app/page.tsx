@@ -182,7 +182,7 @@ function Header() {
 
   return (
     <header className="bg-white py-6 px-4">
-      <div className="max-w-[2400px] mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
           <Image 
@@ -195,7 +195,7 @@ function Header() {
         </div>
 
         {/* Navigation Menu */}
-        <nav className="flex items-center space-x-12">
+        <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
           <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
             HOME
           </button>
@@ -208,6 +208,24 @@ function Header() {
           <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal text-sm transition-colors">
             CONTACT US
           </button>
+        </nav>
+
+        {/* Mobile Navigation */}
+        <nav className="md:hidden flex flex-col space-y-2">
+          <div className="flex flex-wrap gap-2 text-xs">
+            <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+              HOME
+            </button>
+            <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+              AMENITIES
+            </button>
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+              GALLERY
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal transition-colors">
+              CONTACT
+            </button>
+          </div>
         </nav>
       </div>
     </header>
@@ -569,7 +587,7 @@ function Footer() {
 // Main Home Component
 export default function Home() {
   return (
-    <div className="w-[2560px] min-h-[7975px] mx-auto bg-white">
+    <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
       <AboutSection />
