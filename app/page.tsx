@@ -296,7 +296,7 @@ function AboutSection({ contentData }: { contentData: ContentData }) {
             </button>
           </div>
           
-          <div className="relative" style={{ marginTop: 'var(--spacing-lg)' }}>
+          <div id="gallery" className="relative" style={{ marginTop: 'var(--spacing-lg)' }}>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <Image 
                 src={contentData.about.image}
@@ -408,6 +408,7 @@ function ServicesSection({ contentData }: { contentData: ContentData }) {
 function LocationSection({ contentData }: { contentData: ContentData }) {
   return (
     <section 
+      id="contact"
       className="relative overflow-hidden"
       style={{ 
         backgroundColor: '#D0D9D9',
