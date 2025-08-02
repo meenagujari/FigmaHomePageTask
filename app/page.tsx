@@ -497,77 +497,10 @@ function Footer() {
     <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-xl) 0' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ marginBottom: 'var(--spacing-xl)', gap: 'var(--spacing-xl)' }}>
-          {/* Left side - Welcome text */}
-          <div>
-            <p className="responsive-text-lg" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
-              We'd love to help you plan your peaceful escape.
-            </p>
-          </div>
-          
-          {/* Right side - Main heading */}
-          <div className="text-center lg:text-right">
-            <h2 className="responsive-text-3xl font-bold" style={{ marginBottom: 'var(--spacing-lg)', color: '#FFFFFF' }}>
-              WE'D LOVE TO HELP YOU
-            </h2>
-            <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-md)', color: '#FFFFFF' }}>
-              PLAN YOUR PEACEFUL
-            </h3>
-            <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-xl)', color: '#FFFFFF' }}>
-              ESCAPE
-            </h3>
-          </div>
-        </div>
-
-        {/* Contact Information Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-xl)' }}>
-          {/* Email */}
-          <div className="text-center">
-            <h4 className="responsive-text-lg font-semibold" style={{ marginBottom: 'var(--spacing-sm)', color: '#FFFFFF' }}>
-              EMAIL US AT ANYTIME
-            </h4>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              EMAIL TEAM FROM EKAANT
-            </p>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              INFO@EKAANT.IN
-            </p>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              (PROFESSIONAL EMAIL REPLIES ARE GUARANTEED)
-            </p>
-          </div>
-
-          {/* Phone */}
-          <div className="text-center">
-            <h4 className="responsive-text-lg font-semibold" style={{ marginBottom: 'var(--spacing-sm)', color: '#FFFFFF' }}>
-              PHONE BOOKINGS AND EMERGENCIES
-            </h4>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              PERSONAL ASSISTANT: NAGBADA FOR RESERVATIONS AMBASSADOR
-            </p>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              INTERNATIONAL AIRPORT LOCATION: NEW YORK
-            </p>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              CALL ANYTIME INDIA: +919123456789
-            </p>
-          </div>
-
-          {/* Address */}
-          <div className="text-center">
-            <h4 className="responsive-text-lg font-semibold" style={{ marginBottom: 'var(--spacing-sm)', color: '#FFFFFF' }}>
-              ADDRESS
-            </h4>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              EKAANT AGRO TOURISM RETREAT
-            </p>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              NEAR BOR TIGER RESERVE
-            </p>
-            <p className="responsive-text-base" style={{ color: '#E5E5E5' }}>
-              WARDHA, MAHARASHTRA
-            </p>
-          </div>
+        <div className="text-left" style={{ marginBottom: 'var(--spacing-xl)' }}>
+          <p className="responsive-text-lg" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
+            We'd love to help you plan your peaceful escape.
+          </p>
         </div>
 
         {/* Copyright */}
