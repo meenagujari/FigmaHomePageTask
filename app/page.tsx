@@ -497,16 +497,26 @@ function Footer() {
     <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-xl) 0' }}>
       <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
         {/* Main Footer Content */}
-        <div className="text-center" style={{ marginBottom: 'var(--spacing-xl)' }}>
-          <h2 className="responsive-text-3xl font-bold" style={{ marginBottom: 'var(--spacing-lg)', color: '#FFFFFF' }}>
-            WE'D LOVE TO HELP YOU
-          </h2>
-          <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-md)', color: '#FFFFFF' }}>
-            PLAN YOUR PEACEFUL
-          </h3>
-          <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-xl)', color: '#FFFFFF' }}>
-            ESCAPE
-          </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ marginBottom: 'var(--spacing-xl)', gap: 'var(--spacing-xl)' }}>
+          {/* Left side - Welcome text */}
+          <div>
+            <p className="responsive-text-lg" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
+              We'd love to help you plan your peaceful escape.
+            </p>
+          </div>
+          
+          {/* Right side - Main heading */}
+          <div className="text-center lg:text-right">
+            <h2 className="responsive-text-3xl font-bold" style={{ marginBottom: 'var(--spacing-lg)', color: '#FFFFFF' }}>
+              WE'D LOVE TO HELP YOU
+            </h2>
+            <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-md)', color: '#FFFFFF' }}>
+              PLAN YOUR PEACEFUL
+            </h3>
+            <h3 className="responsive-text-2xl font-semibold" style={{ marginBottom: 'var(--spacing-xl)', color: '#FFFFFF' }}>
+              ESCAPE
+            </h3>
+          </div>
         </div>
 
         {/* Contact Information Grid */}
