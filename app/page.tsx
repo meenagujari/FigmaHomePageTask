@@ -1,251 +1,230 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
-import { Menu, X, Mail, Phone, MapPin, Send, Facebook, Instagram, Car, Train, Plane, Plus, Minus, ChevronUp, ChevronDown } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Menu, X, Mail, Phone, MapPin, Send, Facebook, Instagram, Car, Train, Plane, Plus, Minus } from 'lucide-react'
 
-// Content data (same as before)
-const contentData = {
-  "site": {
-    "name": "EKAANT",
-    "tagline": "NESTLED IN NATURE"
-  },
-  "hero": {
-    "title": "Welcome to Ekaant—Agro Tourism Retreat Near Bor Tiger Reserve, Maharashtra",
-    "subtitle": "Experience authentic rural life amidst pristine nature and wildlife",
-    "buttonText": "Discover More"
-  },
-  "about": {
-    "title": "Ekaant (एकांत)",
-    "description": [
-      "Ekaant meaning solitude in Sanskrit — was born from a simple yet powerful vision: to create a space where people could escape the chaos of everyday life and experience true peace in the lap of nature.",
-      "Our retreat is designed around the principles of sustainable living, mindful travel, and authentic rural experiences. At Ekaant, you'll find no loud music, no distractions — only nature's rhythm, traditional hospitality, and the gentle hum of wildlife.",
-      "Whether you're a solo traveller looking for quiet, a couple seeking a soulful escape, or a family wanting to introduce your children to the joys of rural India — Ekaant welcomes you with open arms and a calm heart."
-    ],
-    "buttonText": "Book Now"
-  },
-  "services": {
-    "title": "WHAT WE OFFER",
-    "subtitle": "",
-    "buttonText": "Book Your Stay",
-    "items": [
-      {
-        "title": "Bullock Cart Ride",
-        "description": "Traditional farming experience with authentic rural transportation"
-      },
-      {
-        "title": "Organic Farming Activities",
-        "description": "Learn sustainable farming practices and connect with nature"
-      },
-      {
-        "title": "Forest & Bird Photography",
-        "description": "Capture the beauty of wildlife near Bor Tiger Reserve"
-      },
-      {
-        "title": "Stargazing Nights",
-        "description": "Experience the magic of clear rural skies away from city lights"
-      },
-      {
-        "title": "Bonfire Evenings",
-        "description": "Gather around the fire for stories and traditional music"
-      },
-      {
-        "title": "Digital Detox & Wellness",
-        "description": "Reconnect with yourself through yoga and meditation"
-      }
-    ]
-  },
-  "location": {
-    "title": "HOW TO REACH EKAANT",
-    "methods": [
-      {
-        "type": "road",
-        "title": "By Road",
-        "details": [
-          "80 KM From Nagpur",
-          "Via Wardha",
-          "Well Connected Via NH-7 And Local State Roads",
-          "Ample Parking Available At The Property"
-        ]
-      },
-      {
-        "type": "train",
-        "title": "By Train",
-        "details": [
-          "Nearest Railway Junction: Sevagram (20 Km), Wardha (25 Km)",
-          "Taxi And Local Autos Available From Stations"
-        ]
-      },
-      {
-        "type": "air",
-        "title": "By Air",
-        "details": [
-          "Nearest Airport: Nagpur, For Betul/Seoni Ambassador",
-          "International Airport (approx. 80 Km)",
-          "Car Rentals For Private Tours Available"
-        ]
-      }
-    ],
-    "coordinates": {
-      "title": "Ekaant Location",
-      "address": "Near Bor Tiger Reserve\nMaharashtra, India"
-    },
-    "gps": {
-      "title": "GPS Coordinates:",
-      "coordinates": "21.0000° N, 78.0000° E"
+// Content data interface
+interface ContentData {
+  site: {
+    name: string
+    tagline: string
+  }
+  hero: {
+    title: string
+    subtitle: string
+    backgroundImage: string
+  }
+  about: {
+    title: string
+    description: string[]
+    buttonText: string
+    image: string
+  }
+  services: {
+    title: string
+    subtitle: string
+    buttonText: string
+    featuredActivities: Array<{
+      title: string
+      description: string
+      backgroundPosition: string
+      icon: string
+    }>
+    additionalActivities: Array<{
+      title: string
+      description: string
+      backgroundPosition: string
+      icon: string
+    }>
+    images: {
+      activitiesGroup: string
+      servicesGroup: string
     }
-  },
-  "faq": {
-    "title": "FREQUENTLY ASKED QUESTIONS (FAQS)",
-    "subtitle": "Find answers to common questions about your stay at Ekaant",
-    "items": [
-      {
-        "question": "Is The Resort Child Friendly?",
-        "answer": "Yes, Ekaant is completely child-friendly with safe outdoor spaces, nature activities, and family accommodations designed for all ages."
-      },
-      {
-        "question": "Is There Mobile Networks Or Internet?",
-        "answer": "We offer limited WiFi in common areas for essential needs, encouraging a digital detox experience. Mobile network coverage varies by provider."
-      },
-      {
-        "question": "Can We Bring Pets Or Animals Here?",
-        "answer": "Pets are welcome with prior notification. We request keeping them leashed in common areas and ensuring they don't disturb the natural wildlife habitat."
-      },
-      {
-        "question": "Do You Allow Pets?",
-        "answer": "Yes, we allow well-behaved pets. Please inform us during booking and ensure your pet is comfortable in a rural environment with local wildlife."
-      },
-      {
-        "question": "What Is The Best Time To Visit?",
-        "answer": "October to March offers the most pleasant weather. Monsoon season (June-September) provides lush greenery, while April-May offers unique summer wildlife experiences."
-      }
-    ]
-  },
-  "footer": {
-    "contact": {
-      "title": "WE'D LOVE TO HELP YOU PLAN YOUR PEACEFUL ESCAPE",
-      "email": {
-        "label": "EMAIL US FOR ANY INFORMATION",
-        "address": "info@ekaant.com"
-      },
-      "phone": {
-        "label": "CONTACT US FOR BOOKINGS",
-        "number": "+91 98765 43210"
-      },
-      "address": {
-        "label": "VISIT US AT",
-        "details": "NEAR BOR TIGER RESERVE\nWARDHA, MAHARASHTRA"
-      }
-    },
-    "quickLinks": {
-      "title": "Quick Links",
-      "items": [
-        { "label": "Home", "link": "home" },
-        { "label": "Amenities", "link": "amenities" },
-        { "label": "Photo Gallery", "link": "gallery" },
-        { "label": "Contact Us", "link": "contact" }
-      ]
-    },
-    "activities": {
-      "title": "Activities",
-      "items": [
-        "Organic Farming",
-        "Wildlife Photography",
-        "Stargazing",
-        "Bonfire Evenings",
-        "Digital Detox"
-      ]
-    },
-    "social": {
-      "title": "Stay Connected"
-    },
-    "newsletter": {
-      "title": "Subscribe for updates"
-    },
-    "copyright": "© 2024 Ekaant Agro Tourism Retreat. All rights reserved.",
-    "legal": [
-      "Privacy Policy",
-      "Terms of Service",
-      "Cancellation Policy"
-    ]
+  }
+  location: {
+    title: string
+    methods: Array<{
+      type: string
+      title: string
+      details: string[]
+    }>
+    coordinates: {
+      title: string
+      address: string
+    }
+    gps: {
+      title: string
+      coordinates: string
+    }
+  }
+  faq: {
+    title: string
+    subtitle: string
+    items: Array<{
+      question: string
+      answer: string
+    }>
+  }
+  footer: {
+    contact: {
+      phone: { label: string; number: string }
+      email: { label: string; address: string }
+      address: { label: string; details: string }
+    }
+    navigation: {
+      title: string
+      items: Array<{ label: string; link: string }>
+    }
+    activities: {
+      title: string
+      items: string[]
+    }
+    social: { title: string }
+    newsletter: { title: string }
+    copyright: string
+    legal: string[]
   }
 }
 
-// Header Component
-function Header() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+// Main Homepage Component
+export default function HomePage() {
+  const [contentData, setContentData] = useState<ContentData | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content')
+        if (!response.ok) {
+          throw new Error('Failed to fetch content')
+        }
+        const data = await response.json()
+        setContentData(data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error occurred')
+      } finally {
+        setLoading(false)
+      }
     }
+
+    fetchContent()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading Ekaant content...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="text-red-600 mb-4">
+            <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Content Load Error</h2>
+          <p className="text-gray-600">{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  if (!contentData) {
+    return null
   }
 
   return (
-    <header className="bg-white w-full fixed top-0 left-0 right-0 z-50 shadow-sm" style={{ paddingTop: 'var(--spacing-sm)', paddingBottom: 'var(--spacing-sm)' }}>
-      <div className="responsive-container flex items-center justify-between" style={{ paddingLeft: 'var(--spacing-sm)', paddingRight: 'var(--spacing-sm)' }}>
-        {/* Logo */}
-        <div className="flex items-center">
-          <Image 
-            src="/logo.png" 
-            alt="Ekaant Logo" 
-            width={120}
-            height={36}
-            style={{ height: 'clamp(2rem, 2rem + 1.5vw, 3.5rem)', width: 'auto' }}
-          />
-        </div>
+    <div className="min-h-screen bg-white">
+      <Header contentData={contentData} />
+      <HeroSection contentData={contentData} />
+      <AboutSection contentData={contentData} />
+      <ServicesSection contentData={contentData} />
+      <LocationSection contentData={contentData} />
+      <FAQSection contentData={contentData} />
+      <Footer contentData={contentData} />
+    </div>
+  )
+}
 
-        {/* Navigation Menu - Desktop */}
-        <nav className="hidden md:flex items-center" style={{ gap: 'clamp(1rem, 1rem + 1vw, 2rem)' }}>
-          <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
-            HOME
-          </button>
-          <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
-            AMENITIES
-          </button>
-          <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
-            PHOTO GALLERY
-          </button>
-          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
-            CONTACT US
-          </button>
-        </nav>
+// Header Component
+function Header({ contentData }: { contentData: ContentData }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-        {/* Mobile Navigation */}
-        <nav className="md:hidden">
-          <div className="flex flex-wrap justify-end" style={{ gap: 'clamp(0.5rem, 0.5rem + 0.5vw, 1rem)' }}>
-            <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
-              HOME
-            </button>
-            <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
-              AMENITIES
-            </button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
-              GALLERY
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
-              CONTACT
-            </button>
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+      <div className="responsive-container w-full flex items-center justify-between" style={{ padding: 'var(--spacing-md)' }}>
+        <div className="flex items-center" style={{ gap: 'var(--spacing-sm)' }}>
+          <div className="text-2xl font-bold text-gray-900" style={{ fontSize: 'var(--font-size-2xl)' }}>
+            {contentData.site.name}
           </div>
+          <div className="text-sm text-green-600 font-medium hidden md:block" style={{ fontSize: 'var(--font-size-sm)' }}>
+            {contentData.site.tagline}
+          </div>
+        </div>
+        
+        <nav className="hidden md:flex items-center" style={{ gap: 'var(--spacing-lg)' }}>
+          <a href="#about" className="text-gray-700 hover:text-green-600 transition-colors font-medium">About</a>
+          <a href="#services" className="text-gray-700 hover:text-green-600 transition-colors font-medium">Activities</a>
+          <a href="#location" className="text-gray-700 hover:text-green-600 transition-colors font-medium">Location</a>
+          <a href="#faq" className="text-gray-700 hover:text-green-600 transition-colors font-medium">FAQ</a>
+          <a href="#contact" className="text-gray-700 hover:text-green-600 transition-colors font-medium">Contact</a>
         </nav>
+        
+        <button 
+          className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+      
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100" style={{ padding: 'var(--spacing-md)' }}>
+          <nav className="flex flex-col" style={{ gap: 'var(--spacing-md)' }}>
+            <a href="#about" className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">About</a>
+            <a href="#services" className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">Activities</a>
+            <a href="#location" className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">Location</a>
+            <a href="#faq" className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">FAQ</a>
+            <a href="#contact" className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2">Contact</a>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }
 
 // Hero Section Component
-function HeroSection() {
-  const scrollToAbout = () => {
-    const element = document.getElementById('about')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
+function HeroSection({ contentData }: { contentData: ContentData }) {
   return (
-    <section id="home" className="relative flex items-center justify-start overflow-hidden" style={{ height: 'clamp(80vh, 90vh, 120vh)', paddingTop: 'calc(var(--spacing-3xl) + var(--spacing-md))' }}>
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
-      }} />
+    <section className="relative w-full overflow-hidden" style={{ minHeight: 'var(--hero-height)' }}>
+      <Image 
+        src={contentData.hero.backgroundImage}
+        alt="Ekaant Agro Tourism Retreat"
+        fill
+        priority
+        className="object-cover object-center w-full h-full"
+        sizes="100vw"
+        style={{ 
+          objectPosition: 'center center',
+          filter: 'brightness(0.7)'
+        }}
+      />
       
       <div className="relative z-10 text-center text-white responsive-container w-full flex items-end justify-center h-full" style={{ padding: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-4xl)' }}>
         <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
@@ -267,49 +246,46 @@ function HeroSection() {
 }
 
 // About Section Component
-function AboutSection() {
+function AboutSection({ contentData }: { contentData: ContentData }) {
   return (
-    <section id="about" className="bg-white" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
-        <div className="grid lg:grid-cols-2 items-start" style={{ gap: 'var(--spacing-2xl)' }}>
-          <div>
-            <h2 className="font-semibold leading-tight responsive-text-5xl" style={{ marginBottom: 'var(--spacing-lg)', color: '#131212' }}>
+    <section id="about" className="bg-white" style={{ padding: 'var(--spacing-4xl) 0' }}>
+      <div className="responsive-container w-full" style={{ padding: '0 var(--spacing-lg)' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: 'var(--spacing-4xl)' }}>
+          <div className="space-y-6">
+            <h2 className="font-bold text-gray-900" style={{ 
+              fontSize: 'var(--font-size-3xl)',
+              marginBottom: 'var(--spacing-lg)'
+            }}>
               {contentData.about.title}
             </h2>
-            <div className="text-gray-700 leading-relaxed responsive-text-lg" style={{ marginBottom: 'var(--spacing-xl)' }}>
-              {contentData.about.description.map((paragraph, index) => (
-                <p key={index} className="text-justify" style={{ marginBottom: 'var(--spacing-sm)' }}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            
+            {contentData.about.description.map((paragraph, index) => (
+              <p key={index} className="text-gray-600 leading-relaxed" style={{ fontSize: 'var(--font-size-lg)' }}>
+                {paragraph}
+              </p>
+            ))}
+            
             <button 
-              className="text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
+              className="rounded-full text-white font-medium transition-all duration-300 hover:scale-105 transform" 
               style={{ 
                 backgroundColor: '#003E17',
-                padding: 'var(--button-padding-y) var(--button-padding-x)',
-                borderRadius: 'var(--border-radius-full)',
-                letterSpacing: '0.025em'
+                padding: 'var(--spacing-md) var(--spacing-xl)',
+                fontSize: 'var(--font-size-md)'
               }}
-              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#002a10'}
-              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#003E17'}
             >
-              Explore More
+              {contentData.about.buttonText}
             </button>
           </div>
           
-          <div className="relative" style={{ marginTop: 'var(--spacing-lg)' }}>
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <Image 
-                src="/nature-retreat.jpg"
-                alt="Ekaant forest retreat setting" 
-                width={800}
-                height={500}
-                className="w-full object-cover"
-                style={{ height: 'calc(20rem + 15vw)' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
+          <div className="relative">
+            <Image 
+              src={contentData.about.image}
+              alt="Nature retreat experience"
+              width={600}
+              height={450}
+              className="rounded-lg object-cover w-full h-auto shadow-lg"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
       </div>
@@ -318,164 +294,70 @@ function AboutSection() {
 }
 
 // Services Section Component
-function ServicesSection() {
-  // Define specific activities with corresponding background positions from the group image
-  const featuredActivities = [
-    {
-      title: "Rural Farm Experience",
-      description: "Experience authentic rural life and connect with nature",
-      backgroundPosition: "left center", // Left image - farm scene
-      icon: "🚜"
-    },
-    {
-      title: "Nature Activities",
-      description: "Explore organic farming, connect with local wildlife and sustainable practices",
-      backgroundPosition: "center center", // Middle image - people in nature
-      icon: "🌱"
-    },
-    {
-      title: "Wildlife Photography",
-      description: "Capture forest wildlife and birds near Bor Tiger Reserve with expert guidance",
-      backgroundPosition: "right center", // Right image - photography scene
-      icon: "📸"
-    }
-  ]
-
-  const additionalActivities = [
-    {
-      title: "Stargazing Nights",
-      description: "Experience the magic of clear rural skies away from city lights",
-      icon: "⭐"
-    },
-    {
-      title: "Bonfire Evenings", 
-      description: "Gather around the fire for stories and traditional music",
-      icon: "🔥"
-    },
-    {
-      title: "Digital Detox & Wellness",
-      description: "Reconnect with yourself through yoga and meditation",
-      icon: "🧘"
-    }
-  ]
-
+function ServicesSection({ contentData }: { contentData: ContentData }) {
   return (
-    <section id="amenities" className="bg-gray-50" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
-        <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          <div className="inline-block" style={{ marginBottom: 'var(--spacing-md)' }}>
-            <h2 
-              className="font-semibold text-gray-900 px-8 py-4 rounded-full border"
-              style={{ 
-                fontSize: 'var(--font-size-3xl)',
-                borderColor: '#003E17',
-                backgroundColor: 'transparent'
-              }}
-            >
-              {contentData.services.title}
-            </h2>
-          </div>
-          <p className="text-gray-600 leading-relaxed responsive-text-xl" style={{ maxWidth: 'calc(60% + 10vw)', margin: '0 auto' }}>
-            {contentData.services.subtitle}
-          </p>
+    <section id="services" className="bg-gray-50" style={{ padding: 'var(--spacing-4xl) 0' }}>
+      <div className="responsive-container w-full" style={{ padding: '0 var(--spacing-lg)' }}>
+        <div className="text-center" style={{ marginBottom: 'var(--spacing-4xl)' }}>
+          <h2 className="font-bold text-gray-900" style={{ 
+            fontSize: 'var(--font-size-3xl)',
+            marginBottom: 'var(--spacing-md)'
+          }}>
+            {contentData.services.title}
+          </h2>
+          {contentData.services.subtitle && (
+            <p className="text-gray-600" style={{ fontSize: 'var(--font-size-lg)' }}>
+              {contentData.services.subtitle}
+            </p>
+          )}
         </div>
 
-        {/* Featured Activities with Background Images */}
-        <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          {featuredActivities.map((activity, index) => (
-            <div key={index} className="group">
-              <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{
-                    backgroundImage: `url('/activities-group.png')`,
-                    backgroundPosition: activity.backgroundPosition
-                  }}
-                />
-                <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
-              </div>
-              <div className="text-center">
-                <h3 className="font-bold text-gray-900 responsive-text-lg">
-                  {activity.title}
-                </h3>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-4xl)' }}>
+          {contentData.services.featuredActivities.map((activity, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <div className="text-2xl mb-4">{activity.icon}</div>
+              <h3 className="font-semibold text-gray-900 mb-2" style={{ fontSize: 'var(--font-size-xl)' }}>
+                {activity.title}
+              </h3>
+              <p className="text-gray-600" style={{ fontSize: 'var(--font-size-md)' }}>
+                {activity.description}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Additional Activities with Background Images */}
-        <div className="grid md:grid-cols-3 gap-6" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          {/* Stargazing Nights */}
-          <div className="group">
-            <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{
-                  backgroundImage: `url('/group2-services.png')`,
-                  backgroundPosition: 'left center'
-                }}
-              />
-              <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold text-gray-900 responsive-text-lg">
-                Stargazing Nights
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-4xl)' }}>
+          {contentData.services.additionalActivities.map((activity, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <div className="text-2xl mb-4">{activity.icon}</div>
+              <h3 className="font-semibold text-gray-900 mb-2" style={{ fontSize: 'var(--font-size-xl)' }}>
+                {activity.title}
               </h3>
+              <p className="text-gray-600" style={{ fontSize: 'var(--font-size-md)' }}>
+                {activity.description}
+              </p>
             </div>
-          </div>
-
-          {/* Bonfire Evenings */}
-          <div className="group">
-            <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{
-                  backgroundImage: `url('/group2-services.png')`,
-                  backgroundPosition: 'center center'
-                }}
-              />
-              <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold text-gray-900 responsive-text-lg">
-                Bonfire Evenings
-              </h3>
-            </div>
-          </div>
-
-          {/* Digital Detox & Wellness */}
-          <div className="group">
-            <div className="relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105" style={{ height: 'var(--card-height)', marginBottom: 'var(--spacing-md)', borderRadius: 'var(--border-radius-xl)' }}>
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{
-                  backgroundImage: `url('/group2-services.png')`,
-                  backgroundPosition: 'right center'
-                }}
-              />
-              <div className="absolute inset-0 border-4 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ borderRadius: 'var(--border-radius-xl)' }} />
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold text-gray-900 responsive-text-lg">
-                Digital Detox & Wellness
-              </h3>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="text-center">
+          <Image 
+            src={contentData.services.images.servicesGroup}
+            alt="Services at Ekaant"
+            width={800}
+            height={400}
+            className="mx-auto rounded-lg shadow-lg"
+            style={{ marginBottom: 'var(--spacing-xl)' }}
+          />
           <button 
-            className="text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl responsive-text-lg"
+            className="rounded-full text-white font-medium transition-all duration-300 hover:scale-105 transform" 
             style={{ 
               backgroundColor: '#003E17',
-              padding: 'var(--button-padding-y) var(--button-padding-x)',
-              borderRadius: 'var(--border-radius-full)',
-              letterSpacing: '0.025em'
+              padding: 'var(--spacing-md) var(--spacing-xl)',
+              fontSize: 'var(--font-size-md)'
             }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#002a10'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#003E17'}
           >
-            Explore More
+            {contentData.services.buttonText}
           </button>
         </div>
       </div>
@@ -483,238 +365,119 @@ function ServicesSection() {
   )
 }
 
-// Location Section Component
-function LocationSection() {
+// Location Section Component  
+function LocationSection({ contentData }: { contentData: ContentData }) {
+  const getTransportIcon = (type: string) => {
+    switch (type) {
+      case 'road': return <Car className="w-6 h-6" />
+      case 'train': return <Train className="w-6 h-6" />
+      case 'air': return <Plane className="w-6 h-6" />
+      default: return <MapPin className="w-6 h-6" />
+    }
+  }
+
   return (
-    <section 
-      className="relative overflow-hidden"
-      style={{ 
-        backgroundColor: '#D0D9D9',
-        paddingTop: 'var(--spacing-3xl)',
-        paddingBottom: 'var(--spacing-3xl)'
-      }}
-    >
-      <div className="responsive-container" style={{ padding: 'var(--spacing-lg)' }}>
-        {/* Title */}
-        <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          <h2 
-            className="font-bold text-black responsive-text-3xl"
-            style={{ 
-              letterSpacing: '0.05em',
-              lineHeight: '1.2'
-            }}
-          >
-            HOW TO REACH<br />EKAANT
+    <section id="location" className="bg-white" style={{ padding: 'var(--spacing-4xl) 0' }}>
+      <div className="responsive-container w-full" style={{ padding: '0 var(--spacing-lg)' }}>
+        <div className="text-center" style={{ marginBottom: 'var(--spacing-4xl)' }}>
+          <h2 className="font-bold text-black" style={{ 
+            fontSize: 'var(--font-size-2xl)',
+            marginBottom: 'var(--spacing-md)'
+          }}>
+            {contentData.location.title}
           </h2>
         </div>
-        
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 items-start" style={{ gap: 'var(--spacing-2xl)' }}>
-          {/* Left Side - Transportation Methods */}
-          <div className="space-y-4">
-            {/* By Road */}
-            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-md)' }}>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-sm)' }}>
-                <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
-                      <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                      <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                      <path d="M5 17h-2v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>By Road</h3>
-                  <ul className="text-gray-700 responsive-text-xs space-y-1">
-                    <li>• 90 KM From Nagpur</li>
-                    <li>• 45 KM From Wardha</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
 
-            {/* By Train */}
-            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-md)' }}>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-sm)' }}>
-                <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
-                      <path d="M5 15h14l-2-6H7l-2 6z" />
-                      <path d="M3 15h18" />
-                      <circle cx="6" cy="18" r="2" />
-                      <circle cx="18" cy="18" r="2" />
-                    </svg>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-4xl)' }}>
+          {contentData.location.methods.map((method, index) => (
+            <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <div className="flex items-center mb-4">
+                <div className="text-green-600 mr-3">
+                  {getTransportIcon(method.type)}
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>By Train</h3>
-                  <ul className="text-gray-700 responsive-text-xs space-y-1">
-                    <li>• Sevni (30 Km), Wardha (45 Km)</li>
-                    <li>• Nagpur Junction (90 Km)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* By Air */}
-            <div className="bg-white rounded-lg shadow-md" style={{ padding: 'var(--spacing-md)' }}>
-              <div className="flex items-start" style={{ gap: 'var(--spacing-sm)' }}>
-                <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
-                      <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19 4s-2 2-3.5 3.5L11 16l-8.2 1.8c-.5.1-.8.6-.8 1.1s.5 1 1.1.8L11 16l8.2-1.8z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 responsive-text-base" style={{ marginBottom: 'var(--spacing-xs)' }}>By Air</h3>
-                  <ul className="text-gray-700 responsive-text-xs space-y-1">
-                    <li>• Nagpur Airport (90 Km)</li>
-                    <li>• Cab Services Available</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side - Map/Visual */}
-          <div className="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100" style={{ minHeight: '400px' }}>
-            {/* Map Overlay */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full" style={{ padding: 'var(--spacing-lg)' }}>
-              {/* Location Info Box */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl text-center" style={{ padding: 'var(--spacing-lg)', marginBottom: 'var(--spacing-lg)' }}>
-                <h3 className="font-bold text-gray-900 responsive-text-lg" style={{ marginBottom: 'var(--spacing-sm)' }}>
-                  EKAANT
+                <h3 className="font-semibold text-gray-900" style={{ fontSize: 'var(--font-size-xl)' }}>
+                  {method.title}
                 </h3>
-                <p className="text-gray-700 responsive-text-sm">
-                  Near Bor Tiger Reserve
-                </p>
               </div>
-
-              {/* Animated Location Pin */}
-              <div className="relative">
-                <svg width="65" height="80" viewBox="0 0 80 100" className="animate-bounce">
-                  <path 
-                    d="M40 10 C25 10 15 20 15 35 C15 50 40 85 40 85 C40 85 65 50 65 35 C65 20 55 10 40 10 Z"
-                    fill="#22c55e"
-                    stroke="#ffffff"
-                    strokeWidth="3"
-                    className="drop-shadow-2xl"
-                  />
-                  <circle cx="40" cy="35" r="10" fill="#ffffff" />
-                  <path d="M40 28 L40 42 M33 35 L47 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </div>
-
-              {/* Distance Indicators */}
-              <div className="grid grid-cols-2 gap-3 mt-6 w-full max-w-sm">
-                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
-                  <div className="font-bold responsive-text-sm">90 KM</div>
-                  <div className="text-xs opacity-90">Nagpur</div>
-                </div>
-                <div className="bg-green-600/90 text-white text-center rounded-lg" style={{ padding: 'var(--spacing-sm)' }}>
-                  <div className="font-bold responsive-text-sm">45 KM</div>
-                  <div className="text-xs opacity-90">Wardha</div>
-                </div>
-              </div>
+              <ul className="space-y-2">
+                {method.details.map((detail, detailIndex) => (
+                  <li key={detailIndex} className="text-gray-600" style={{ fontSize: 'var(--font-size-md)' }}>
+                    • {detail}
+                  </li>
+                ))}
+              </ul>
             </div>
+          ))}
+        </div>
 
-            {/* Decorative Elements */}
-            <div className="absolute top-4 right-4 text-green-400 opacity-60">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-              </svg>
-            </div>
-            
-            <div className="absolute bottom-4 left-4 text-green-400 opacity-40">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-            </div>
-          </div>
+        <div className="text-center bg-gray-50 rounded-lg p-6">
+          <h3 className="font-semibold text-gray-900 mb-2" style={{ fontSize: 'var(--font-size-xl)' }}>
+            {contentData.location.coordinates.title}
+          </h3>
+          <p className="text-gray-600 mb-4" style={{ fontSize: 'var(--font-size-md)' }}>
+            {contentData.location.coordinates.address}
+          </p>
+          <p className="text-gray-600" style={{ fontSize: 'var(--font-size-md)' }}>
+            <strong>{contentData.location.gps.title}</strong> {contentData.location.gps.coordinates}
+          </p>
         </div>
       </div>
     </section>
   )
 }
 
-
 // FAQ Section Component
-function FAQSection() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+function FAQSection({ contentData }: { contentData: ContentData }) {
+  const [openItems, setOpenItems] = useState<Set<number>>(new Set())
 
-  const questions = [
-    "Q. Is The Ekaant Child-Friendly?",
-    "Q. Is There Mobile Network Or Internet?", 
-    "Q. Can We Spot Tigers Or Wildlife Here?",
-    "Q. Is Food Included In The Stay?",
-    "Q. Do You Allow Pets?",
-    "Q. What Is The Best Time To Visit?"
-  ]
-
-  const answers = [
-    "Yes, Ekaant is completely child-friendly. We provide safe accommodations and nature-based activities suitable for children of all ages.",
-    "Limited mobile network is available. We provide WiFi in common areas to help you stay connected while enjoying your digital detox.",
-    "Being near Bor Tiger Reserve, wildlife spotting opportunities are excellent. We organize guided safari tours for the best wildlife experience.",
-    "Yes, all meals are included featuring fresh, organic local cuisine prepared with ingredients from our own farm and local sources.",
-    "We welcome well-behaved pets with prior arrangement. Please inform us during booking to ensure proper accommodation.",
-    "October to March offers the best weather. This period provides comfortable temperatures perfect for outdoor activities and wildlife spotting."
-  ]
-
-  const handleClick = (clickedIndex: number) => {
-    setActiveIndex(activeIndex === clickedIndex ? null : clickedIndex)
+  const toggleItem = (index: number) => {
+    const newOpenItems = new Set(openItems)
+    if (newOpenItems.has(index)) {
+      newOpenItems.delete(index)
+    } else {
+      newOpenItems.add(index)
+    }
+    setOpenItems(newOpenItems)
   }
 
   return (
-    <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#f9fafb' }}>
-      <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
-        <div className="text-center mb-12">
-          <div className="inline-block">
-            <h2 
-              className="font-semibold text-gray-900 px-8 py-4 rounded-full border"
-              style={{ 
-                fontSize: 'var(--font-size-3xl)',
-                borderColor: '#003E17',
-                backgroundColor: 'transparent'
-              }}
-            >
-              FREQUENTLY ASKED QUESTIONS (FAQS)
-            </h2>
-          </div>
+    <section id="faq" className="bg-gray-50" style={{ padding: 'var(--spacing-4xl) 0' }}>
+      <div className="responsive-container w-full" style={{ padding: '0 var(--spacing-lg)' }}>
+        <div className="text-center" style={{ marginBottom: 'var(--spacing-4xl)' }}>
+          <h2 className="font-bold text-gray-900" style={{ 
+            fontSize: 'var(--font-size-3xl)',
+            marginBottom: 'var(--spacing-md)'
+          }}>
+            {contentData.faq.title}
+          </h2>
+          <p className="text-gray-600" style={{ fontSize: 'var(--font-size-lg)' }}>
+            {contentData.faq.subtitle}
+          </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
-          {questions.map((question, i) => {
-            const isOpen = activeIndex === i
-            return (
-              <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
-                <button 
-                  onClick={() => handleClick(i)}
-                  className="w-full p-6 text-left flex items-center justify-between"
-                  type="button"
-                >
-                  <h3 className="responsive-text-lg font-medium text-gray-800">
-                    {question}
-                  </h3>
-                  <div className="ml-4">
-                    {isOpen ? (
-                      <ChevronUp className="w-5 h-5" style={{ color: '#003E17' }} />
-                    ) : (
-                      <ChevronDown className="w-5 h-5" style={{ color: '#003E17' }} />
-                    )}
-                  </div>
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-6 border-t border-gray-100">
-                    <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6', paddingTop: '1rem' }}>
-                      {answers[i]}
-                    </p>
-                  </div>
-                )}
-              </div>
-            )
-          })}
+
+        <div className="max-w-4xl mx-auto">
+          {contentData.faq.items.map((item, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-sm mb-4 overflow-hidden border border-green-600" style={{ borderColor: '#003E17' }}>
+              <button
+                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                onClick={() => toggleItem(index)}
+              >
+                <span className="font-semibold text-gray-900" style={{ fontSize: 'var(--font-size-lg)' }}>
+                  {item.question}
+                </span>
+                <div className="text-green-600">
+                  {openItems.has(index) ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                </div>
+              </button>
+              {openItems.has(index) && (
+                <div className="px-6 pb-4">
+                  <p className="text-gray-600 leading-relaxed" style={{ fontSize: 'var(--font-size-md)' }}>
+                    {item.answer}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -722,65 +485,150 @@ function FAQSection() {
 }
 
 // Footer Component
-function Footer() {
+function Footer({ contentData }: { contentData: ContentData }) {
   const [email, setEmail] = useState('')
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
-  const handleSubscribe = () => {
-    if (email) {
-      setEmail('')
-    }
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle newsletter subscription
+    console.log('Newsletter subscription:', email)
+    setEmail('')
   }
 
   return (
-    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-lg) 0' }}>
-      <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ marginBottom: 'var(--spacing-lg)', gap: 'var(--spacing-xl)' }}>
-          {/* Left side - Welcome message */}
-          <div className="text-left">
-            <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.6' }}>
-              WE'D LOVE TO HELP YOU<br />
-              PLAN YOUR PEACEFUL<br />
-              ESCAPE.
-            </p>
-          </div>
+    <footer id="contact" className="text-white" style={{ backgroundColor: '#003E17', padding: 'var(--spacing-4xl) 0 var(--spacing-lg) 0' }}>
+      <div className="responsive-container w-full" style={{ padding: '0 var(--spacing-lg)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style={{ gap: 'var(--spacing-xl)', marginBottom: 'var(--spacing-4xl)' }}>
           
-          {/* Right side - Contact information */}
-          <div className="text-left lg:text-right">
-            <p className="responsive-text-base" style={{ color: '#FFFFFF', lineHeight: '1.8' }}>
-              Call/WhatsApp: +91 9988776655<br />
-              Email: EKANT@NEAVE.TECH<br />
-              Instagram: EKANT<br />
-              Location: Near Bor Tiger Reserve,<br />
-              Wardha, Maharashtra
-            </p>
+          {/* Contact Information */}
+          <div className="lg:col-span-2">
+            <h3 className="font-bold mb-4" style={{ fontSize: 'var(--font-size-xl)' }}>
+              Contact Information
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <Phone className="w-5 h-5 mt-1 mr-3 text-green-300" />
+                <div>
+                  <p className="font-medium" style={{ fontSize: 'var(--font-size-sm)' }}>
+                    {contentData.footer.contact.phone.label}
+                  </p>
+                  <p style={{ fontSize: 'var(--font-size-md)' }}>
+                    {contentData.footer.contact.phone.number}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <Mail className="w-5 h-5 mt-1 mr-3 text-green-300" />
+                <div>
+                  <p className="font-medium" style={{ fontSize: 'var(--font-size-sm)' }}>
+                    {contentData.footer.contact.email.label}
+                  </p>
+                  <p style={{ fontSize: 'var(--font-size-md)' }}>
+                    {contentData.footer.contact.email.address}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <MapPin className="w-5 h-5 mt-1 mr-3 text-green-300" />
+                <div>
+                  <p className="font-medium" style={{ fontSize: 'var(--font-size-sm)' }}>
+                    {contentData.footer.contact.address.label}
+                  </p>
+                  <p style={{ fontSize: 'var(--font-size-md)' }}>
+                    {contentData.footer.contact.address.details}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-bold mb-4" style={{ fontSize: 'var(--font-size-xl)' }}>
+              {contentData.footer.navigation.title}
+            </h3>
+            <ul className="space-y-2">
+              {contentData.footer.navigation.items.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={`#${link.link}`} 
+                    className="hover:text-green-300 transition-colors"
+                    style={{ fontSize: 'var(--font-size-md)' }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Activities */}
+          <div>
+            <h3 className="font-bold mb-4" style={{ fontSize: 'var(--font-size-xl)' }}>
+              {contentData.footer.activities.title}
+            </h3>
+            <ul className="space-y-2">
+              {contentData.footer.activities.items.map((activity, index) => (
+                <li key={index} style={{ fontSize: 'var(--font-size-md)' }}>
+                  {activity}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
+        {/* Social Media & Newsletter */}
+        <div className="flex flex-col md:flex-row items-center justify-between border-t border-green-700 pt-6" style={{ gap: 'var(--spacing-lg)' }}>
+          <div className="flex items-center" style={{ gap: 'var(--spacing-md)' }}>
+            <span style={{ fontSize: 'var(--font-size-md)' }}>{contentData.footer.social.title}:</span>
+            <div className="flex" style={{ gap: 'var(--spacing-sm)' }}>
+              <a href="#" className="text-green-300 hover:text-white transition-colors">
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-green-300 hover:text-white transition-colors">
+                <Instagram className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
 
+          <form onSubmit={handleNewsletterSubmit} className="flex" style={{ gap: 'var(--spacing-sm)' }}>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email for updates"
+              className="px-4 py-2 rounded-lg bg-white/10 border border-green-700 text-white placeholder-green-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              style={{ fontSize: 'var(--font-size-md)' }}
+              required
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
+            >
+              <Send className="w-5 h-5" />
+            </button>
+          </form>
+        </div>
+
+        {/* Copyright */}
+        <div className="text-center mt-6 pt-6 border-t border-green-700">
+          <p className="text-green-300" style={{ fontSize: 'var(--font-size-sm)' }}>
+            {contentData.footer.copyright}
+          </p>
+          <div className="flex justify-center mt-2" style={{ gap: 'var(--spacing-md)' }}>
+            {contentData.footer.legal.map((item, index) => (
+              <a 
+                key={index} 
+                href="#" 
+                className="text-green-300 hover:text-white transition-colors"
+                style={{ fontSize: 'var(--font-size-xs)' }}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </footer>
-  )
-}
-
-// Main Home Component
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <LocationSection />
-      <FAQSection />
-      <Footer />
-    </div>
   )
 }
