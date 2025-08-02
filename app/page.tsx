@@ -26,7 +26,7 @@ const contentData = {
   },
   "services": {
     "title": "WHAT WE OFFER",
-    "subtitle": "Immerse yourself in authentic rural experiences and nature activities",
+    "subtitle": "",
     "buttonText": "Book Your Stay",
     "items": [
       {
