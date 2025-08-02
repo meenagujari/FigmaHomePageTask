@@ -282,7 +282,7 @@ function AboutSection() {
             </h2>
             <div className="text-gray-700 leading-relaxed responsive-text-lg" style={{ marginBottom: 'var(--spacing-xl)' }}>
               {contentData.about.description.map((paragraph, index) => (
-                <p key={index} className="text-justify" style={{ marginBottom: 'var(--spacing-md)' }}>
+                <p key={index} className="text-justify" style={{ marginBottom: 'var(--spacing-sm)' }}>
                   {paragraph}
                 </p>
               ))}
