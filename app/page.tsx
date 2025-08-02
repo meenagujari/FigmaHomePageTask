@@ -547,41 +547,43 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
-          {contentData.faq.items.map((item, i) => {
-            const isOpen = activeIndex === i
-            return (
-              <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
-                <button 
-                  onClick={() => handleClick(i)}
-                  className="w-full p-6 text-left flex items-center justify-between"
-                  type="button"
-                >
-                  <h3 className="responsive-text-lg font-medium text-gray-800">
-                    {item.question}
-                  </h3>
-                  <div className="ml-4">
-                    {isOpen ? (
-                      <svg className="w-5 h-5" style={{ color: '#003E17' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                      </svg>
-                    ) : (
-                      <svg className="w-5 h-5" style={{ color: '#003E17' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    )}
-                  </div>
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-6 border-t border-gray-100">
-                    <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6', paddingTop: '1rem' }}>
-                      {item.answer}
-                    </p>
-                  </div>
-                )}
-              </div>
-            )
-          })}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-lg)' }}>
+            {contentData.faq.items.map((item, i) => {
+              const isOpen = activeIndex === i
+              return (
+                <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
+                  <button 
+                    onClick={() => handleClick(i)}
+                    className="w-full p-6 text-left flex items-center justify-between"
+                    type="button"
+                  >
+                    <h3 className="responsive-text-lg font-medium text-gray-800">
+                      {item.question}
+                    </h3>
+                    <div className="ml-4">
+                      {isOpen ? (
+                        <svg className="w-5 h-5" style={{ color: '#003E17' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-5 h-5" style={{ color: '#003E17' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </div>
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 border-t border-gray-100">
+                      <p className="responsive-text-base text-gray-600" style={{ lineHeight: '1.6', paddingTop: '1rem' }}>
+                        {item.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
