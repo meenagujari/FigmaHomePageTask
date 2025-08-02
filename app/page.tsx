@@ -593,7 +593,7 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
 // Footer Component - Exact Figma Design
 function FooterSection({ contentData }: { contentData: ContentData }) {
   return (
-    <footer className="text-white" style={{ backgroundColor: '#003E17' }}>
+    <footer className="text-white" style={{ backgroundColor: '#003E17', width: '100%' }}>
       <div className="responsive-container w-full" style={{ 
         padding: 'clamp(3rem, 5vw, 6rem) clamp(1rem, 2vw, 2rem) clamp(2rem, 3vw, 3rem)',
         maxWidth: '1200px',
