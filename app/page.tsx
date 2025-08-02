@@ -181,7 +181,11 @@ function Header({ contentData }: { contentData: ContentData }) {
             alt="Ekaant Logo" 
             width={160}
             height={48}
-            style={{ height: 'clamp(3rem, 3rem + 2vw, 5rem)', width: 'auto' }}
+            style={{ 
+              height: 'clamp(3rem, 3rem + 2vw, 5rem)', 
+              width: 'auto',
+              paddingTop: '0.5rem'
+            }}
           />
         </div>
 
