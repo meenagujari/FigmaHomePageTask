@@ -547,21 +547,21 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
           </div>
         </div>
         
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 'var(--spacing-lg)' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3" style={{ gap: 'var(--spacing-lg)' }}>
             {contentData.faq.items.map((item, i) => {
               const isOpen = activeIndex === i
               return (
-                <div key={i} className="bg-white rounded-3xl border overflow-hidden" style={{ borderColor: '#003E17' }}>
+                <div key={`faq-${i}`} className="bg-white rounded-3xl border overflow-hidden h-fit" style={{ borderColor: '#003E17' }}>
                   <button 
                     onClick={() => handleClick(i)}
                     className="w-full p-6 text-left flex items-center justify-between"
                     type="button"
                   >
-                    <h3 className="responsive-text-lg font-medium text-gray-800">
+                    <h3 className="responsive-text-lg font-medium text-gray-800 pr-4">
                       {item.question}
                     </h3>
-                    <div className="ml-4">
+                    <div className="flex-shrink-0">
                       {isOpen ? (
                         <svg className="w-5 h-5" style={{ color: '#003E17' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
