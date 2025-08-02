@@ -188,9 +188,9 @@ function Header() {
           <Image 
             src="/logo.png" 
             alt="Ekaant Logo" 
-            width={80}
-            height={24}
-            style={{ height: 'calc(1.5rem + 0.5vw)', width: 'auto' }}
+            width={120}
+            height={36}
+            style={{ height: 'calc(2.5rem + 1vw)', width: 'auto' }}
           />
         </div>
 
