@@ -1,0 +1,1200 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Business Homepage - React Redux TypeScript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'sans': ['Inter', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'monospace']
+                },
+                colors: {
+                    primary: '#6366F1',
+                    secondary: '#8B5CF6',
+                    accent: '#06B6D4',
+                    neutral: {
+                        50: '#F8FAFC',
+                        100: '#F1F5F9',
+                        200: '#E2E8F0',
+                        300: '#CBD5E1',
+                        400: '#94A3B8',
+                        500: '#64748B',
+                        600: '#475569',
+                        700: '#334155',
+                        800: '#1E293B',
+                        900: '#0F172A'
+                    }
+                },
+                animation: {
+                    'fade-in': 'fadeIn 0.6s ease-out',
+                    'slide-up': 'slideUp 0.6s ease-out',
+                    'bounce-subtle': 'bounceSubtle 2s infinite',
+                    'pulse-slow': 'pulse 3s infinite'
+                },
+                keyframes: {
+                    fadeIn: {
+                        '0%': { opacity: '0' },
+                        '100%': { opacity: '1' }
+                    },
+                    slideUp: {
+                        '0%': { opacity: '0', transform: 'translateY(20px)' },
+                        '100%': { opacity: '1', transform: 'translateY(0)' }
+                    },
+                    bounceSubtle: {
+                        '0%, 100%': { transform: 'translateY(0)' },
+                        '50%': { transform: 'translateY(-10px)' }
+                    }
+                }
+            }
+        }
+    };
+    </script>
+
+    <style>
+        /* Custom CSS for calc-based responsive design */
+        :root {
+            --container-padding: clamp(1rem, 5vw, 3rem);
+            --section-spacing: clamp(3rem, 8vw, 6rem);
+            --card-padding: clamp(1.5rem, 4vw, 2.5rem);
+            --border-radius: clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom responsive utilities */
+        .text-responsive {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            line-height: clamp(1.25rem, 3vw, 1.5rem);
+        }
+
+        .text-heading {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            line-height: clamp(1.8rem, 5vw, 3rem);
+        }
+
+        .text-hero {
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: clamp(2.5rem, 7vw, 4.5rem);
+        }
+
+        /* Carousel styles */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* Navigation scroll effects */
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover animations */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+            
+            .mobile-center {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-neutral-50 text-neutral-800 scroll-smooth">
+    <!-- @COMPONENT: Navigation [sticky header with scroll effects] -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out" data-mock="true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center" style="height: calc(4rem + 1vw);">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-rocket text-white text-lg"></i>
+                    </div>
+                    <span class="font-bold text-xl text-neutral-800" data-bind="company.name">InnovateCorp</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <!-- @MAP: navigationItems.map(item => ( -->
+                    <a href="#home" class="text-neutral-600 hover:text-primary transition-colors duration-200 font-medium" data-mock="true">Home</a>
+                    <a href="#features" class="text-neutral-600 hover:text-primary transition-colors duration-200 font-medium" data-mock="true">Features</a>
+                    <a href="#about" class="text-neutral-600 hover:text-primary transition-colors duration-200 font-medium" data-mock="true">About</a>
+                    <a href="#portfolio" class="text-neutral-600 hover:text-primary transition-colors duration-200 font-medium" data-mock="true">Portfolio</a>
+                    <a href="#contact" class="text-neutral-600 hover:text-primary transition-colors duration-200 font-medium" data-mock="true">Contact</a>
+                    <!-- @END_MAP )) -->
+                    <button class="bg-primary hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 font-medium" data-event="click:handleGetStarted">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors" data-event="click:toggleMobileMenu">
+                    <i class="fas fa-bars text-xl text-neutral-600"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <!-- @STATE: isMobileMenuOpen:boolean = false -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-neutral-200 shadow-lg">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-neutral-600 hover:text-primary transition-colors" data-mock="true">Home</a>
+                <a href="#features" class="block py-2 text-neutral-600 hover:text-primary transition-colors" data-mock="true">Features</a>
+                <a href="#about" class="block py-2 text-neutral-600 hover:text-primary transition-colors" data-mock="true">About</a>
+                <a href="#portfolio" class="block py-2 text-neutral-600 hover:text-primary transition-colors" data-mock="true">Portfolio</a>
+                <a href="#contact" class="block py-2 text-neutral-600 hover:text-primary transition-colors" data-mock="true">Contact</a>
+                <button class="w-full bg-primary hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium mt-4">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: HeroSection [carousel with dynamic content] -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden" data-mock="true">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        
+        <!-- Hero Carousel -->
+        <div class="carousel-container w-full h-full">
+            <div id="hero-carousel" class="carousel-track">
+                <!-- @MAP: heroSlides.map(slide => ( -->
+                <!-- Slide 1 -->
+                <div class="carousel-slide relative">
+                    <!-- Modern office workspace with people collaborating -->
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+                        <div class="text-white max-w-3xl animate-fade-in">
+                            <h1 class="text-hero font-bold mb-6" data-bind="heroSlides[0].title">
+                                Transform Your Business with Innovation
+                            </h1>
+                            <p class="text-responsive mb-8 opacity-90" data-bind="heroSlides[0].description">
+                                Discover cutting-edge solutions that drive growth, enhance productivity, and revolutionize your industry with our comprehensive platform.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="bg-white text-primary hover:bg-neutral-100 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover-lift" data-event="click:handleStartFree">
+                                    Start Free Trial
+                                </button>
+                                <button class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-200" data-event="click:handleWatchDemo">
+                                    <i class="fas fa-play mr-2"></i>Watch Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide relative">
+                    <!-- Technology dashboard with analytics and charts -->
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent/80 to-primary/80"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+                        <div class="text-white max-w-3xl animate-fade-in">
+                            <h1 class="text-hero font-bold mb-6" data-bind="heroSlides[1].title">
+                                Data-Driven Insights for Smart Decisions
+                            </h1>
+                            <p class="text-responsive mb-8 opacity-90" data-bind="heroSlides[1].description">
+                                Harness the power of advanced analytics and machine learning to unlock actionable insights that propel your business forward.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="bg-white text-primary hover:bg-neutral-100 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover-lift">
+                                    Explore Analytics
+                                </button>
+                                <button class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-200">
+                                    <i class="fas fa-chart-line mr-2"></i>View Reports
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide relative">
+                    <!-- Team collaboration and communication -->
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-secondary/80 to-accent/80"></div>
+                    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+                        <div class="text-white max-w-3xl animate-fade-in">
+                            <h1 class="text-hero font-bold mb-6" data-bind="heroSlides[2].title">
+                                Seamless Collaboration, Unlimited Potential
+                            </h1>
+                            <p class="text-responsive mb-8 opacity-90" data-bind="heroSlides[2].description">
+                                Connect your team, streamline workflows, and achieve remarkable results with our integrated collaboration platform.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button class="bg-white text-primary hover:bg-neutral-100 px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover-lift">
+                                    Join Thousands of Teams
+                                </button>
+                                <button class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-200">
+                                    <i class="fas fa-users mr-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+            <!-- @MAP: heroSlides.map((_, index) => ( -->
+            <button class="carousel-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-200" data-slide="0"></button>
+            <button class="carousel-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-200" data-slide="1"></button>
+            <button class="carousel-dot w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition-opacity duration-200" data-slide="2"></button>
+            <!-- @END_MAP )) -->
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 right-8 animate-bounce-subtle">
+            <i class="fas fa-chevron-down text-white text-2xl opacity-70"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- @COMPONENT: FeaturesSection [interactive feature cards] -->
+    <section id="features" class="py-20 bg-white" data-mock="true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-heading font-bold text-neutral-800 mb-4" data-bind="features.title">
+                    Powerful Features for Modern Businesses
+                </h2>
+                <p class="text-responsive text-neutral-600 max-w-3xl mx-auto" data-bind="features.subtitle">
+                    Discover the comprehensive suite of tools designed to streamline your operations, boost productivity, and drive sustainable growth.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: features.items.map(feature => ( -->
+                <div class="bg-neutral-50 rounded-xl p-8 hover-lift hover:bg-white transition-all duration-300 group border border-transparent hover:border-primary/20" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-rocket text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-800 mb-4" data-bind="feature.title">Advanced Analytics</h3>
+                    <p class="text-neutral-600 leading-relaxed" data-bind="feature.description">
+                        Get deep insights into your business performance with our AI-powered analytics platform that turns data into actionable intelligence.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-50 rounded-xl p-8 hover-lift hover:bg-white transition-all duration-300 group border border-transparent hover:border-primary/20" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-800 mb-4" data-bind="feature.title">Enterprise Security</h3>
+                    <p class="text-neutral-600 leading-relaxed" data-bind="feature.description">
+                        Protect your valuable data with bank-level security, compliance certifications, and advanced threat protection mechanisms.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-50 rounded-xl p-8 hover-lift hover:bg-white transition-all duration-300 group border border-transparent hover:border-primary/20" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-secondary to-accent rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-cogs text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-800 mb-4" data-bind="feature.title">Smart Automation</h3>
+                    <p class="text-neutral-600 leading-relaxed" data-bind="feature.description">
+                        Streamline repetitive tasks and workflows with intelligent automation that adapts to your business processes.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-50 rounded-xl p-8 hover-lift hover:bg-white transition-all duration-300 group border border-transparent hover:border-primary/20" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-800 mb-4" data-bind="feature.title">Team Collaboration</h3>
+                    <p class="text-neutral-600 leading-relaxed" data-bind="feature.description">
+                        Enable seamless collaboration across teams with real-time communication, file sharing, and project management tools.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-50 rounded-xl p-8 hover-lift hover:bg-white transition-all duration-300 group border border-transparent hover:border-primary/20" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent to-secondary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-800 mb-4" data-bind="feature.title">Mobile Ready</h3>
+                    <p class="text-neutral-600 leading-relaxed" data-bind="feature.description">
+                        Access your business tools anywhere, anytime with our responsive design and native mobile applications.
+                    </p>
+                </div>
+
+                <div class="bg-neutral-50 rounded-xl p-8 hover-lift hover:bg-white transition-all duration-300 group border border-transparent hover:border-primary/20" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-secondary to-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-800 mb-4" data-bind="feature.title">Real-time Insights</h3>
+                    <p class="text-neutral-600 leading-relaxed" data-bind="feature.description">
+                        Make informed decisions with live dashboards, real-time monitoring, and instant alerts for critical business metrics.
+                    </p>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FeaturesSection -->
+
+    <!-- @COMPONENT: AboutSection [parallax with statistics] -->
+    <section id="about" class="py-20 bg-gradient-to-br from-neutral-50 to-neutral-100 relative overflow-hidden" data-mock="true">
+        <div class="absolute inset-0 opacity-5">
+            <!-- Geometric pattern background -->
+            <div class="absolute inset-0 bg-repeat" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiIGZpbGw9IiM2MzY2RjEiLz48L2c+PC9zdmc+');"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Content Side -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-heading font-bold text-neutral-800 mb-6" data-bind="about.title">
+                            Empowering Businesses Since 2015
+                        </h2>
+                        <p class="text-responsive text-neutral-600 leading-relaxed mb-6" data-bind="about.description">
+                            We've been at the forefront of digital transformation, helping thousands of companies worldwide leverage technology to achieve unprecedented growth and efficiency.
+                        </p>
+                        <p class="text-responsive text-neutral-600 leading-relaxed" data-bind="about.mission">
+                            Our mission is to democratize access to enterprise-grade tools, making powerful business solutions accessible to organizations of all sizes.
+                        </p>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="grid grid-cols-2 gap-8">
+                        <!-- @MAP: about.statistics.map(stat => ( -->
+                        <div class="text-center lg:text-left" data-mock="true">
+                            <div class="text-3xl lg:text-4xl font-bold text-primary mb-2" data-bind="stat.value">50K+</div>
+                            <div class="text-neutral-600 font-medium" data-bind="stat.label">Active Users</div>
+                        </div>
+                        <div class="text-center lg:text-left" data-mock="true">
+                            <div class="text-3xl lg:text-4xl font-bold text-secondary mb-2" data-bind="stat.value">99.9%</div>
+                            <div class="text-neutral-600 font-medium" data-bind="stat.label">Uptime</div>
+                        </div>
+                        <div class="text-center lg:text-left" data-mock="true">
+                            <div class="text-3xl lg:text-4xl font-bold text-accent mb-2" data-bind="stat.value">150+</div>
+                            <div class="text-neutral-600 font-medium" data-bind="stat.label">Countries</div>
+                        </div>
+                        <div class="text-center lg:text-left" data-mock="true">
+                            <div class="text-3xl lg:text-4xl font-bold text-primary mb-2" data-bind="stat.value">24/7</div>
+                            <div class="text-neutral-600 font-medium" data-bind="stat.label">Support</div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <button class="bg-primary hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover-lift" data-event="click:handleLearnMore">
+                        Learn More About Us
+                    </button>
+                </div>
+
+                <!-- Image Side -->
+                <div class="relative">
+                    <!-- Modern office space with diverse team working together -->
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                         alt="Diverse team collaborating in modern office space" 
+                         class="rounded-2xl shadow-2xl w-full h-auto hover-lift" 
+                         data-mock-image="true" />
+                    
+                    <!-- Floating Cards -->
+                    <div class="absolute -top-6 -right-6 bg-white rounded-xl p-4 shadow-lg hover-lift glass-effect" data-mock="true">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-green-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-neutral-800">Project Completed</div>
+                                <div class="text-sm text-neutral-600">+40% this month</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-lg hover-lift glass-effect" data-mock="true">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-chart-line text-blue-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-neutral-800">Revenue Growth</div>
+                                <div class="text-sm text-neutral-600">+125% YoY</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- @COMPONENT: PortfolioSection [interactive gallery] -->
+    <section id="portfolio" class="py-20 bg-white" data-mock="true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-heading font-bold text-neutral-800 mb-4" data-bind="portfolio.title">
+                    Success Stories & Case Studies
+                </h2>
+                <p class="text-responsive text-neutral-600 max-w-3xl mx-auto" data-bind="portfolio.subtitle">
+                    Explore how we've helped businesses across various industries achieve remarkable transformations and measurable results.
+                </p>
+            </div>
+
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <!-- @MAP: portfolio.categories.map(category => ( -->
+                <button class="portfolio-filter px-6 py-3 rounded-full border-2 border-neutral-200 text-neutral-600 hover:border-primary hover:text-primary transition-all duration-200 font-medium active" data-category="all" data-mock="true">
+                    All Projects
+                </button>
+                <button class="portfolio-filter px-6 py-3 rounded-full border-2 border-neutral-200 text-neutral-600 hover:border-primary hover:text-primary transition-all duration-200 font-medium" data-category="web" data-mock="true">
+                    Web Development
+                </button>
+                <button class="portfolio-filter px-6 py-3 rounded-full border-2 border-neutral-200 text-neutral-600 hover:border-primary hover:text-primary transition-all duration-200 font-medium" data-category="mobile" data-mock="true">
+                    Mobile Apps
+                </button>
+                <button class="portfolio-filter px-6 py-3 rounded-full border-2 border-neutral-200 text-neutral-600 hover:border-primary hover:text-primary transition-all duration-200 font-medium" data-category="design" data-mock="true">
+                    UI/UX Design
+                </button>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: portfolio.projects.map(project => ( -->
+                <div class="portfolio-item group relative overflow-hidden rounded-xl bg-neutral-100 hover-lift" data-category="web" data-mock="true">
+                    <!-- E-commerce website dashboard showing analytics -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                         alt="E-commerce analytics dashboard" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2" data-bind="project.title">E-commerce Platform</h3>
+                            <p class="text-sm opacity-90 mb-4" data-bind="project.description">Complete redesign resulting in 40% increase in conversions</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary rounded-full text-xs font-medium">React</span>
+                                <span class="px-3 py-1 bg-secondary rounded-full text-xs font-medium">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item group relative overflow-hidden rounded-xl bg-neutral-100 hover-lift" data-category="mobile" data-mock="true">
+                    <!-- Mobile app interface design mockup -->
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                         alt="Mobile app interface design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Fitness Tracking App</h3>
+                            <p class="text-sm opacity-90 mb-4" data-bind="project.description">Native iOS/Android app with 4.8★ rating and 100K+ downloads</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-accent rounded-full text-xs font-medium">React Native</span>
+                                <span class="px-3 py-1 bg-primary rounded-full text-xs font-medium">Redux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item group relative overflow-hidden rounded-xl bg-neutral-100 hover-lift" data-category="design" data-mock="true">
+                    <!-- UI/UX design process and wireframes -->
+                    <img src="https://images.unsplash.com/photo-1559028006-448665bd7c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                         alt="UI/UX design wireframes and process" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Banking App Redesign</h3>
+                            <p class="text-sm opacity-90 mb-4" data-bind="project.description">Complete UX overhaul improving user satisfaction by 60%</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-secondary rounded-full text-xs font-medium">Figma</span>
+                                <span class="px-3 py-1 bg-accent rounded-full text-xs font-medium">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item group relative overflow-hidden rounded-xl bg-neutral-100 hover-lift" data-category="web" data-mock="true">
+                    <!-- Corporate website with modern design -->
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                         alt="Modern corporate website design" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Corporate Website</h3>
+                            <p class="text-sm opacity-90 mb-4" data-bind="project.description">Modern, responsive design with CMS integration</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-primary rounded-full text-xs font-medium">Next.js</span>
+                                <span class="px-3 py-1 bg-secondary rounded-full text-xs font-medium">Headless CMS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item group relative overflow-hidden rounded-xl bg-neutral-100 hover-lift" data-category="mobile" data-mock="true">
+                    <!-- Social media mobile app interface -->
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                         alt="Social media app interface" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Social Platform</h3>
+                            <p class="text-sm opacity-90 mb-4" data-bind="project.description">Real-time messaging and social features for 50K+ users</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-accent rounded-full text-xs font-medium">Flutter</span>
+                                <span class="px-3 py-1 bg-primary rounded-full text-xs font-medium">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item group relative overflow-hidden rounded-xl bg-neutral-100 hover-lift" data-category="design" data-mock="true">
+                    <!-- Brand identity and logo design -->
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                         alt="Brand identity and logo design process" 
+                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Brand Identity</h3>
+                            <p class="text-sm opacity-90 mb-4" data-bind="project.description">Complete brand overhaul including logo, guidelines, and assets</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-secondary rounded-full text-xs font-medium">Branding</span>
+                                <span class="px-3 py-1 bg-accent rounded-full text-xs font-medium">Identity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PortfolioSection -->
+
+    <!-- @COMPONENT: TestimonialsSection [carousel slider] -->
+    <section class="py-20 bg-gradient-to-br from-primary to-secondary text-white overflow-hidden" data-mock="true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-heading font-bold mb-4" data-bind="testimonials.title">
+                    What Our Clients Say
+                </h2>
+                <p class="text-responsive opacity-90 max-w-3xl mx-auto" data-bind="testimonials.subtitle">
+                    Don't just take our word for it. Here's what industry leaders and satisfied clients have to say about their experience working with us.
+                </p>
+            </div>
+
+            <!-- Testimonials Carousel -->
+            <div class="relative">
+                <div class="testimonials-container overflow-hidden">
+                    <div id="testimonials-carousel" class="flex transition-transform duration-500 ease-in-out">
+                        <!-- @MAP: testimonials.items.map(testimonial => ( -->
+                        <div class="testimonial-slide min-w-full md:min-w-1/2 lg:min-w-1/3 px-4" data-mock="true">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 h-full glass-effect">
+                                <div class="flex items-center mb-6">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <blockquote class="text-lg mb-6 leading-relaxed" data-bind="testimonial.content">
+                                    "The team delivered exceptional results beyond our expectations. Their innovative approach and attention to detail transformed our digital presence completely."
+                                </blockquote>
+                                <div class="flex items-center">
+                                    <!-- Professional headshot of a business executive -->
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" 
+                                         alt="Client testimonial - John Smith" 
+                                         class="w-12 h-12 rounded-full object-cover mr-4" 
+                                         data-mock-image="true" />
+                                    <div>
+                                        <div class="font-semibold" data-bind="testimonial.author.name">John Smith</div>
+                                        <div class="text-sm opacity-80" data-bind="testimonial.author.position">CEO, TechCorp</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide min-w-full md:min-w-1/2 lg:min-w-1/3 px-4" data-mock="true">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 h-full glass-effect">
+                                <div class="flex items-center mb-6">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <blockquote class="text-lg mb-6 leading-relaxed" data-bind="testimonial.content">
+                                    "Outstanding service and expertise. They helped us scale our platform to serve millions of users while maintaining perfect performance and reliability."
+                                </blockquote>
+                                <div class="flex items-center">
+                                    <!-- Professional headshot of a female business leader -->
+                                    <img src="https://pixabay.com/get/gb7ad2463b0e316802d9f34c2d37c0f4c60e4ee301f0483dc19d494fde333ec9a0683b43e29eaecbd533bce0d483259848382a8b4612a75d83943fbdae2f7314b_1280.jpg" 
+                                         alt="Client testimonial - Sarah Johnson" 
+                                         class="w-12 h-12 rounded-full object-cover mr-4" 
+                                         data-mock-image="true" />
+                                    <div>
+                                        <div class="font-semibold" data-bind="testimonial.author.name">Sarah Johnson</div>
+                                        <div class="text-sm opacity-80" data-bind="testimonial.author.position">CTO, StartupHub</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-slide min-w-full md:min-w-1/2 lg:min-w-1/3 px-4" data-mock="true">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 h-full glass-effect">
+                                <div class="flex items-center mb-6">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <blockquote class="text-lg mb-6 leading-relaxed" data-bind="testimonial.content">
+                                    "Their innovative solutions and collaborative approach made our digital transformation seamless. Highly recommend for any serious business."
+                                </blockquote>
+                                <div class="flex items-center">
+                                    <!-- Professional headshot of a business executive -->
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" 
+                                         alt="Client testimonial - Michael Chen" 
+                                         class="w-12 h-12 rounded-full object-cover mr-4" 
+                                         data-mock-image="true" />
+                                    <div>
+                                        <div class="font-semibold" data-bind="testimonial.author.name">Michael Chen</div>
+                                        <div class="text-sm opacity-80" data-bind="testimonial.author.position">Founder, InnovateLab</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <button id="testimonials-prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-200" data-event="click:prevTestimonial">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button id="testimonials-next" class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-200" data-event="click:nextTestimonial">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TestimonialsSection -->
+
+    <!-- @COMPONENT: ContactSection [interactive form] -->
+    <section id="contact" class="py-20 bg-white" data-mock="true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-heading font-bold text-neutral-800 mb-4" data-bind="contact.title">
+                    Ready to Transform Your Business?
+                </h2>
+                <p class="text-responsive text-neutral-600 max-w-3xl mx-auto" data-bind="contact.subtitle">
+                    Get in touch with our experts today and discover how we can help you achieve your digital transformation goals.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-neutral-800 mb-6">Send us a message</h3>
+                        <form class="space-y-6" data-event="submit:handleContactSubmit" data-implementation="Should validate form and send to API">
+                            <!-- @STATE: formData:object, isSubmitting:boolean, errors:object -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-neutral-700 mb-2">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required
+                                           class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                           placeholder="John" data-bind="formData.firstName">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-neutral-700 mb-2">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required
+                                           class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                           placeholder="Smith" data-bind="formData.lastName">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-neutral-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required
+                                       class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                       placeholder="john@company.com" data-bind="formData.email">
+                            </div>
+
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-neutral-700 mb-2">Company</label>
+                                <input type="text" id="company" name="company"
+                                       class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
+                                       placeholder="Your Company" data-bind="formData.company">
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-neutral-700 mb-2">Subject *</label>
+                                <select id="subject" name="subject" required
+                                        class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" data-bind="formData.subject">
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="consultation">Free Consultation</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="support">Technical Support</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-neutral-700 mb-2">Message *</label>
+                                <textarea id="message" name="message" rows="5" required
+                                          class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+                                          placeholder="Tell us about your project..." data-bind="formData.message"></textarea>
+                            </div>
+
+                            <button type="submit" 
+                                    class="w-full bg-primary hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
+                                    data-implementation="Should show loading state during submission">
+                                <span class="submit-text">Send Message</span>
+                                <span class="loading-text hidden">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>Sending...
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-neutral-800 mb-6">Get in touch</h3>
+                        <p class="text-neutral-600 leading-relaxed mb-8">
+                            We're here to help you succeed. Reach out to us through any of the channels below, and our team will get back to you within 24 hours.
+                        </p>
+                    </div>
+
+                    <!-- Contact Methods -->
+                    <div class="space-y-6">
+                        <!-- @MAP: contact.methods.map(method => ( -->
+                        <div class="flex items-start space-x-4" data-mock="true">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800 mb-1">Email</h4>
+                                <p class="text-neutral-600" data-bind="contact.email">hello@innovatecorp.com</p>
+                                <p class="text-sm text-neutral-500">We respond within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4" data-mock="true">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800 mb-1">Phone</h4>
+                                <p class="text-neutral-600" data-bind="contact.phone">+1 (555) 123-4567</p>
+                                <p class="text-sm text-neutral-500">Mon-Fri 9AM-6PM EST</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4" data-mock="true">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800 mb-1">Office</h4>
+                                <p class="text-neutral-600" data-bind="contact.address">123 Innovation St<br>Tech District, CA 94105</p>
+                                <p class="text-sm text-neutral-500">Book a visit</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4" data-mock="true">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-comments text-primary text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-neutral-800 mb-1">Live Chat</h4>
+                                <p class="text-neutral-600">Available on our website</p>
+                                <p class="text-sm text-neutral-500">Instant support during business hours</p>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="pt-8 border-t border-neutral-200">
+                        <h4 class="font-semibold text-neutral-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <!-- @MAP: contact.socialLinks.map(link => ( -->
+                            <a href="#" class="w-10 h-10 bg-neutral-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-neutral-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-neutral-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-neutral-100 hover:bg-primary hover:text-white rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- @COMPONENT: Footer [comprehensive footer with links] -->
+    <footer class="bg-neutral-900 text-white py-16" data-mock="true">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-rocket text-white text-lg"></i>
+                        </div>
+                        <span class="font-bold text-xl" data-bind="company.name">InnovateCorp</span>
+                    </div>
+                    <p class="text-neutral-400 leading-relaxed" data-bind="company.description">
+                        Empowering businesses with innovative technology solutions since 2015. We're passionate about helping companies achieve their digital transformation goals.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- @MAP: footer.socialLinks.map(link => ( -->
+                        <a href="#" class="w-10 h-10 bg-neutral-800 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-neutral-800 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-neutral-800 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-200" data-mock="true">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <!-- @MAP: footer.services.map(service => ( -->
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Web Development</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Mobile Apps</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">UI/UX Design</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Consulting</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Digital Strategy</a></li>
+                        <!-- @END_MAP )) -->
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Company</h3>
+                    <ul class="space-y-3">
+                        <!-- @MAP: footer.company.map(link => ( -->
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">About Us</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Our Team</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Careers</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Press</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Blog</a></li>
+                        <!-- @END_MAP )) -->
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-6">Support</h3>
+                    <ul class="space-y-3">
+                        <!-- @MAP: footer.support.map(link => ( -->
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Help Center</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Documentation</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">API Reference</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">Contact Support</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors duration-200" data-mock="true">System Status</a></li>
+                        <!-- @END_MAP )) -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="border-t border-neutral-800 pt-12 mb-12">
+                <div class="max-w-md mx-auto text-center">
+                    <h3 class="font-semibold text-lg mb-4">Stay Updated</h3>
+                    <p class="text-neutral-400 mb-6">Get the latest news and insights delivered to your inbox.</p>
+                    <form class="flex gap-3" data-event="submit:handleNewsletterSignup" data-implementation="Should validate email and submit to newsletter API">
+                        <input type="email" placeholder="Enter your email" required
+                               class="flex-1 px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200">
+                        <button type="submit" class="bg-primary hover:bg-indigo-700 px-6 py-3 rounded-lg font-semibold transition-colors duration-200">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-neutral-400 text-sm" data-bind="footer.copyright">
+                    © 2024 InnovateCorp. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-neutral-400 hover:text-white text-sm transition-colors duration-200" data-mock="true">Privacy Policy</a>
+                    <a href="#" class="text-neutral-400 hover:text-white text-sm transition-colors duration-200" data-mock="true">Terms of Service</a>
+                    <a href="#" class="text-neutral-400 hover:text-white text-sm transition-colors duration-200" data-mock="true">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- @COMPONENT: BackToTop [scroll to top button] -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary hover:bg-indigo-700 text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover-lift z-50" data-event="click:scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <!-- @END_COMPONENT: BackToTop -->
+
+    <script>
+    // TODO: This should be replaced with React state management using Redux
+    // TODO: Implement proper TypeScript interfaces for all data structures
+    // TODO: Add proper error handling and loading states
+    // TODO: Implement API integration for dynamic content
+    
+    (function() {
+        'use strict';
+
+        // Navigation scroll effects
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        // Handle scroll effects
+        function handleScroll() {
+            const scrollY = window.scrollY;
+            
+            // Navbar background change
+            if (scrollY > 100) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+
+            // Back to top button
+            if (scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to top functionality
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Hero carousel functionality
+        let currentHeroSlide = 0;
+        const heroCarousel = document.getElementById('hero-carousel');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        const totalHeroSlides = 3;
+
+        function updateHeroCarousel() {
+            const translateX = -currentHeroSlide * 100;
+            heroCarousel.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            carouselDots.forEach((dot, index) => {
+                if (index === currentHeroSlide) {
+                    dot.classList.remove('opacity-50');
+                    dot.classList.add('opacity-100');
+                } else {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-50');
+                }
+            });
+        }
+
+        function nextHeroSlide() {
+            currentHeroSlide = (currentHeroSlide + 1) % totalHeroSlides;
+            updateHeroCarousel();
+        }
+
+        // Carousel dot navigation
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                currentHeroSlide = index;
+                updateHeroCarousel();
+            });
+        });
+
+        // Auto-advance hero carousel
+        setInterval(nextHeroSlide, 5000);
+
+        // Portfolio filter functionality
+        const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        portfolioFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active filter
+                portfolioFilters.forEach(f => {
+                    f.classList.remove('border-primary', 'text-primary', 'bg-primary/5');
+                    f.classList.add('border-neutral-200', 'text-neutral-600');
+                });
+                this.classList.remove('border-neutral-200', 'text-neutral-600');
+                this.classList.add('border-primary', 'text-primary', 'bg-primary/5');
+                
+                // Filter items
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    if (category === 'all' || itemCategory === category) {
+                        item.style.display = 'block';
+                        item.classList.add('animate-fade-in');
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('animate-fade-in');
+                    }
+                });
+            });
+        });
+
+        // Testimonials carousel
+        let currentTestimonialSlide = 0;
+        const testimonialsCarousel = document.getElementById('testimonials-carousel');
+        const testimonialsTotal = 3;
+        const testimonialsPrev = document.getElementById('testimonials-prev');
+        const testimonialsNext = document.getElementById('testimonials-next');
+
+        function updateTestimonialsCarousel() {
+            const slideWidth = window.innerWidth < 768 ? 100 : window.innerWidth < 1024 ? 50 : 33.333;
+            const translateX = -currentTestimonialSlide * slideWidth;
+            testimonialsCarousel.style.transform = `translateX(${translateX}%)`;
+        }
+
+        testimonialsPrev.addEventListener('click', function() {
+            currentTestimonialSlide = currentTestimonialSlide > 0 ? currentTestimonialSlide - 1 : testimonialsTotal - 1;
+            updateTestimonialsCarousel();
+        });
+
+        testimonialsNext.addEventListener('click', function() {
+            currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialsTotal;
+            updateTestimonialsCarousel();
+        });
+
+        // Auto-advance testimonials
+        setInterval(() => {
+            currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialsTotal;
+            updateTestimonialsCarousel();
+        }, 6000);
+
+        // Form handling (placeholder for React implementation)
+        const contactForm = document.querySelector('form[data-event="submit:handleContactSubmit"]');
+        const newsletterForm = document.querySelector('form[data-event="submit:handleNewsletterSignup"]');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement form validation and submission
+                console.log('Contact form submitted - implement with React and Redux');
+            });
+        }
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement newsletter signup
+                console.log('Newsletter signup - implement with React and Redux');
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Initialize carousel positions
+        updateHeroCarousel();
+        updateTestimonialsCarousel();
+
+        // Handle window resize for responsive carousels
+        window.addEventListener('resize', function() {
+            updateTestimonialsCarousel();
+        });
+
+        // Initialize with first hero slide active
+        if (carouselDots.length > 0) {
+            carouselDots[0].classList.remove('opacity-50');
+            carouselDots[0].classList.add('opacity-100');
+        }
+
+        // Initialize first portfolio filter as active
+        if (portfolioFilters.length > 0) {
+            portfolioFilters[0].classList.remove('border-neutral-200', 'text-neutral-600');
+            portfolioFilters[0].classList.add('border-primary', 'text-primary', 'bg-primary/5');
+        }
+
+    })();
+    </script>
+</body>
+</html>
