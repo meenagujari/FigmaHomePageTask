@@ -247,8 +247,8 @@ function HeroSection() {
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/treehouse-landscape.jpg')`
       }} />
       
-      <div className="relative z-10 text-left text-white responsive-container w-full" style={{ padding: 'var(--spacing-lg)' }}>
-        <div style={{ maxWidth: 'calc(60% + 10vw)', marginTop: 'var(--spacing-xl)' }}>
+      <div className="relative z-10 text-center text-white responsive-container w-full flex items-center justify-center min-h-screen" style={{ padding: 'var(--spacing-lg)' }}>
+        <div style={{ maxWidth: 'calc(90% + 5vw)' }}>
           <h1 className="font-bold leading-tight tracking-wide responsive-text-6xl" style={{ marginBottom: 'var(--spacing-lg)' }}>
             {contentData.hero.title}
           </h1>
