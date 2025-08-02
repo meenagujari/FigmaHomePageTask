@@ -503,12 +503,7 @@ function Footer() {
           </p>
         </div>
 
-        {/* Copyright */}
-        <div className="text-center" style={{ paddingTop: 'var(--spacing-lg)' }}>
-          <p className="responsive-text-sm" style={{ color: '#B5B5B5' }}>
-            © 2024 Ekaant Agro Tourism Retreat. All rights reserved.
-          </p>
-        </div>
+
       </div>
     </footer>
   )
