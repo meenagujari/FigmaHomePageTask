@@ -427,47 +427,24 @@ function LocationSection() {
 
 // FAQ Section Component
 function FAQSection() {
-  const [openFAQ, setOpenFAQ] = useState<number>(-1)
-
-  const toggleFAQ = (index: number) => {
-    setOpenFAQ(openFAQ === index ? -1 : index)
-  }
+  const faqQuestions = [
+    "Q. Is The Ekaant Child-Friendly?",
+    "Q. Is There Mobile Network Or Internet?", 
+    "Q. Can We Spot Tigers Or Wildlife Here?",
+    "Q. Is Food Included In The Stay?",
+    "Q. Do You Allow Pets?",
+    "Q. What Is The Best Time To Visit?"
+  ]
 
   return (
-    <section className="py-20 lg:py-28 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-6">
-            {contentData.faq.title}
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            {contentData.faq.subtitle}
-          </p>
-        </div>
-
-        <div className="max-w-5xl mx-auto">
-          {contentData.faq.items.map((item, index) => (
-            <div key={index} className="bg-white border border-gray-200 rounded-2xl mb-6 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <button 
-                className="w-full px-8 py-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
-                onClick={() => toggleFAQ(index)}
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-gray-900 pr-4">{item.question}</h3>
-                  <div className="flex-shrink-0">
-                    {openFAQ === index ? (
-                      <Minus className="text-green-700 w-6 h-6 transform transition-transform duration-200" />
-                    ) : (
-                      <Plus className="text-green-700 w-6 h-6 transform transition-transform duration-200" />
-                    )}
-                  </div>
-                </div>
-              </button>
-              {openFAQ === index && (
-                <div className="px-8 pb-6 text-gray-700 text-lg leading-relaxed border-t border-gray-100 pt-4">
-                  <p>{item.answer}</p>
-                </div>
-              )}
+    <section style={{ padding: 'var(--spacing-2xl) 0', backgroundColor: '#000000' }}>
+      <div className="responsive-container" style={{ paddingLeft: 'var(--spacing-lg)', paddingRight: 'var(--spacing-lg)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 'var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
+          {faqQuestions.map((question, index) => (
+            <div key={index} className="bg-white rounded-3xl hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:scale-105" style={{ padding: 'var(--spacing-lg)' }}>
+              <h3 className="responsive-text-lg font-medium text-gray-800" style={{ lineHeight: '1.4' }}>
+                {question}
+              </h3>
             </div>
           ))}
         </div>
