@@ -157,7 +157,7 @@ export default function HomePage() {
       <ServicesSection contentData={contentData} />
       <LocationSection contentData={contentData} />
       <FAQSection contentData={contentData} />
-      <Footer contentData={contentData} />
+      <FooterSection contentData={contentData} />
     </div>
   )
 }
@@ -591,7 +591,7 @@ function FAQSection({ contentData }: { contentData: ContentData }) {
 }
 
 // Footer Component
-function Footer({ contentData }: { contentData: ContentData }) {
+function FooterSection({ contentData }: { contentData: ContentData }) {
   const [email, setEmail] = useState('')
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
