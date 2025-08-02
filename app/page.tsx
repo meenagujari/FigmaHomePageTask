@@ -198,8 +198,8 @@ function Header() {
             />
           </div>
 
-          {/* Desktop Navigation - matching Figma exactly */}
-          <div className="hidden lg:flex items-center space-x-8">
+          {/* Navigation Menu */}
+          <div className="flex items-center space-x-8">
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-green-600 font-medium text-sm uppercase tracking-wide transition-colors">
               HOME
             </button>
@@ -213,32 +213,7 @@ function Header() {
               CONTACT US
             </button>
           </div>
-
-          {/* Mobile menu button */}
-          <button className="lg:hidden text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
-                HOME
-              </button>
-              <button onClick={() => scrollToSection('amenities')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
-                AMENITIES
-              </button>
-              <button onClick={() => scrollToSection('gallery')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
-                PHOTO GALLERY
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600 font-medium">
-                CONTACT US
-              </button>
-            </div>
-          </div>
-        )}
       </nav>
     </header>
   )
