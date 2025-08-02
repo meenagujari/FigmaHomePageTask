@@ -494,7 +494,7 @@ function LocationSection() {
         {/* Title */}
         <div className="text-center" style={{ marginBottom: 'var(--spacing-2xl)' }}>
           <h2 
-            className="font-bold text-green-600 responsive-text-4xl"
+            className="font-bold text-black responsive-text-4xl"
             style={{ 
               letterSpacing: '0.05em',
               lineHeight: '1.2'
