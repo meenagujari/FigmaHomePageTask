@@ -73,6 +73,7 @@ interface ContentData {
       email: string
       instagram: string
       location: string
+      address: string
     }
     navigation: {
       title: string
@@ -634,6 +635,9 @@ function FooterSection({ contentData }: { contentData: ContentData }) {
               </p>
               <p className="text-white responsive-text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
                 {contentData.footer.contact.location}
+              </p>
+              <p className="text-white responsive-text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                {contentData.footer.contact.address}
               </p>
             </div>
           </div>

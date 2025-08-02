@@ -146,7 +146,8 @@ const contentData = {
       "phone": "Call/WhatsApp: +91 9988776655",
       "email": "Email: EKANT@NEAVE.TECH",
       "instagram": "Instagram: EKANT",
-      "location": "Location: Near Bor Tiger Reserve, Wardha, Maharashtra"
+      "location": "Location: Near Bor Tiger Reserve",
+      "address": "Wardha, Maharashtra"
     },
     "navigation": {
       "title": "Quick Links",
