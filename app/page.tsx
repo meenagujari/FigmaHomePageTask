@@ -11,7 +11,7 @@ const contentData = {
     "tagline": "NESTLED IN NATURE"
   },
   "hero": {
-    "title": "WELCOME TO EKAANT—AGRO TOURISM RETREAT NEAR BOR TIGER RESERVE, MAHARASHTRA",
+    "title": "Welcome to Ekaant—Agro Tourism Retreat Near Bor Tiger",
     "subtitle": "Experience authentic rural life amidst pristine nature and wildlife",
     "buttonText": "Discover More"
   },
