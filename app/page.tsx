@@ -196,16 +196,16 @@ function Header() {
 
         {/* Navigation Menu - Desktop */}
         <nav className="hidden md:flex items-center" style={{ gap: 'calc(0.8rem + 0.5vw)' }}>
-          <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
+          <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             HOME
           </button>
-          <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
+          <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             AMENITIES
           </button>
-          <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
+          <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             PHOTO GALLERY
           </button>
-          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-sm">
+          <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-sm">
             CONTACT US
           </button>
         </nav>
@@ -213,16 +213,16 @@ function Header() {
         {/* Mobile Navigation */}
         <nav className="md:hidden">
           <div className="flex flex-wrap justify-end" style={{ gap: 'calc(0.3rem + 0.2vw)' }}>
-            <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
+            <button onClick={() => scrollToSection('home')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               HOME
             </button>
-            <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
+            <button onClick={() => scrollToSection('amenities')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               AMENITIES
             </button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               GALLERY
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-normal transition-colors responsive-text-xs">
+            <button onClick={() => scrollToSection('contact')} className="text-gray-800 hover:text-green-600 font-medium transition-colors responsive-text-xs">
               CONTACT
             </button>
           </div>
